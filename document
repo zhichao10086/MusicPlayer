@@ -1,0 +1,81 @@
+
+
+# 使用驼峰命名法
+   例如：
+        imageViewLabel     图像视觉标签
+
+
+#系统采用MVC架构
+    带有controller的类都是要与界面交互的
+
+    controller model view
+    文件命名时 例如
+
+        汇总类
+        MusicPlayerController
+        MusicPlayerModel
+        MusicPlayerView
+
+        播放功能类
+        PlayFuncController
+        PlayFuncModel
+        PlayFuncView
+
+        歌词类
+        LyricsController
+        LyricsModel
+        LyticsView
+
+        设置类
+        SettingController
+        SettingModel
+        SettingView
+
+        文件读写类
+        FileSolveController
+        FileSolveModel
+        FileSolveView
+
+        歌单类
+        MusicSheetController
+        MusicSheetModel
+        MusicSheetView
+
+        搜索类
+        MusicSearchController
+        MusicSearchModel
+        MusicSearchView
+
+        推荐类
+        MusicRecommendController
+        MusicRecommendModel
+        MusicRecommendView
+
+        用户资料
+        UserProfileController
+        UserProfileModel
+        UserProfileView
+
+
+        基本的类
+
+        用户类
+        User
+
+        歌曲类
+        Music
+
+        歌词类
+        Lyrics
+
+        歌单类
+        MusicSheet
+
+
+#Qt中可以用itemModel 加ListView 直接作出列表的效果来，不需要再写
+
+
+
+# 类中 成员变量加前缀
+        public成员变量前加  _
+        private成员变量前加  __
