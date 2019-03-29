@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += multimedia
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,18 +26,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        musicplayerview.cpp \
-    musicplayercontroller.cpp \
-    musicplayermodel.cpp
+        src/main.cpp \
+        src/view/musicplayerview.cpp \
+    src/controller/musicplayercontroller.cpp \
+    src/model/musicplayermodel.cpp \
+    src/controller/playfunccontroller.cpp \
+    src/controller/lyricscontroller.cpp
 
 HEADERS += \
-        musicplayerview.h \
-    musicplayercontroller.h \
-    musicplayermodel.h
+        src/view/musicplayerview.h \
+    src/controller/musicplayercontroller.h \
+    src/model/musicplayermodel.h \
+    src/controller/playfunccontroller.h \
+    src/controller/lyricscontroller.h
 
 FORMS += \
-        musicplayerview.ui
+        src/view/musicplayerview.ui
 
 DISTFILES += \
-    document
+    src/document
