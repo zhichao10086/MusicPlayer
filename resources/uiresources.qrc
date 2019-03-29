@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/musicPlayerQss/playFuncQss.qss</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>images/background.jpg</file>
+    </qresource>
+    <qresource prefix="/strings"/>
+</RCC>

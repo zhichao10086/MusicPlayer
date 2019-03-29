@@ -27,21 +27,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         src/main.cpp \
-        src/view/musicplayerview.cpp \
     src/controller/musicplayercontroller.cpp \
     src/model/musicplayermodel.cpp \
     src/controller/playfunccontroller.cpp \
-    src/controller/lyricscontroller.cpp
+    src/controller/lyricscontroller.cpp \
+    src/model/playfuncmodel.cpp \
+    src/view/playfuncview.cpp \
+    src/view/musicplayerview.cpp \
+    src/view/mainwindow.cpp \
+    src/controller/mainwindowcontroller.cpp \
+    src/model/mainwindowmodel.cpp
+
 
 HEADERS += \
-        src/view/musicplayerview.h \
     src/controller/musicplayercontroller.h \
     src/model/musicplayermodel.h \
     src/controller/playfunccontroller.h \
-    src/controller/lyricscontroller.h
+    src/controller/lyricscontroller.h \
+    src/model/playfuncmodel.h \
+    src/view/playfuncview.h \
+    src/view/musicplayerview.h \
+    src/view/mainwindow.h \
+    src/model/mainwindowmodel.h \
+    src/controller/mainwindowcontroller.h
 
 FORMS += \
-        src/view/musicplayerview.ui
+    src/view/playfuncview.ui \
+    src/view/musicplayerview.ui \
+    src/view/mainwindow.ui
 
 DISTFILES += \
     src/document
+
+RESOURCES += \
+    resources/uiresources.qrc
+
+INCLUDEPATH += $$PWD/src/
+INCLUDEPATH += $$PWD/src/controller/
+INCLUDEPATH += $$PWD/src/model/
+INCLUDEPATH += $$PWD/src/view/
+

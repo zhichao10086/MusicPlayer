@@ -1,31 +1,27 @@
 #ifndef MUSICPLAYERVIEW_H
 #define MUSICPLAYERVIEW_H
 
-#include <QMainWindow>
-#include <musicplayercontroller.h>
-
-class MusicPlayerController;
+#include <QWidget>
+#include "musicplayercontroller.h"
 
 namespace Ui {
 class MusicPlayerView;
 }
 
-class MusicPlayerView : public QMainWindow
+class MusicPlayerController;
+
+class MusicPlayerView : public QWidget
 {
     Q_OBJECT
 
 public:
-
-    MusicPlayerController* _musicPlayerController;
-
-    MusicPlayerView(){}
-
-    MusicPlayerView(MusicPlayerController*,QWidget *);
-
     explicit MusicPlayerView(QWidget *parent = 0);
+
+    MusicPlayerView(MusicPlayerController* mpc);
     ~MusicPlayerView();
 
 
+    MusicPlayerController* _musicPlayerController;
 
 private:
     Ui::MusicPlayerView *ui;

@@ -1,8 +1,6 @@
 #ifndef MUSICPLAYERMODEL_H
 #define MUSICPLAYERMODEL_H
 
-#include <musicplayercontroller.h>
-
 
 class MusicPlayerModel
 {

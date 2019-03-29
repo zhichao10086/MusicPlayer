@@ -1,7 +1,7 @@
 #ifndef MUSICPLAYERCONTROLLER_H
 #define MUSICPLAYERCONTROLLER_H
 
-#include <musicplayermodel.h>
+#include "musicplayermodel.h"
 #include <musicplayerview.h>
 
 
@@ -27,6 +27,8 @@ public:
 
     void show();
 
+    MusicPlayerView *musicPlayerView() const;
+    void setMusicPlayerView(MusicPlayerView *musicPlayerView);
 };
 
 #endif // MUSICPLAYERCONTROLLER_H

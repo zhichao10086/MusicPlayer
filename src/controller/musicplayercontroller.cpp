@@ -16,9 +16,19 @@ MusicPlayerController *MusicPlayerController::newInstance()
 
 }
 
+MusicPlayerView *MusicPlayerController::musicPlayerView() const
+{
+    return _musicPlayerView;
+}
+
+void MusicPlayerController::setMusicPlayerView(MusicPlayerView *musicPlayerView)
+{
+    _musicPlayerView = musicPlayerView;
+}
+
 void MusicPlayerController::init()
 {
-    _musicPlayerView = new MusicPlayerView(this,0);
+    _musicPlayerView = new MusicPlayerView(this);
     _musicPlayerModel = new MusicPlayerModel;
 }
 

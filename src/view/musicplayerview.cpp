@@ -1,21 +1,19 @@
 #include "musicplayerview.h"
 #include "ui_musicplayerview.h"
 
-MusicPlayerView::MusicPlayerView(MusicPlayerController *mpc,QWidget *parent =0 ):
-    QMainWindow(parent),
+MusicPlayerView::MusicPlayerView(QWidget *parent) :
+    QWidget(parent),
     ui(new Ui::MusicPlayerView)
 {
-
     ui->setupUi(this);
-    _musicPlayerController = mpc;
 }
 
-MusicPlayerView::MusicPlayerView(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MusicPlayerView)
+MusicPlayerView::MusicPlayerView( MusicPlayerController *mpc)
 {
+    //this->MusicPlayerView();
+    this->_musicPlayerController = mpc;
+    ui = new Ui::MusicPlayerView;
     ui->setupUi(this);
-
 }
 
 MusicPlayerView::~MusicPlayerView()
