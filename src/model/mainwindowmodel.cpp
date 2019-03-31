@@ -2,15 +2,17 @@
 
 MainWindowmodel::MainWindowmodel()
 {
+    init();
+}
+
+void MainWindowmodel::init()
+{
+    //初始化音乐器主界面控制器
+    this->_musicPlayerController = new MusicPlayerController;
 
 }
 
-MusicPlayerController *MainWindowmodel::musicPlayerController() const
+MusicPlayerView *MainWindowmodel::getMusicPlayerView() const
 {
-    return _musicPlayerController;
-}
-
-void MainWindowmodel::setMusicPlayerController(MusicPlayerController *musicPlayerController)
-{
-    _musicPlayerController = musicPlayerController;
+    return this->_musicPlayerController->musicPlayerView();
 }

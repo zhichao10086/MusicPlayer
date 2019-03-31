@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::MainWindow(MainWindowController *mc)
 {
     this->_mainWindowCtrl = mc;
+    this->init_view();
 }
 
 MainWindow::~MainWindow()
@@ -20,6 +21,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::init_view()
 {
-    this->setCentralWidget(this->_mainWindowCtrl->getMusicPlayerView());
+
+    ui = new Ui::MainWindow;
+    ui->setupUi(this);
+    QMainWindow::setCentralWidget(this->_mainWindowCtrl->getMusicPlayerView());
+    cout<<this->_mainWindowCtrl->getMusicPlayerView()->size().height();
+    cout<<this->ui->centralwidget->size().height()<<endl;
+
 
 }

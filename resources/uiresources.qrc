@@ -6,4 +6,11 @@
         <file>images/background.jpg</file>
     </qresource>
     <qresource prefix="/strings"/>
+    <qresource prefix="/images/icon">
+        <file>images/next_1296db.png</file>
+        <file>images/next_bfbfbf.png</file>
+        <file>images/pause_1296db.png</file>
+        <file>images/play_1296db.png</file>
+        <file>images/pre_1296db.png</file>
+    </qresource>
 </RCC>

@@ -2,7 +2,8 @@
 #define MAINWINDOWMODEL_H
 
 #include <musicplayercontroller.h>
-
+#include "musicplayercontroller.h"
+#include "musicplayerview.h"
 
 
 class MainWindowmodel
@@ -10,11 +11,12 @@ class MainWindowmodel
 public:
     MainWindowmodel();
 
-
     MusicPlayerController* _musicPlayerController;
+    MusicPlayerView* _musicPlayerView;
 
-    MusicPlayerController *musicPlayerController() const;
-    void setMusicPlayerController(MusicPlayerController *musicPlayerController);
+    void init();
+
+    MusicPlayerView *getMusicPlayerView() const;
 };
 
 #endif // MainWindowmodel_H

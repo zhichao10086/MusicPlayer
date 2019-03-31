@@ -26,35 +26,56 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        src/main.cpp \
-    src/controller/musicplayercontroller.cpp \
-    src/model/musicplayermodel.cpp \
-    src/controller/playfunccontroller.cpp \
+    src/controller/downloadcontroller.cpp \
+    src/controller/localmusiccontroller.cpp \
     src/controller/lyricscontroller.cpp \
-    src/model/playfuncmodel.cpp \
-    src/view/playfuncview.cpp \
-    src/view/musicplayerview.cpp \
-    src/view/mainwindow.cpp \
     src/controller/mainwindowcontroller.cpp \
-    src/model/mainwindowmodel.cpp
+    src/controller/musicplayercontroller.cpp \
+    src/controller/playfunccontroller.cpp \
+    src/model/downloadmodel.cpp \
+    src/model/localmusicmodel.cpp \
+    src/model/mainwindowmodel.cpp \
+    src/model/music.cpp \
+    src/model/musicplayermodel.cpp \
+    src/model/playfuncmodel.cpp \
+    src/view/choosedirsdialog.cpp \
+    src/view/downloadview.cpp \
+    src/view/localmusicview.cpp \
+    src/view/mainwindow.cpp \
+    src/view/musicplayerview.cpp \
+    src/view/playfuncview.cpp \
+    src/main.cpp \
+    src/util/util.cpp
 
 
 HEADERS += \
-    src/controller/musicplayercontroller.h \
-    src/model/musicplayermodel.h \
-    src/controller/playfunccontroller.h \
+    src/controller/downloadcontroller.h \
+    src/controller/localmusiccontroller.h \
     src/controller/lyricscontroller.h \
-    src/model/playfuncmodel.h \
-    src/view/playfuncview.h \
-    src/view/musicplayerview.h \
-    src/view/mainwindow.h \
+    src/controller/mainwindowcontroller.h \
+    src/controller/musicplayercontroller.h \
+    src/controller/playfunccontroller.h \
+    src/model/downloadmodel.h \
+    src/model/localmusicmodel.h \
     src/model/mainwindowmodel.h \
-    src/controller/mainwindowcontroller.h
+    src/model/music.h \
+    src/model/musicplayermodel.h \
+    src/model/playfuncmodel.h \
+    src/view/choosedirsdialog.h \
+    src/view/downloadview.h \
+    src/view/localmusicview.h \
+    src/view/mainwindow.h \
+    src/view/musicplayerview.h \
+    src/view/playfuncview.h \
+    src/util/util.h
 
 FORMS += \
     src/view/playfuncview.ui \
     src/view/musicplayerview.ui \
-    src/view/mainwindow.ui
+    src/view/mainwindow.ui \
+    src/view/localmusicview.ui \
+    src/view/downloadview.ui \
+    src/view/choosedirsdialog.ui
 
 DISTFILES += \
     src/document
@@ -66,4 +87,5 @@ INCLUDEPATH += $$PWD/src/
 INCLUDEPATH += $$PWD/src/controller/
 INCLUDEPATH += $$PWD/src/model/
 INCLUDEPATH += $$PWD/src/view/
+INCLUDEPATH += $$PWD/src/util/
 

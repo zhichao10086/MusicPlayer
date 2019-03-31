@@ -3,11 +3,13 @@
 
 #include <QMainWindow>
 #include <mainwindowcontroller.h>
+#include <iostream>
 
 namespace Ui {
 class MainWindow;
 }
 
+using namespace std;
 class MainWindowController;
 
 
