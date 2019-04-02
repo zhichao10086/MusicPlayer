@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <playfunccontroller.h>
+#include <QLabel>
+#include <QSlider>
+#include "util.h"
 
 class PlayFuncController;
 
@@ -34,6 +37,22 @@ public:
     void setBackgroundImage(QPixmap& p);
 
 
+
+
+    QLabel* getLabelTime();
+
+    QSlider* getTimeSlider();
+
+    QSlider* getVolumeSlider();
+
+
+    void connectTimeAndSlider(QMediaPlayer* mp);
+
+public slots:
+    void showCurDuration(qint64 );
+    void showCurPosition(qint64);
+    void setTimeSLiderRange(qint64);
+    void setTimeSliderPosition(qint64);
 
 private slots:
     void on_btnStartOrPause_clicked();

@@ -18,6 +18,8 @@ public:
     static QStringList getAbsoluteFileNames(const QString &path);
 
     static bool hasDuplicate(QStringList& list,QString& s);
+
+    static QString qint642Qtring(qint64);
 };
 
 #endif // UTIL_H

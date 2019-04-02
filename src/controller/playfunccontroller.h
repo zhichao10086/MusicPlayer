@@ -7,6 +7,7 @@
 #include <QVector>
 #include <QMediaContent>
 #include <iostream>
+#include <QObject>
 
 
 class PlayFuncModel;
@@ -15,8 +16,10 @@ class PlayFuncView;
 using namespace std;
 
 
-class PlayFuncController
+class PlayFuncController:public QObject
 {
+
+    Q_OBJECT
 public:
 
 
@@ -43,6 +46,7 @@ public:
      */
     bool playOrPause();
 
+
     /*
      * 下一首
      */
@@ -68,6 +72,11 @@ public:
      */
     void setCurrentMusic(int index);
 
+    /*
+     * 准备一首歌的初始设置
+     */
+    void init_Music_View();
+
 
     /*
      * 设置当前播放列表
@@ -81,11 +90,42 @@ public:
 
     void setMusicListMode(int mode);
 
+    /*
+     * 连接时间显示
+     */
+    void connectAllTime();
+
+    /*
+     * 连接当前时间显示
+     */
+    void connectCurTime();
+
+    /*
+     * 连接滑动条
+     */
+    void connectTimeSlider();
+
+    /*
+     * 连接音量
+     */
+    void connectVolumeSlider();
 
     PlayFuncModel *playFuncModel() const;
     void setPlayFuncModel(PlayFuncModel *playFuncModel);
     PlayFuncView *playFuncView() const;
     void setPlayFuncView(PlayFuncView *playFuncView);
+
+signals:
+    /*
+     * 下一首
+     */
+    nextSignal(int);
+
+    /*
+     * 上一首
+     */
+    preSignal(int);
+
 };
 
 #endif // PLAYFUNCCONTROLLER_H

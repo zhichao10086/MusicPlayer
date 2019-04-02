@@ -2,21 +2,36 @@
 #define DOWNLOADVIEW_H
 
 #include <QWidget>
+#include "downloadcontroller.h"
+
+class DownLoadController;
 
 namespace Ui {
-class DownloadView;
+class DownLoadView;
 }
 
-class DownloadView : public QWidget
+class DownLoadView : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit DownloadView(QWidget *parent = 0);
-    ~DownloadView();
+    explicit DownLoadView(QWidget *parent = 0);
+
+
+    DownLoadView(DownLoadController* dlc,QWidget* p = 0);
+
+
+    DownLoadController* _dlc;
+
+    void initView();
+
+    ~DownLoadView();
+
+    DownLoadController *dlc() const;
+    void setDlc(DownLoadController *dlc);
 
 private:
-    Ui::DownloadView *ui;
+    Ui::DownLoadView *ui;
 };
 
 #endif // DOWNLOADVIEW_H

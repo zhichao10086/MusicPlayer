@@ -17,8 +17,10 @@ class PlayFuncController;
 
 using namespace std;
 
-class LocalMusicController
+class LocalMusicController:public QObject
+
 {
+    Q_OBJECT
 public:
     LocalMusicController();
 
@@ -56,6 +58,7 @@ public:
     void addMusicsToMedia();
 
 
+
     LocalMusicModel* _localMusicModel;
     LocalMusicView* _localMusicView;
 
@@ -63,6 +66,13 @@ public:
     void setLocalMusicModel(LocalMusicModel *localMusicModel);
     LocalMusicView *localMusicView() const;
     void setLocalMusicView(LocalMusicView *localMusicView);
+
+public slots:
+    /*
+     * 将选中状态放置在当前播放歌曲所在的行
+     *
+     */
+    void setCurIndexOnMusicList(int);
 };
 
 #endif // LOCALMUSICCONTROLLER_H

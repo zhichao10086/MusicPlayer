@@ -5,10 +5,17 @@ MainWindowmodel::MainWindowmodel()
     init();
 }
 
+MainWindowmodel::MainWindowmodel(MainWindowController *mwc)
+{
+    this->_mainWindowCtrl = mwc;
+    init();
+}
+
 void MainWindowmodel::init()
 {
-    //初始化音乐器主界面控制器
-    this->_musicPlayerController = new MusicPlayerController;
+
+    this->_musicPlayerController = new MusicPlayerController(this->_mainWindowCtrl);
+
 
 }
 

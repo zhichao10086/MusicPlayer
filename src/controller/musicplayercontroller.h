@@ -1,30 +1,40 @@
 #ifndef MUSICPLAYERCONTROLLER_H
 #define MUSICPLAYERCONTROLLER_H
 
+#include <QObject>
 #include "musicplayermodel.h"
 #include <musicplayerview.h>
 #include "playfunccontroller.h"
 #include "playfuncview.h"
 #include "localmusicview.h"
 #include <QWidget>
+#include <iostream>
+#include "mainwindowcontroller.h"
+#include "mainwindow.h"
+#include <QApplication>
+#include <QMainWindow>
+#include <QDesktopWidget>
 
+
+using namespace std;
 
 class MusicPlayerModel;
 class MusicPlayerView;
+class MainWindowController;
 
 
 
 class MusicPlayerController
 {
 public:
+    MusicPlayerController();
+
+    MusicPlayerController(MainWindowController* mwc);
 
     enum{
         LOCAL_FILE_WINDOW = 1,
         DOWNLOAD_FILE_WINDOW = 2
     };
-
-
-    MusicPlayerController();
 
 
     /*
@@ -45,6 +55,20 @@ public:
     //初始化界面
     void init_view();
 
+    /*
+     * 关闭程序
+     */
+    void closeApp();
+
+    /*
+     * 最小化
+     */
+    void minApp();
+
+    /*
+     * 最大化
+     */
+    void maxApp();
 
     void show();
 
@@ -62,6 +86,18 @@ public:
      * 获得本地音乐的界面
      */
     LocalMusicView* getLocalMusicView();
+
+    /*
+     * 将本地音乐的list控件和音乐控制联系起来
+     */
+    void connectLocalMusicListAndPlayFunc();
+
+    /*
+     * 取消将本地音乐的list控件和音乐控制联系
+     */
+    void disconnectLocalMusicListAndPlayFunc();
+
+    void hiddenWidgetToDo(QWidget* );
 
 
 };

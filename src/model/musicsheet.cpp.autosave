@@ -1,0 +1,27 @@
+#include "musicsheet.h"
+
+MusicSheet::MusicSheet()
+{
+
+}
+
+QVector<Music> MusicSheet::musics() const
+{
+    return _musics;
+}
+
+void MusicSheet::setMusics(const QVector<Music> &musics)
+{
+    _musics = musics;
+}
+
+
+QString MusicSheet::createTime() const
+{
+    return _createTime;
+}
+
+void MusicSheet::setCreateTime(const QString &createTime)
+{
+    _createTime = createTime;
+}

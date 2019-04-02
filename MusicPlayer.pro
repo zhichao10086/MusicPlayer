@@ -26,11 +26,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    src/controller/downloadcontroller.cpp \
     src/controller/localmusiccontroller.cpp \
     src/controller/lyricscontroller.cpp \
     src/controller/mainwindowcontroller.cpp \
-    src/controller/musicplayercontroller.cpp \
     src/controller/playfunccontroller.cpp \
     src/model/downloadmodel.cpp \
     src/model/localmusicmodel.cpp \
@@ -45,15 +43,16 @@ SOURCES += \
     src/view/musicplayerview.cpp \
     src/view/playfuncview.cpp \
     src/main.cpp \
-    src/util/util.cpp
+    src/util/util.cpp \
+    src/controller/musicplayercontroller.cpp \
+    src/controller/downloadcontroller.cpp \
+    src/model/musicsheet.cpp
 
 
 HEADERS += \
-    src/controller/downloadcontroller.h \
     src/controller/localmusiccontroller.h \
     src/controller/lyricscontroller.h \
     src/controller/mainwindowcontroller.h \
-    src/controller/musicplayercontroller.h \
     src/controller/playfunccontroller.h \
     src/model/downloadmodel.h \
     src/model/localmusicmodel.h \
@@ -67,7 +66,10 @@ HEADERS += \
     src/view/mainwindow.h \
     src/view/musicplayerview.h \
     src/view/playfuncview.h \
-    src/util/util.h
+    src/util/util.h \
+    src/controller/musicplayercontroller.h \
+    src/controller/downloadcontroller.h \
+    src/model/musicsheet.h
 
 FORMS += \
     src/view/playfuncview.ui \

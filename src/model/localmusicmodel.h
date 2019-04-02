@@ -37,7 +37,7 @@ public:
     QStringList dirs() const;
     void setDirs(const QStringList &dirs);
 
-    QVector<Music> musics() const;
+    QVector<Music>& musics();
     void setMusics(const QVector<Music> &musics);
     void setPlayFuncCtrl(PlayFuncController *value);
     PlayFuncController *getPlayFuncCtrl() const;

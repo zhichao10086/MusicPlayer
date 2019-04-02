@@ -43,3 +43,14 @@ bool Util::hasDuplicate(QStringList &list, QString &s)
     return false;
 
 }
+
+QString Util::qint642Qtring(qint64 playtime)
+{
+    int h,m,s;
+    playtime /= 1000;  //获得的时间是以毫秒为单位的
+    h = playtime/3600;
+    m = (playtime-h*3600)/60;
+    s = playtime-h*3600-m*60;
+
+    return QString("%1:%2:%3").arg(h).arg(m).arg(s);
+}

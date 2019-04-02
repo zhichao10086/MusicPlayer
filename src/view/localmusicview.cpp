@@ -24,6 +24,7 @@ void LocalMusicView::init_view()
 {
     ui = new Ui::LocalMusicView;
     ui->setupUi(this);
+
 }
 
 void LocalMusicView::updateListWidget(QVector<Music> &musics)
@@ -43,6 +44,14 @@ void LocalMusicView::clearMusicListWidget()
     this->ui->lwMusicList->clear();
 }
 
+void LocalMusicView::setCurListWidgetIndex(int index)
+{
+    cout<<index<<endl;
+    QListWidgetItem* item =  this->ui->lwMusicList->item(index);
+    this->ui->lwMusicList->setItemSelected(item,true);
+
+}
+
 void LocalMusicView::on_btnOpenDir_clicked()
 {
 
@@ -54,5 +63,10 @@ void LocalMusicView::on_lwMusicList_doubleClicked(const QModelIndex &index)
 {
 
     this->_localMusicCtrl->playMusic(index);
+
+}
+
+void LocalMusicView::hiddenToDo()
+{
 
 }

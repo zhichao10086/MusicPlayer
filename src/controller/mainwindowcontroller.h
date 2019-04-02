@@ -4,6 +4,13 @@
 #include <mainwindow.h>
 #include <mainwindowmodel.h>
 #include <musicplayercontroller.h>
+#include "musicplayercontroller.h"
+#include "musicplayerview.h"
+#include <iostream>
+#include <QApplication>
+#include <QRect>
+
+using namespace std;
 
 
 class MainWindow;
@@ -25,6 +32,26 @@ public:
      */
     void show();
 
+    /*
+     * 关闭主程序
+     */
+    void closeApp();
+
+
+    /*
+     * 最小化
+     */
+    void minApp();
+
+    /*
+     * 最大化
+     */
+    void maxApp();
+
+
+
+
+
     MusicPlayerView* getMusicPlayerView();
 
     MainWindow* _mainWindow;
@@ -34,6 +61,8 @@ public:
 
 
 
+    MainWindow *getMainWindow() const;
+    void setMainWindow(MainWindow *mainWindow);
 };
 
 #endif // MainWindowController_H

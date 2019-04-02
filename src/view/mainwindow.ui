@@ -2,19 +2,15 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>970</width>
-    <height>500</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow{
+background-color: rgb(212, 255, 250,125);
+
+	background-image: url(:/images/images/background_yun.png);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -29,14 +25,14 @@
      <height>600</height>
     </size>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout"/>
+   <layout class="QGridLayout" name="gridLayout"/>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>970</width>
+     <width>800</width>
      <height>26</height>
     </rect>
    </property>

@@ -1,0 +1,27 @@
+#ifndef MUSICSHEET_H
+#define MUSICSHEET_H
+
+#include <QObject>
+#include <QList>
+#include "music.h"
+#include <QVector>
+
+class MusicSheet
+{
+public:
+    MusicSheet();
+
+    //创建时间
+    QString _createTime;
+
+    //歌曲列表
+    QVector<Music> _musics;
+
+    QString createTime() const;
+    void setCreateTime(const QString &createTime);
+
+    QVector<Music> musics() const;
+    void setMusics(const QVector<Music> &musics);
+};
+
+#endif // MUSICSHEET_H

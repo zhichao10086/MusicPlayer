@@ -18,6 +18,10 @@ void LocalMusicController::init()
 {
     this->_localMusicModel = new LocalMusicModel;
     this->_localMusicView = new LocalMusicView(this);
+    this->_localMusicModel->setMusics(this->searchMusics(this->_localMusicModel->dirs()));
+    this->_localMusicView->updateListWidget(this->_localMusicModel->musics());
+    //this->addMusicsToMedia();
+
 }
 
 void LocalMusicController::showChooseDirsDialog()
@@ -101,6 +105,11 @@ LocalMusicView *LocalMusicController::localMusicView() const
 void LocalMusicController::setLocalMusicView(LocalMusicView *localMusicView)
 {
     _localMusicView = localMusicView;
+}
+
+void LocalMusicController::setCurIndexOnMusicList(int index)
+{
+    this->localMusicView()->setCurListWidgetIndex(index);
 }
 
 LocalMusicModel *LocalMusicController::localMusicModel() const

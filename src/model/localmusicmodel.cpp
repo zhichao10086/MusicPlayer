@@ -21,7 +21,7 @@ void LocalMusicModel::setPlayFuncCtrl(PlayFuncController *value)
     _playFuncCtrl = value;
 }
 
-QVector<Music> LocalMusicModel::musics() const
+QVector<Music>& LocalMusicModel::musics()
 {
     return _musics;
 }

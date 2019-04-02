@@ -75,17 +75,33 @@ bool PlayFuncController::playOrPause()
 
 bool PlayFuncController::next()
 {
+    QMediaPlaylist*  mpl = this->playFuncModel()->mediaPlayList();
     this->pause();
     //int cur  = this->_playFuncModel->mediaPlayList()->currentIndex();
-    this->playFuncModel()->mediaPlayList()->next();
+    if(mpl->currentIndex() == mpl->mediaCount() -1 ){
+        mpl->setCurrentIndex(0);
+    }else{
+        this->playFuncModel()->mediaPlayList()->next();
+    }
     this->playOrPause();
+    emit nextSignal(mpl->currentIndex());
+    return true;
 }
 
 bool PlayFuncController::pre()
 {
+    QMediaPlaylist*  mpl = this->playFuncModel()->mediaPlayList();
     this->pause();
-    this->playFuncModel()->mediaPlayList()->previous();
+    if(mpl->currentIndex() == 0){
+        mpl->setCurrentIndex(mpl->mediaCount() -1);
+
+    }else{
+        mpl->previous();
+    }
+
     this->playOrPause();
+    emit preSignal(mpl->currentIndex());
+    return true;
 }
 
 bool PlayFuncController::pause()
@@ -120,6 +136,17 @@ void PlayFuncController::setCurrentMusic(int index)
     if(index >=0 && index <this->_playFuncModel->mediaPlayList()->mediaCount()){
         mediaList->setCurrentIndex(index);
     }
+
+    this->init_Music_View();
+
+}
+
+void PlayFuncController::init_Music_View()
+{
+    this->connectAllTime();
+    this->connectCurTime();
+    this->connectTimeSlider();
+    this->connectVolumeSlider();
 }
 
 void PlayFuncController::setCurrentMusicList(QVector<Music> vecMusic)
@@ -151,5 +178,40 @@ void PlayFuncController::playMusic(Music &music)
 
 void PlayFuncController::setMusicListMode(int mode)
 {
-    this->playFuncModel()->mediaPlayList()->setPlaybackMode(QMediaPlaylist::Sequential);
+    //未完成
+    this->playFuncModel()->mediaPlayList()->setPlaybackMode(QMediaPlaylist::Sequential );
+}
+
+void PlayFuncController::connectCurTime()
+{
+    QMediaPlayer* mp = this->playFuncModel()->mediaPlayer();
+    QObject::connect(mp,&QMediaPlayer::positionChanged,this->playFuncView(),&PlayFuncView::showCurPosition);
+}
+
+void PlayFuncController::connectTimeSlider()
+{
+    QMediaPlayer* mp = this->playFuncModel()->mediaPlayer();
+    //1.将总时间连接到滑动条
+    //2.将滑动条事件连接到数据播放器
+    QSlider* timeSlider = this->playFuncView()->getTimeSlider();
+    QObject::connect(mp,&QMediaPlayer::durationChanged,this->playFuncView(),&PlayFuncView::setTimeSLiderRange);
+
+    QObject::connect(timeSlider,&QSlider::valueChanged,mp,&QMediaPlayer::setPosition);
+
+    QObject::connect(mp,&QMediaPlayer::positionChanged,this->playFuncView(),&PlayFuncView::setTimeSliderPosition);
+
+}
+
+void PlayFuncController::connectVolumeSlider()
+{
+    QMediaPlayer* mp = this->playFuncModel()->mediaPlayer();
+    QSlider* volumeSlider = this->playFuncView()->getVolumeSlider();
+    QObject::connect(volumeSlider,&QSlider::valueChanged,mp,&QMediaPlayer::setVolume);
+}
+
+void PlayFuncController::connectAllTime()
+{
+    QMediaPlayer* mp = this->playFuncModel()->mediaPlayer();
+
+    QObject::connect(mp,&QMediaPlayer::durationChanged,this->playFuncView(),&PlayFuncView::showCurDuration);
 }

@@ -4,7 +4,9 @@
 #include <QWidget>
 #include "localmusiccontroller.h"
 #include "choosedirsdialog.h"
+#include <iostream>
 
+using namespace std;
 
 
 namespace Ui {
@@ -35,6 +37,11 @@ public:
 
     LocalMusicController* _localMusicCtrl;
 
+public slots:
+
+
+    void setCurListWidgetIndex(int);
+
 
 private slots:
     void on_btnOpenDir_clicked();
@@ -43,6 +50,10 @@ private slots:
 
 private:
     Ui::LocalMusicView *ui;
+
+    // BaseView interface
+public:
+    void hiddenToDo();
 };
 
 #endif // LOCALMUSICVIEW_H

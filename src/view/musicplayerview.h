@@ -7,6 +7,9 @@
 #include <iostream>
 #include <QLabel>
 #include <QWidget>
+#include <QLayoutItem>
+#include <QUrl>
+
 
 namespace Ui {
 class MusicPlayerView;
@@ -25,12 +28,20 @@ public:
     MusicPlayerView(MusicPlayerController* mpc);
     ~MusicPlayerView();
 
+
+
+
+    QPoint _dragPosition;
+
+
     void init_view();
 
     /*
      *设置背景
      */
     void setBackgroundImage(QPixmap& p);
+
+    void setBackground(QUrl);
 
     /*
      * 设置当前主界面
@@ -45,6 +56,7 @@ public:
     void removeMainWindowWidget();
 
 
+
     MusicPlayerController* _musicPlayerController;
     QWidget* _curMainWindowWidget = nullptr;
 
@@ -53,6 +65,14 @@ public:
 
 private slots:
     void on_btnLocalFile_clicked();
+
+    void on_btnDownload_clicked();
+
+    void on_btnClose_clicked();
+
+    void on_btnMinWindow_clicked();
+
+    void on_btnMaxWindow_clicked();
 
 private:
     Ui::MusicPlayerView *ui;

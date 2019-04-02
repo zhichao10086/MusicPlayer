@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <mainwindowcontroller.h>
 #include <iostream>
+#include <QPoint>
 
 namespace Ui {
 class MainWindow;
@@ -23,7 +24,16 @@ public:
     MainWindow(MainWindowController* mc);
     ~MainWindow();
 
+    QPoint _dragPosition;
+
     void init_view();
+
+
+
+    void mousePressEvent(QMouseEvent* event);
+
+    void mouseMoveEvent(QMouseEvent* event);
+
 
     MainWindowController* _mainWindowCtrl;
 

@@ -4,6 +4,9 @@
     </qresource>
     <qresource prefix="/images">
         <file>images/background.jpg</file>
+        <file>images/background1.jpg</file>
+        <file>images/background_dang.jpg</file>
+        <file>images/background_yun.png</file>
     </qresource>
     <qresource prefix="/strings"/>
     <qresource prefix="/images/icon">
@@ -12,5 +15,11 @@
         <file>images/pause_1296db.png</file>
         <file>images/play_1296db.png</file>
         <file>images/pre_1296db.png</file>
+        <file>images/setting2.png</file>
+        <file>images/guanbi (3).png</file>
+        <file>images/zuixiaohua (3).png</file>
+        <file>images/close.png</file>
+        <file>images/max.png</file>
+        <file>images/min.png</file>
     </qresource>
 </RCC>
