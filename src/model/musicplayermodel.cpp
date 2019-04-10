@@ -5,11 +5,17 @@ MusicPlayerModel::MusicPlayerModel()
     this->init();
 }
 
+MusicPlayerModel::MusicPlayerModel(MusicPlayerController *mpc)
+{
+    this->_musicPlayerCtrl = mpc;
+    this->init();
+}
+
 void MusicPlayerModel::init()
 {
 
     //播放功能控制器与界面
-    _pfc = new PlayFuncController;
+    _pfc = new PlayFuncController(this->_musicPlayerCtrl);
     _pfView = _pfc->playFuncView();
     _pfModel = _pfc->playFuncModel();
 

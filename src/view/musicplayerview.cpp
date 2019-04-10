@@ -31,7 +31,7 @@ void MusicPlayerView::init_view()
     //QPixmap p(":/images/images/background1.jpg");
     //this->setBackgroundImage(p);
     cout<<"musicplayerview : init_view"<<endl;
-    //需要播放控制界面
+    //闇€瑕佹挱鏀炬帶鍒剁晫闈¢
     PlayFuncView* pfView = this->_musicPlayerController->getPlayFuncView();
     cout<<"musicplayerview : add PlayFuncView"<<endl;
 
@@ -57,13 +57,26 @@ void MusicPlayerView::setBackground(QUrl url)
 
 void MusicPlayerView::setMainWindowWidget(QWidget *w)
 {
-    if(this->_curMainWindowWidget != nullptr){
-        this->removeMainWindowWidget();
+//    if(this->_curMainWindowWidget != nullptr){
+//        //this->removeMainWindowWidget();
+//        this->hideCurMainWindowWidget();
+//    }
+    this->hideMainWindowWidget();
+    int index = ui->vLayoutMainWindow->indexOf(w);
+    qDebug()<<index;
+    if(index <0){
+        ui->vLayoutMainWindow->addWidget(w);
+        qDebug()<<ui->vLayoutMainWindow->layout()->count();
+        this->_curMainWindowWidget = w;
+    }else{
+        w->show();
     }
-    //设置主界面
-    cout<<"zhuejiemian "<<endl;
-    ui->vLayoutMainWindow->addWidget(w);
-    this->_curMainWindowWidget = w;
+
+}
+
+void MusicPlayerView::showMusicDetialView(PlayMusicDetialView *pmdv)
+{
+
 }
 
 QWidget* MusicPlayerView::getCurMainWindowWidget()
@@ -79,20 +92,40 @@ void MusicPlayerView::removeMainWindowWidget()
     QLayoutItem* item = this->ui->vLayoutMainWindow->itemAt(index);
     this->ui->vLayoutMainWindow->removeItem(item);
     this->ui->vLayoutMainWindow->removeWidget(this->_curMainWindowWidget);
-    //在移除时有一些工作要做
+    //鍦ㄧЩ闄ゆ椂鏈変竴浜涘伐浣滆¦佸仛
     //this->_musicPlayerController->hiddenWidgetToDo((BaseView*)this->_curMainWindowWidget);
+}
+
+void MusicPlayerView::hideCurMainWindowWidget()
+{
+    this->_curMainWindowWidget->hide();
+}
+
+void MusicPlayerView::hideMainWindowWidget()
+{
+    int all = this->ui->vLayoutMainWindow->layout()->count();
+    for(int i=0;i<all;i++){
+        QLayoutItem * item = this->ui->vLayoutMainWindow->itemAt(i);
+        item->widget()->hide();
+        //ui->vLayoutMainWindow->removeWidget(item->widget());
+        //ui->vLayoutMainWindow->removeItem(item);
+
+
+    }
 }
 
 
 void MusicPlayerView::on_btnLocalFile_clicked()
 {
 
-    this->_musicPlayerController->setMainWindowWidget(MusicPlayerController::LOCAL_FILE_WINDOW);
+    //this->_musicPlayerController->setMainWindowWidget(MusicPlayerController::LOCAL_FILE_WINDOW);
+    this->setMainWindowWidget(this->_musicPlayerController->getLocalMusicView());
 }
 
 void MusicPlayerView::on_btnDownload_clicked()
 {
     this->_musicPlayerController->setMainWindowWidget(MusicPlayerController::DOWNLOAD_FILE_WINDOW);
+
 }
 
 void MusicPlayerView::on_btnClose_clicked()
@@ -108,4 +141,11 @@ void MusicPlayerView::on_btnMinWindow_clicked()
 void MusicPlayerView::on_btnMaxWindow_clicked()
 {
     this->_musicPlayerController->maxApp();
+}
+
+void MusicPlayerView::on_btnNewMusicSheet_clicked()
+{
+    //新建歌单
+
+
 }

@@ -26,10 +26,15 @@ void MusicPlayerController::setMusicPlayerView(MusicPlayerView *musicPlayerView)
     _musicPlayerView = musicPlayerView;
 }
 
+MusicPlayerView *MusicPlayerController::getMusicPlayerView() const
+{
+    return _musicPlayerView;
+}
+
 
 void MusicPlayerController::init()
 {
-    _musicPlayerModel = new MusicPlayerModel;
+    _musicPlayerModel = new MusicPlayerModel(this);
     _musicPlayerView = new MusicPlayerView(this);
 
 }
@@ -72,6 +77,11 @@ void MusicPlayerController::maxApp()
 void MusicPlayerController::show()
 {
     this->_musicPlayerView->show();
+}
+
+void MusicPlayerController::showMusicDetialView(PlayMusicDetialView *pmdv)
+{
+    this->_musicPlayerView->setMainWindowWidget(pmdv);
 }
 
 void MusicPlayerController::setMainWindowWidget(int mode)
@@ -127,6 +137,12 @@ void MusicPlayerController::hiddenWidgetToDo(QWidget* w)
     }else if(w == this->_musicPlayerModel->downloadView()){
 
     }
+
+}
+
+QPoint MusicPlayerController::getMusicPlayerViewPos()
+{
+    return this->_musicPlayerView->pos();
 
 }
 

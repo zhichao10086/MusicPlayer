@@ -40,13 +40,24 @@ SOURCES += \
     src/view/downloadview.cpp \
     src/view/localmusicview.cpp \
     src/view/mainwindow.cpp \
-    src/view/musicplayerview.cpp \
     src/view/playfuncview.cpp \
     src/main.cpp \
     src/util/util.cpp \
     src/controller/musicplayercontroller.cpp \
     src/controller/downloadcontroller.cpp \
-    src/model/musicsheet.cpp
+    src/model/musicsheet.cpp \
+    src/view/playsheetview.cpp \
+    src/view/musicplayerview.cpp \
+    src/view/musiclistitemview.cpp \
+    src/view/searchview.cpp \
+    src/model/playsheetmodel.cpp \
+    src/controller/playsheetcontroller.cpp \
+    src/globalvariable.cpp \
+    src/globalconstant.cpp \
+    src/view/playmusicdetialview.cpp \
+    src/controller/playmusicdetialcontroller.cpp \
+    src/model/playmusicdetialmodel.cpp \
+    src/model/user.cpp
 
 
 HEADERS += \
@@ -69,7 +80,18 @@ HEADERS += \
     src/util/util.h \
     src/controller/musicplayercontroller.h \
     src/controller/downloadcontroller.h \
-    src/model/musicsheet.h
+    src/model/musicsheet.h \
+    src/view/playsheetview.h \
+    src/view/musiclistitemview.h \
+    src/view/searchview.h \
+    src/model/playsheetmodel.h \
+    src/controller/playsheetcontroller.h \
+    src/globalvariable.h \
+    src/globalconstant.h \
+    src/view/playmusicdetialview.h \
+    src/controller/playmusicdetialcontroller.h \
+    src/model/playmusicdetialmodel.h \
+    src/model/user.h
 
 FORMS += \
     src/view/playfuncview.ui \
@@ -77,7 +99,11 @@ FORMS += \
     src/view/mainwindow.ui \
     src/view/localmusicview.ui \
     src/view/downloadview.ui \
-    src/view/choosedirsdialog.ui
+    src/view/choosedirsdialog.ui \
+    src/view/playsheetview.ui \
+    src/view/musiclistitemview.ui \
+    src/view/searchview.ui \
+    src/view/playmusicdetialview.ui
 
 DISTFILES += \
     src/document
@@ -90,4 +116,7 @@ INCLUDEPATH += $$PWD/src/controller/
 INCLUDEPATH += $$PWD/src/model/
 INCLUDEPATH += $$PWD/src/view/
 INCLUDEPATH += $$PWD/src/util/
+INCLUDEPATH += -I D:/Anaconda3/include/
+
+LIBS += -LD:/Anaconda3/libs -lpython37
 

@@ -19,7 +19,9 @@ public:
 
     static bool hasDuplicate(QStringList& list,QString& s);
 
-    static QString qint642Qtring(qint64);
+    static QString qint642QString(qint64);
+
+    static QString qint642QStringMinSec(qint64);
 };
 
 #endif // UTIL_H

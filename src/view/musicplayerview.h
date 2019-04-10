@@ -9,6 +9,7 @@
 #include <QWidget>
 #include <QLayoutItem>
 #include <QUrl>
+#include "playmusicdetialview.h"
 
 
 namespace Ui {
@@ -48,6 +49,9 @@ public:
      */
     void setMainWindowWidget(QWidget* w);
 
+
+    void showMusicDetialView(PlayMusicDetialView* pmdv);
+
     /*
      * 获取当前主界面的指针
      */
@@ -55,6 +59,15 @@ public:
 
     void removeMainWindowWidget();
 
+    /*
+     * 隐藏当前窗口
+     */
+    void hideCurMainWindowWidget();
+
+    /*
+     *隐蔽主窗口内所有窗口
+     */
+    void hideMainWindowWidget();
 
 
     MusicPlayerController* _musicPlayerController;
@@ -73,6 +86,8 @@ private slots:
     void on_btnMinWindow_clicked();
 
     void on_btnMaxWindow_clicked();
+
+    void on_btnNewMusicSheet_clicked();
 
 private:
     Ui::MusicPlayerView *ui;

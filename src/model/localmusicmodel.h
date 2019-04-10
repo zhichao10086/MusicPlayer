@@ -2,11 +2,14 @@
 #define LOCALMUSICMODEL_H
 
 
-#include <QVector>
 #include <QUrl>
 #include <QStringList>
 #include "music.h"
 #include "playfunccontroller.h"
+#include "musicsheet.h"
+#include <QList>
+
+class PlayFuncController;
 
 class LocalMusicModel
 {
@@ -17,8 +20,10 @@ public:
 
     QStringList _dirs;
 
-    QVector<Music> _musics;
+    MusicSheet _musicSheet;
 
+    QList<Music> _musics;
+    
 
     //播放的控制器
     PlayFuncController* _playFuncCtrl;
@@ -26,6 +31,9 @@ public:
 
 
     void init();
+
+
+    Music getMusicByIndex(const QModelIndex& index);
 
     /*
      * 文件路径列表
@@ -37,10 +45,12 @@ public:
     QStringList dirs() const;
     void setDirs(const QStringList &dirs);
 
-    QVector<Music>& musics();
-    void setMusics(const QVector<Music> &musics);
+    QList<Music>& musics();
+    void setMusics(const QList<Music> &musics);
     void setPlayFuncCtrl(PlayFuncController *value);
     PlayFuncController *getPlayFuncCtrl() const;
+    MusicSheet getMusicSheet() const;
+    void setMusicSheet(const MusicSheet &musicSheet);
 };
 
 #endif // LOCALMUSICMODEL_H

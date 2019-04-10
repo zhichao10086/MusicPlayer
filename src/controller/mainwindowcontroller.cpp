@@ -7,7 +7,7 @@ MainWindowController::MainWindowController()
 
 void MainWindowController::init()
 {
-    this->_mainWindowModel = new MainWindowmodel;
+    this->_mainWindowModel = new MainWindowmodel(this);
     this->_mainWindow  = new MainWindow(this);
 
 
@@ -30,6 +30,7 @@ void MainWindowController::closeApp()
 
 void MainWindowController::minApp()
 {
+    cout<<"sss"<<endl;
     this->_mainWindow->setWindowState(Qt::WindowMinimized);
 }
 
@@ -38,7 +39,9 @@ void MainWindowController::maxApp()
 //    QRect rect=QApplication::desktop()->availableGeometry();
 //    this->_mainWindow->move(0,0);
 //    this->_mainWindow->resize(rect.width(),rect.height());
+    //this->_mainWindow->centralWidget()->hide();
     this->_mainWindow->setWindowState(Qt::WindowMaximized);
+    //this->_mainWindow->centralWidget()->show();
 }
 
 MusicPlayerView *MainWindowController::getMusicPlayerView()

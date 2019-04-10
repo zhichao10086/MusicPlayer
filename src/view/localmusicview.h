@@ -5,6 +5,8 @@
 #include "localmusiccontroller.h"
 #include "choosedirsdialog.h"
 #include <iostream>
+#include "musiclistitemview.h"
+#include <QMessageBox>
 
 using namespace std;
 
@@ -30,7 +32,7 @@ public:
 
     void init_view();
 
-    void updateListWidget(QVector<Music> &musics);
+    void updateListWidget(QList<Music> &musics);
 
     void clearMusicListWidget();
 
@@ -50,6 +52,8 @@ private slots:
 
 private:
     Ui::LocalMusicView *ui;
+
+
 
     // BaseView interface
 public:

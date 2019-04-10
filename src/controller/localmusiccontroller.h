@@ -3,7 +3,7 @@
 
 #include "localmusicmodel.h"
 #include "localmusicview.h"
-#include <QVector>
+#include <QList>
 #include <QUrl>
 #include <iostream>
 #include "music.h"
@@ -26,10 +26,13 @@ public:
 
     LocalMusicController(PlayFuncController* pfc);
 
+
+    void init();
+
     /*
      * 初始化
      */
-    void init();
+    void init(PlayFuncController *pfc);
 
     /*
      *显示选择文件夹对话框
@@ -39,7 +42,7 @@ public:
     /*
      * 搜索本地音乐从给定文件夹
      */
-    QVector<Music> searchMusics(QStringList paths);
+    QList<Music> searchMusics(QStringList paths);
 
 
     Music getMusic(int index);
@@ -51,12 +54,23 @@ public:
     void playMusic(const QModelIndex& index);
 
 
+
+    /*
+     *添加歌曲至当前歌单
+     */
+    void addMusicToCurSheet(const QModelIndex& index);
+
     /*
      * 添加歌曲至播放器  //在此之前必须先searchMusics 保证
      * model中有数据
      */
     void addMusicsToMedia();
 
+    /*
+     *
+     * 添加歌单至播放器
+     */
+    void addSheetToMedia();
 
 
     LocalMusicModel* _localMusicModel;

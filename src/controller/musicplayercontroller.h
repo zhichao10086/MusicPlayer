@@ -14,6 +14,7 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QDesktopWidget>
+#include "playmusicdetialview.h"
 
 
 using namespace std;
@@ -21,6 +22,7 @@ using namespace std;
 class MusicPlayerModel;
 class MusicPlayerView;
 class MainWindowController;
+class PlayMusicDetialView;
 
 
 
@@ -72,6 +74,10 @@ public:
 
     void show();
 
+
+    void showMusicDetialView(PlayMusicDetialView* pmdv);
+
+
     /*
      * 设置主窗口界面
      */
@@ -87,6 +93,9 @@ public:
      */
     LocalMusicView* getLocalMusicView();
 
+
+
+
     /*
      * 将本地音乐的list控件和音乐控制联系起来
      */
@@ -100,6 +109,11 @@ public:
     void hiddenWidgetToDo(QWidget* );
 
 
+    //窗口坐标
+    QPoint getMusicPlayerViewPos();
+
+
+    MusicPlayerView *getMusicPlayerView() const;
 };
 
 #endif // MUSICPLAYERCONTROLLER_H

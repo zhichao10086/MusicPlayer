@@ -5,15 +5,91 @@ PlayFuncModel::PlayFuncModel()
     this->init();
 }
 
-QVector<Music> PlayFuncModel::vecMusic() const
+PlayFuncModel::PlayFuncModel(PlayFuncController *pfc)
 {
-    return _vecMusic;
+    this->_pfc = pfc;
+    this->init();
+
 }
 
-void PlayFuncModel::setVecMusic(const QVector<Music> &vecMusic)
+MusicSheet PlayFuncModel::getLastMusicSheet() const
 {
-    _vecMusic = vecMusic;
+    return _lastMusicSheet;
 }
+
+void PlayFuncModel::setLastMusicSheet(const MusicSheet &lastMusicSheet)
+{
+    _lastMusicSheet = lastMusicSheet;
+}
+
+PlayMusicDetialController *PlayFuncModel::getPlayMusicDetialCtrl() const
+{
+    return __playMusicDetialCtrl;
+}
+
+void PlayFuncModel::setPlayMusicDetialCtrl(PlayMusicDetialController *playMusicDetialCtrl)
+{
+    __playMusicDetialCtrl = playMusicDetialCtrl;
+}
+
+MusicSheet PlayFuncModel::getCurMusicSheet() const
+{
+    return _curMusicSheet;
+}
+
+MusicPlayerController *PlayFuncModel::musicPlayerCtrl() const
+{
+    return _musicPlayerCtrl;
+}
+
+void PlayFuncModel::setMusicPlayerCtrl(MusicPlayerController *musicPlayerCtrl)
+{
+    _musicPlayerCtrl = musicPlayerCtrl;
+}
+
+PlaySheetController *PlayFuncModel::playSheetCtrl() const
+{
+    return _playSheetCtrl;
+}
+
+void PlayFuncModel::setPlaySheetCtrl(PlaySheetController *playSheetCtrl)
+{
+    _playSheetCtrl = playSheetCtrl;
+}
+
+PlaySheetView *PlayFuncModel::playSheetView() const
+{
+    return _playSheetView;
+}
+
+void PlayFuncModel::setPlaySheetView(PlaySheetView *playSheetView)
+{
+    _playSheetView = playSheetView;
+}
+
+
+
+QList<Music> PlayFuncModel::musics() const
+{
+    return _musics;
+}
+
+void PlayFuncModel::setMusics(const QList<Music> &musics)
+{
+    _musics = musics;
+}
+
+MusicSheet PlayFuncModel::curMusicSheet() const
+{
+    return _curMusicSheet;
+}
+
+void PlayFuncModel::setCurMusicSheet(const MusicSheet &curMusicSheet)
+{
+    _curMusicSheet = curMusicSheet;
+}
+
+
 
 QMediaPlaylist *PlayFuncModel::mediaPlayList() const
 {
@@ -30,6 +106,30 @@ void PlayFuncModel::init()
     this->_mediaPlayer = new QMediaPlayer;
     this->_mediaPlayList = new QMediaPlaylist;
     this->_mediaPlayer->setPlaylist(this->_mediaPlayList);
+
+    //播放列表的控制器
+    _playSheetCtrl = new PlaySheetController(this->_pfc);
+    this->_playSheetView = _playSheetCtrl->playSheetView();
+
+    //音乐详细界面控制器
+    //this->__playMusicDetialCtrl = PlayMusicDetialController::newInstance()
+
+}
+
+MusicPlayerView* PlayFuncModel::getMusicPlayerView()
+{
+    return this->_musicPlayerCtrl->getMusicPlayerView();
+
+}
+
+void PlayFuncModel::addMusicToCurMusicSheet(Music &music)
+{
+    this->_curMusicSheet.musics().append(music);
+}
+
+void PlayFuncModel::changeMediaPlaySheet(MusicSheet &musicSheet)
+{
+
 }
 
 QMediaPlayer *PlayFuncModel::mediaPlayer() const

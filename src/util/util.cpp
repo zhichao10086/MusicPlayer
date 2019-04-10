@@ -44,7 +44,18 @@ bool Util::hasDuplicate(QStringList &list, QString &s)
 
 }
 
-QString Util::qint642Qtring(qint64 playtime)
+QString Util::qint642QStringMinSec(qint64 playtime)
+{
+    int h,m,s;
+    playtime /= 1000;  //获得的时间是以毫秒为单位的
+    //h = playtime/3600;
+    m = (playtime)/60;
+    s = playtime-m*60;
+
+    return QString("%1:%2").arg(m).arg(s);
+}
+
+QString Util::qint642QString(qint64 playtime)
 {
     int h,m,s;
     playtime /= 1000;  //获得的时间是以毫秒为单位的

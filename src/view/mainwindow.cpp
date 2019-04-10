@@ -29,8 +29,8 @@ void MainWindow::init_view()
 
 
     QMainWindow::setCentralWidget(this->_mainWindowCtrl->getMusicPlayerView());
-    cout<<this->_mainWindowCtrl->getMusicPlayerView()->size().height();
-    cout<<this->ui->centralwidget->size().height()<<endl;
+    //cout<<this->_mainWindowCtrl->getMusicPlayerView()->size().height();
+    //cout<<this->ui->centralwidget->size().height()<<endl;
 
 
 }

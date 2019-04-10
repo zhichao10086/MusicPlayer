@@ -25,17 +25,21 @@ void LocalMusicView::init_view()
     ui = new Ui::LocalMusicView;
     ui->setupUi(this);
 
+
 }
 
-void LocalMusicView::updateListWidget(QVector<Music> &musics)
+void LocalMusicView::updateListWidget(QList<Music> &musics)
 {
 
+    this->ui->lwMusicList->clear();
     for(int i =0;i<musics.size();i++){
         QListWidgetItem* item = new QListWidgetItem;
-        QLabel *label  = new QLabel(musics.at(i).musicName());
-
+        //QLabel *label  = new QLabel(musics.at(i).musicName());
+        MusicListItemView* itemView = new MusicListItemView(i,musics.at(i),MusicListItemView::ViewMode::LocalMusicListItem);
+        QSize size = item->sizeHint();
+        item->setSizeHint(QSize(size.width(),30));
         this->ui->lwMusicList->addItem(item);
-        this->ui->lwMusicList->setItemWidget(item,label);
+        this->ui->lwMusicList->setItemWidget(item,itemView);
     }
 }
 
@@ -61,6 +65,15 @@ void LocalMusicView::on_btnOpenDir_clicked()
 
 void LocalMusicView::on_lwMusicList_doubleClicked(const QModelIndex &index)
 {
+    //如果同意切换列表
+    if(QMessageBox::Yes == QMessageBox::question(this,"切换提示","是否要切换播放列表",QMessageBox::Yes | QMessageBox::No)){
+
+        this->_localMusicCtrl->addSheetToMedia();
+        qDebug()<<"local"<<endl;
+    }else{
+        this->_localMusicCtrl->addMusicToCurSheet(index);
+
+    }
 
     this->_localMusicCtrl->playMusic(index);
 

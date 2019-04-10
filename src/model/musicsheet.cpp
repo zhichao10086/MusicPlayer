@@ -1,8 +1,22 @@
 #include "musicsheet.h"
 
+
+
 MusicSheet::MusicSheet()
 {
 
+}
+
+
+
+QString MusicSheet::sheetName() const
+{
+    return _sheetName;
+}
+
+void MusicSheet::setSheetName(const QString &sheetName)
+{
+    _sheetName = sheetName;
 }
 
 QList<Music> MusicSheet::musics() const

@@ -15,12 +15,20 @@ class DownLoadModel;
 class DownLoadView;
 class MainWindowController;
 class MainWindow;
+class PlayFuncView;
+class PlayFuncModel;
+class LocalMusicController;
+class LocalMusicModel;
+class LocalMusicView;
+
 
 
 class MusicPlayerModel
 {
 public:
     MusicPlayerModel();
+
+    MusicPlayerModel(MusicPlayerController* mpc);
 
     /*
      *初始化需要的变量
@@ -34,6 +42,7 @@ public:
     MainWindowController* _mainWindowCtrl;
     MainWindow* _mainWindow;
 
+    MusicPlayerController *_musicPlayerCtrl;
 
     PlayFuncController* _pfc;
     PlayFuncView *_pfView;
@@ -47,6 +56,14 @@ public:
     DownLoadController* _downloadCtrl;
     DownLoadModel* _downloadModel;
     DownLoadView* _downloadView;
+
+
+
+
+
+
+
+
 
 
     PlayFuncView *pfView() const;

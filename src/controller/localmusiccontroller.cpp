@@ -9,17 +9,31 @@ LocalMusicController::LocalMusicController()
 
 LocalMusicController::LocalMusicController(PlayFuncController *pfc)
 {
-    this->init();
-    this->_localMusicModel->setPlayFuncCtrl(pfc);
+    this->init(pfc);
+
 
 }
 
 void LocalMusicController::init()
 {
+
+}
+
+void LocalMusicController::init(PlayFuncController *pfc)
+{
     this->_localMusicModel = new LocalMusicModel;
+    this->_localMusicModel->setPlayFuncCtrl(pfc);
     this->_localMusicView = new LocalMusicView(this);
+
+
     this->_localMusicModel->setMusics(this->searchMusics(this->_localMusicModel->dirs()));
     this->_localMusicView->updateListWidget(this->_localMusicModel->musics());
+
+    MusicSheet ms;
+    ms.setSheetName(QString("本地音乐"));
+    ms.setMusics(this->_localMusicModel->musics());
+    this->_localMusicModel->setMusicSheet(ms);
+    this->addSheetToMedia();
     //this->addMusicsToMedia();
 
 }
@@ -35,21 +49,23 @@ void LocalMusicController::showChooseDirsDialog()
     QStringList dirs = cdd->dirs();
 
     //files 是绝对路径
-    QVector<Music> musics = this->searchMusics(dirs);
+    QList<Music> musics = this->searchMusics(dirs);
 
-    this->localMusicModel()->setMusics(musics);
+    //this->localMusicModel()->setMusics(musics);
+    MusicSheet ms =  this->localMusicModel()->getMusicSheet();
+    ms.setMusics(musics);
 
     this->_localMusicView->updateListWidget(musics);
 
 }
 
-QVector<Music> LocalMusicController::searchMusics(QStringList dirs)
+QList<Music> LocalMusicController::searchMusics(QStringList dirs)
 {
 
 
     QStringList files;
     QStringList filenames;
-    QVector<Music> musics;
+    QList<Music> musics;
 
     std::cout<<dirs.size()<<endl;
     for(int i=0;i<dirs.size();i++){
@@ -85,15 +101,28 @@ void LocalMusicController::playMusic(const QModelIndex &index)
     //this->_localMusicModel->getPlayFuncCtrl()->playMusic(music);
     //添加本地歌单至歌曲库
     this->addMusicsToMedia();
-    this->localMusicModel()->getPlayFuncCtrl()->setCurrentMusic(index.row());
+    //this->localMusicModel()->getPlayFuncCtrl()->setCurrentMusic(index.row());
     this->localMusicModel()->getPlayFuncCtrl()->play();
 
+}
+
+void LocalMusicController::addMusicToCurSheet(const QModelIndex &index)
+{
+    Music music = this->_localMusicModel->getMusicByIndex(index);
+
+    this->_localMusicModel->getPlayFuncCtrl()->addMusicToCurMusicSheet(music);
 }
 
 void LocalMusicController::addMusicsToMedia()
 {
     PlayFuncController* pfc = this->_localMusicModel->getPlayFuncCtrl();
-    pfc->setCurrentMusicList(this->localMusicModel()->musics());
+    pfc->setCurrentMusicSheet(this->localMusicModel()->getMusicSheet());
+}
+
+void LocalMusicController::addSheetToMedia()
+{
+    PlayFuncController* pfc = this->_localMusicModel->getPlayFuncCtrl();
+    pfc->setCurrentMusicSheet(this->_localMusicModel->getMusicSheet());
 }
 
 

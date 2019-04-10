@@ -1,14 +1,21 @@
 #ifndef MUSICSHEET_H
 #define MUSICSHEET_H
 
-#include <QObject>
+
 #include <QList>
 #include "music.h"
 
 class MusicSheet
 {
+
+
 public:
+
+
     MusicSheet();
+
+    //名称
+    QString _sheetName;
 
     //创建时间
     QString _createTime;
@@ -20,6 +27,11 @@ public:
     void setCreateTime(const QString &createTime);
     QList<Music> musics() const;
     void setMusics(const QList<Music> &musics);
+    QString sheetName() const;
+    void setSheetName(const QString &sheetName);
+
+
 };
 
+Q_DECLARE_METATYPE(MusicSheet)
 #endif // MUSICSHEET_H

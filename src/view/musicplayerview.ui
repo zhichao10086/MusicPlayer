@@ -9,52 +9,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1440</width>
-    <height>800</height>
+    <width>1125</width>
+    <height>739</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1440</width>
-    <height>60</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QWidget#MusicPlayerView{
-	background-color: rgb(212, 255, 250,125);
-
-	background-image: url(:/images/images/background_yun.png);
-	
-}
-
-QPushButton{
-background-color:transparent;
-}
-
-QScrollArea{
-background-color:transparent;
-}
-
-QWidget#scrollAreaWidgetContents{
-	
-	background-color:transparent;
-}
-
-
-
-QListWidget{
-	background-color:transparent;
-}
-QListWidgetItem:hover{
-	background-color: rgb(11, 96, 255);
-}
-
-
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -81,12 +50,14 @@ QListWidgetItem:hover{
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <family>Adobe 楷体 Std R</family>
+           <pointsize>36</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">QLabel#labAppName{
-	font-size:50pt;
-	color: rgb(167, 214, 255);
-	font: 48pt &quot;华文行楷&quot;;
-}</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>在听</string>
@@ -119,13 +90,7 @@ QListWidgetItem:hover{
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">QLineEdit#leSearch{
-	
-	background-color: rgba(167, 214, 255, 125);
-	border-radius:3px;
-	color: rgb(0, 0, 0);
-
-}</string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>
@@ -157,10 +122,7 @@ QListWidgetItem:hover{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">border-image: url(:/images/icon/images/setting2.png);
-pressed{
-	background-color: rgb(223, 230, 249);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string/>
@@ -198,7 +160,7 @@ pressed{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">border-image: url(:/images/icon/images/min.png);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string/>
@@ -220,7 +182,7 @@ pressed{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">border-image: url(:/images/icon/images/max.png);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string/>
@@ -236,14 +198,7 @@ pressed{
                 </sizepolicy>
                </property>
                <property name="styleSheet">
-                <string notr="true">
-
-	
-	border-image: url(:/images/icon/images/close.png);
-
-
-
-</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string/>
@@ -273,12 +228,14 @@ pressed{
            <property name="enabled">
             <bool>true</bool>
            </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color:rgba(255, 255, 255, 0);
-
-border-color: rgb(170, 255, 255);
-
-font: 20pt &quot;华文行楷&quot;;</string>
+            <string notr="true"/>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -288,8 +245,8 @@ font: 20pt &quot;华文行楷&quot;;</string>
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>263</width>
-              <height>655</height>
+              <width>179</width>
+              <height>596</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -304,36 +261,7 @@ font: 20pt &quot;华文行楷&quot;;</string>
              <item>
               <widget class="QGroupBox" name="groupBox_2">
                <property name="styleSheet">
-                <string notr="true">QPushButton{color: #1296db;  
-border-width: 0;  
-border-style: solid;  
-border-radius:17px;  
-padding: 3px;  
-font-size: 12pt;  
-padding-left: 5px;  
-padding-right: 5px;  
-}
-QGroupBox{
-	color: rgb(73, 143, 255);
-	font-size: 20px; 
-}
-
-QGroupBox:hover{
-	color: rgb(11, 96, 255);
-	font-size: 20px; 
-	selection-color: rgb(19, 125, 255);
-}
-
-QPushButton:hover{ 
-	color: rgb(11, 96, 255);
-border-width: 0;  
-border-style: solid;  
-border-radius:17px;  
-padding: 3px;  
-font-size: 20px;  
-padding-left: 5px;  
-padding-right: 5px;  
-}</string>
+                <string notr="true"/>
                </property>
                <property name="title">
                 <string>推荐</string>
@@ -376,37 +304,7 @@ padding-right: 5px;
                     <bool>true</bool>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QPushButton{color: #1296db;  
-border-width: 0;  
-border-style: solid;  
-border-radius:17px;  
-padding: 3px;  
-font-size: 20px;  
-padding-left: 5px;  
-padding-right: 5px;  
-}
-QGroupBox{
-	color: rgb(73, 143, 255);
-	font-size: 12pt; 
-}
-
-QGroupBox:hover{
-	color: rgb(11, 96, 255);
-	font-size: 20px; 
-	selection-color: rgb(19, 125, 255);
-}
-
-QPushButton:hover{ 
-	color: rgb(11, 96, 255);
-border-width: 0;  
-border-style: solid;  
-border-radius:17px;  
-padding: 3px;  
-font-size: 20px;  
-padding-left: 5px;  
-padding-right: 5px;  
-}
-</string>
+                    <string notr="true"/>
                    </property>
                    <property name="title">
                     <string>我的音乐</string>
@@ -459,7 +357,7 @@ padding-right: 5px;
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_5">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1">
+                <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1,0">
                  <item>
                   <widget class="QLabel" name="label">
                    <property name="enabled">
@@ -484,29 +382,31 @@ padding-right: 5px;
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_7">
+                  <widget class="QPushButton" name="btnNewMusicSheet">
+                   <property name="maximumSize">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true">QPushButton{color: #1296db;  
-border-width: 0;  
-border-style: solid;  
-border-radius:17px;  
-padding: 3px;  
-font-size: 20px;  
-padding-left: 5px;  
-padding-right: 5px;  
-}
-
-
-
-
-QPushButton:hover{ 
-	color: rgb(11, 96, 255);
-
-}
-</string>
+                    <string notr="true"/>
                    </property>
                    <property name="text">
                     <string>新建</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btnPullMySheet">
+                   <property name="maximumSize">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>下拉</string>
                    </property>
                   </widget>
                  </item>
@@ -556,23 +456,14 @@ background-color: rgba(255, 255, 255, 0);
                  </item>
                  <item>
                   <widget class="QPushButton" name="pushButton_8">
+                   <property name="maximumSize">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true">QPushButton{color: #1296db;  
-border-width: 0;  
-border-style: solid;  
-border-radius:17px;  
-padding: 3px;  
-font-size: 20px;  
-padding-left: 5px;  
-padding-right: 5px;  
-}
-
-
-QPushButton:hover{ 
-	color: rgb(11, 96, 255);
- 
-}
-</string>
+                    <string notr="true"/>
                    </property>
                    <property name="text">
                     <string>下拉</string>

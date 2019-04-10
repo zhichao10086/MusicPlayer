@@ -11,6 +11,16 @@ LocalMusicModel::LocalMusicModel(PlayFuncController *pfc):
 
 }
 
+MusicSheet LocalMusicModel::getMusicSheet() const
+{
+    return _musicSheet;
+}
+
+void LocalMusicModel::setMusicSheet(const MusicSheet &musicSheet)
+{
+    _musicSheet = musicSheet;
+}
+
 PlayFuncController *LocalMusicModel::getPlayFuncCtrl() const
 {
     return _playFuncCtrl;
@@ -21,12 +31,12 @@ void LocalMusicModel::setPlayFuncCtrl(PlayFuncController *value)
     _playFuncCtrl = value;
 }
 
-QVector<Music>& LocalMusicModel::musics()
+QList<Music>& LocalMusicModel::musics()
 {
     return _musics;
 }
 
-void LocalMusicModel::setMusics(const QVector<Music> &musics)
+void LocalMusicModel::setMusics(const QList<Music> &musics)
 {
     _musics = musics;
 }
@@ -45,6 +55,11 @@ void LocalMusicModel::setDirs(const QStringList &dirs)
 void LocalMusicModel::init()
 {
     this->_dirs.append("./local");
+}
+
+Music LocalMusicModel::getMusicByIndex(const QModelIndex &index)
+{
+    return this->_musicSheet.musics().at(index.row());
 }
 
 void LocalMusicModel::setMusicsfromStringList(QStringList &list)
