@@ -4,6 +4,8 @@
 
 #include <QList>
 #include "music.h"
+#include <QJsonArray>
+#include <QJsonObject>
 
 class MusicSheet
 {
@@ -13,6 +15,21 @@ public:
 
 
     MusicSheet();
+
+
+    static MusicSheet fromJsonObj2MusicSheet(QJsonObject& obj);
+
+
+    QJsonObject toJsonObj() const;
+
+
+
+    int addMusic(const Music& music);
+
+
+    void removeMusic(int index);
+
+    void insertMusic(int index,Music music);
 
     //名称
     QString _sheetName;
@@ -24,11 +41,11 @@ public:
     QList<Music> _musics;
 
     QString createTime() const;
-    void setCreateTime(const QString &createTime);
+    void setCreateTime(const QString createTime);
     QList<Music> musics() const;
-    void setMusics(const QList<Music> &musics);
+    void setMusics(const QList<Music> musics);
     QString sheetName() const;
-    void setSheetName(const QString &sheetName);
+    void setSheetName(const QString sheetName);
 
 
 };

@@ -10,6 +10,12 @@
 #include <QLayoutItem>
 #include <QUrl>
 #include "playmusicdetialview.h"
+#include "newmusicsheetdialog.h"
+#include <QDialog>
+#include "musicsheet.h"
+#include <QDateTime>
+#include <QListWidget>
+#include <QListWidgetItem>
 
 
 namespace Ui {
@@ -36,6 +42,16 @@ public:
 
 
     void init_view();
+
+    /*
+     * 更新创建歌单
+     */
+    void updateCreatedMusicSheet(QList<MusicSheet> msList);
+
+    /*
+     * 更新收藏歌单
+     */
+    void updateCollectedMusicSheet(QList<MusicSheet> msList);
 
     /*
      *设置背景

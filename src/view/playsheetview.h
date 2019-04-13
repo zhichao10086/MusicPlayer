@@ -14,6 +14,7 @@
 #include "musiclistitemview.h"
 #include "musicsheet.h"
 #include <QModelIndex>
+#include <Qlist>
 
 
 namespace Ui {

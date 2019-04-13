@@ -57,7 +57,13 @@ SOURCES += \
     src/view/playmusicdetialview.cpp \
     src/controller/playmusicdetialcontroller.cpp \
     src/model/playmusicdetialmodel.cpp \
-    src/model/user.cpp
+    src/model/user.cpp \
+    src/model/mp3header.cpp \
+    src/view/playsheetmusiclistitemview.cpp \
+    src/controller/filefunccontroller.cpp \
+    src/view/newmusicsheetdialog.cpp \
+    src/view/qmenubutton.cpp \
+    src/view/musiclistwidget.cpp
 
 
 HEADERS += \
@@ -91,7 +97,13 @@ HEADERS += \
     src/view/playmusicdetialview.h \
     src/controller/playmusicdetialcontroller.h \
     src/model/playmusicdetialmodel.h \
-    src/model/user.h
+    src/model/user.h \
+    src/model/mp3header.h \
+    src/view/playsheetmusiclistitemview.h \
+    src/controller/filefunccontroller.h \
+    src/view/newmusicsheetdialog.h \
+    src/view/qmenubutton.h \
+    src/view/musiclistwidget.h
 
 FORMS += \
     src/view/playfuncview.ui \
@@ -103,7 +115,11 @@ FORMS += \
     src/view/playsheetview.ui \
     src/view/musiclistitemview.ui \
     src/view/searchview.ui \
-    src/view/playmusicdetialview.ui
+    src/view/playmusicdetialview.ui \
+    src/view/playsheetmusiclistitemview.ui \
+    src/view/newmusicsheetdialog.ui \
+    src/view/qmenubutton.ui \
+    src/view/musiclistwidget.ui
 
 DISTFILES += \
     src/document
@@ -116,7 +132,18 @@ INCLUDEPATH += $$PWD/src/controller/
 INCLUDEPATH += $$PWD/src/model/
 INCLUDEPATH += $$PWD/src/view/
 INCLUDEPATH += $$PWD/src/util/
+INCLUDEPATH += D:/ffmpeg-4.1.1-win32-dev/include
 INCLUDEPATH += -I D:/Anaconda3/include/
 
 LIBS += -LD:/Anaconda3/libs -lpython37
+LIBS  += -LD:/ffmpeg-4.1.1-win32-dev/lib/ -llibavcodec\
+            -llibavdevice \
+            -llibavfilter \
+            -llibavformat \
+            -llibavutil   \
+            -llibpostproc \
+            -llibswresample\
+            -llibswscale
+
+
 

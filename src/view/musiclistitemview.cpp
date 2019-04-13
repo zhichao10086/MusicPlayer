@@ -13,18 +13,52 @@ MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidge
     ui(new Ui::MusicListItemView)
 {
     ui->setupUi(this);
+
+    /*
+     * 初始化action
+     */
+    this->_menu = new QMenu;
+    this->_actionPlay = new QAction("播放");
+    this->_actionDownload = new QAction("下载");
+    this->_actionNextPlay = new QAction("下一首播放");
+    this->_actionCollect = new QAction("收藏");
+    this->_menu->addAction(this->_actionPlay);
+    this->_menu->addAction(this->_actionNextPlay);
+    this->_menu->addAction(this->_actionDownload);
+
+
+
+    this->_collectMenu = new QMenu("收藏到歌单");
+
+    QList<MusicSheet> msList = GlobalVariable::get_global_User().createdMusicSheets();
+    for(int i=0;i<msList.size();i++){
+        QAction* action = new QAction(msList.at(i).sheetName());
+        this->_collectMenu->addAction(action);
+        this->_collectActions.append(action);
+    }
+    this->_menu->addMenu(this->_collectMenu);
+
+
+    QObject::connect(this,&MusicListItemView::customContextMenuRequested,
+                     this,&MusicListItemView::popupContextMenu);
+
     this->__index = index;
     this->__music = music;
 
-    ui->labIndex->setText(QString::number(index));
-    if(!music.musicName().isEmpty())
-        ui->labMusicName->setText(music.musicName());
 
+
+    ui->labIndex->setText(QString::number(index));
+    if(!music.musicName().isEmpty()){
+        this->setTextElide(this->ui->labMusicName,music.musicName());
+    }
     if(!music.time().isEmpty())
-        ui->labTime->setText(music.time());
+        this->ui->labTime->setText(music.time());
 
     if(!music.album().isEmpty())
-        ui->labAlbum->setText(music.album());
+        this->setTextElide(ui->labAlbum,music.album());
+
+    if(!music.singer().isEmpty())
+        this->setTextElide(ui->labSinger,music.singer());
 
     if(mode == ViewMode::LocalMusicListItem){
         this->localMusicListItemShow();
@@ -41,6 +75,25 @@ MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidge
 MusicListItemView::~MusicListItemView()
 {
     delete ui;
+}
+
+
+
+void MusicListItemView::setTextElide(QLabel *label, QString string)
+{
+    QFontMetrics fontMetrics(this->font());
+
+    int fontSize = fontMetrics.width(string);//获取之前设置的字符串的像素大小
+
+    QString str = string;
+
+    if(fontSize > label->width())
+    {
+        str = fontMetrics.elidedText(string, Qt::ElideRight, label->width());//返回一个带有省略号的字符串
+        label->setToolTip(string);
+    }
+
+    label->setText(str);
 }
 
 void MusicListItemView::localMusicListItemShow()
@@ -89,7 +142,7 @@ void MusicListItemView::recentSheetListItemShow()
 void MusicListItemView::initView()
 {
     QSize size = this->parentWidget()->size();
-    this->resize(size.width(),40);
+    this->resize(size.width(),30);
 }
 
 Music MusicListItemView::music() const
@@ -101,3 +154,15 @@ void MusicListItemView::setMusic(const Music &music)
 {
     __music = music;
 }
+
+void MusicListItemView::on_labMusicName_linkHovered(const QString &link)
+{
+
+}
+
+void MusicListItemView::popupContextMenu(QPoint p)
+{
+    this->_menu->exec(this->mapToGlobal(p));
+}
+
+

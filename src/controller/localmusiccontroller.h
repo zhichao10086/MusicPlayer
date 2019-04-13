@@ -51,14 +51,17 @@ public:
      * 播放音乐
      *
      */
-    void playMusic(const QModelIndex& index);
+    void playMusic(int index);
+
+
+    void playMusic(const QModelIndex & index);
 
 
 
     /*
      *添加歌曲至当前歌单
      */
-    void addMusicToCurSheet(const QModelIndex& index);
+    int addMusicToCurSheet(const QModelIndex& index);
 
     /*
      * 添加歌曲至播放器  //在此之前必须先searchMusics 保证

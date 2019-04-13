@@ -8,6 +8,7 @@ PlaySheetModel::PlaySheetModel(QObject *parent) : QObject(parent)
 PlaySheetModel::PlaySheetModel(PlayFuncController *pfc, QObject *parent): QObject(parent)
 {
     this->__pfCtrl = pfc;
+    this->init();
 }
 
 void PlaySheetModel::init()

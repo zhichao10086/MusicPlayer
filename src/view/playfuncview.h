@@ -10,6 +10,9 @@
 #include <QMouseEvent>
 #include <QPoint>
 #include <QDesktopWidget>
+#include <qmenubutton.h>
+#include <QMenu>
+#include <QAction>
 
 class PlayFuncController;
 
@@ -90,6 +93,8 @@ private slots:
 
 
     void on_btnMusicDetial_clicked();
+
+    void on_btnPlayMode_clicked();
 
 private:
     Ui::PlayFuncView *ui;

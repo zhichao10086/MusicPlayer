@@ -1,43 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MusicListItemView</class>
- <widget class="QWidget" name="MusicListItemView">
+ <class>PlaySheetMusicListItemView</class>
+ <widget class="QWidget" name="PlaySheetMusicListItemView">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>946</width>
-    <height>28</height>
+    <width>910</width>
+    <height>37</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>0</width>
-    <height>28</height>
-   </size>
-  </property>
-  <property name="sizeIncrement">
-   <size>
-    <width>0</width>
-    <height>0</height>
-   </size>
-  </property>
-  <property name="contextMenuPolicy">
-   <enum>Qt::CustomContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">font: 9pt &quot;楷体&quot;;</string>
-  </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -54,7 +30,7 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,4,2,2,1,1,1">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,2,2,0,1,1,1">
      <property name="spacing">
       <number>1</number>
      </property>
@@ -76,12 +52,81 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>20</width>
+           <width>50</width>
            <height>0</height>
           </size>
          </property>
          <property name="text">
           <string>01</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="hLayoutMusicName">
+       <item>
+        <widget class="QLabel" name="labMusicName">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>音乐名</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="hLayoutSinger">
+       <item>
+        <widget class="QLabel" name="labSinger">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>歌手</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="hLayoutAlbum">
+       <item>
+        <widget class="QLabel" name="labAlbum">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>专辑</string>
          </property>
         </widget>
        </item>
@@ -99,7 +144,7 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>30</width>
+           <width>40</width>
            <height>0</height>
           </size>
          </property>
@@ -118,81 +163,12 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>30</width>
+           <width>40</width>
            <height>0</height>
           </size>
          </property>
          <property name="text">
           <string>下载</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="hLayoutMusicName">
-       <item>
-        <widget class="QLabel" name="labMusicName">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>音乐名</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="hLayoutSinger">
-       <item>
-        <widget class="QLabel" name="labSinger">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>歌手</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="hLayoutAlbum">
-       <item>
-        <widget class="QLabel" name="labAlbum">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>专辑</string>
          </property>
         </widget>
        </item>

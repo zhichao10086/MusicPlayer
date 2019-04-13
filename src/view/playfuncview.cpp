@@ -70,10 +70,11 @@ void PlayFuncView::init_view()
     this->ui->timeSlider->installEventFilter(this);
     this->ui->btnPlaySheet->installEventFilter(this);
     /*
-     * connect 槽
+     * connect 播放顺序
      */
 
-
+    QObject::connect(this->ui->btnPlayMode,&QMenuButton::changePlayBackMode,
+                     this->_playFuncController,&PlayFuncController::setMusicListMode);
 }
 
 void PlayFuncView::setStartView()
@@ -164,6 +165,7 @@ void PlayFuncView::on_btnPlaySheet_clicked()
 {
 
     PlaySheetView* psv = this->_playFuncController->getPlaySheetView();
+
     //psv->setParent(this->_playFuncController->getMusicPlayerView());
     if(psv->isHidden()){
         //QDesktopWidget* desktopWidget = QApplication::desktop();
@@ -195,4 +197,10 @@ void PlayFuncView::on_btnMusicDetial_clicked()
 {
     //打开当前播放音乐的详细内容
     this->_playFuncController->showDetialMusicView();
+}
+
+void PlayFuncView::on_btnPlayMode_clicked()
+{
+    this->ui->btnPlayMode->popupMenu();
+
 }

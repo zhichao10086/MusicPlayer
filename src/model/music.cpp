@@ -18,10 +18,82 @@ Music::Music(QString name, QString singer, QString time):
     init();
 }
 
+Music Music::fromJsonObj2Music(QJsonObject &obj)
+{
+    Music music;
+    if(obj.empty())
+        return music;
+    music.setMusicName(obj.value("musicName").toString());
+    music.setAlbum(obj.value("album").toString());
+    music.setFileSize(obj.value("fileSize").toInt());
+    music.setMusicPath(obj.value("musicPath").toString());
+    music.setMusicNetPath(obj.value("musicNetPath").toString());
+    music.setSinger(obj.value("singer").toString());
+    music.setTime(obj.value("time").toString());
+    music.setMusicHot(obj.value("musicHot").toInt());
+
+
+    return music;
+}
+
+QJsonObject Music::toJsonObj() const
+{
+    QJsonObject obj;
+    obj.insert(QString("musicName"),this->musicName());
+    obj.insert(QString("singer"),this->singer());
+    obj.insert(QString("album"),this->album());
+    obj.insert(QString("time"),this->time());
+    obj.insert(QString("musicPath"),this->musicPath());
+    obj.insert(QString("musicNetPath"),this->musicNetPath());
+    obj.insert(QString("musicHot"),this->musicHot());
+    obj.insert(QString("fileSize"),this->fileSize());
+
+
+    return obj;
+}
+
+
 void Music::init()
 {
     _fileSize = 0;
     _musicHot = 0;
+}
+
+bool Music::isEmpty()
+{
+    if(this->_musicName.isEmpty()){
+        return true;
+    }
+}
+
+bool Music::operator==(const Music &a)
+{
+    if(a.musicPath() == this->musicPath()){
+        return true;
+    }
+    return false;
+}
+
+
+
+QString Music::musicLyrics() const
+{
+    return _musicLyrics;
+}
+
+void Music::setMusicLyrics(const QString &musicLyrics)
+{
+    _musicLyrics = musicLyrics;
+}
+
+QString Music::musicNetPath() const
+{
+    return _musicNetPath;
+}
+
+void Music::setMusicNetPath(const QString &musicNetPath)
+{
+    _musicNetPath = musicNetPath;
 }
 
 int Music::fileSize() const

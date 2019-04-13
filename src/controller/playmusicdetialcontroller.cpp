@@ -29,15 +29,59 @@ PlayMusicDetialController *PlayMusicDetialController::newInstance(PlayFuncContro
 
 }
 
+void PlayMusicDetialController::connectPlayer()
+{
+    PlayFuncController* pfc =  this->getPlayMusicDetialModel()->playFuncCtrl();
+
+    //播放的进度与歌词联系起来
+    //QObject::connect()
+
+}
+
+void PlayMusicDetialController::disconnectPlayer()
+{
+
+}
+
 PlayMusicDetialController::PlayMusicDetialController(PlayFuncController *pfc, QObject *parent):QObject(parent)
 {
     this->__init(pfc);
 }
 
+Music PlayMusicDetialController::getCurPlayMusic()
+{
+    return this->__playMusicDetialModel->getMusic();
+}
+
+void PlayMusicDetialController::setCurPlayMusic(Music value)
+{
+    this->__playMusicDetialModel->setMusic(value);
+}
+
+void PlayMusicDetialController::updateView(Music music)
+{
+
+    this->__playMusicDetialView->updateView(music);
+}
+
+
+
+void PlayMusicDetialController::CreateDetialView(Music &value)
+{
+
+}
+
 void PlayMusicDetialController::__init(PlayFuncController *pfc)
 {
+    //在这里新建了详细页面
     this->__playMusicDetialModel = new PlayMusicDetialModel(pfc);
     this->__playMusicDetialView = new PlayMusicDetialView(this);
+    this->__playMusicDetialView->updateView(this->__playMusicDetialModel->getMusic());
+}
+
+PlayMusicDetialModel *PlayMusicDetialController::getPlayMusicDetialModel() const
+{
+    return __playMusicDetialModel;
 }
 
 PlayMusicDetialView *PlayMusicDetialController::playMusicDetialView() const

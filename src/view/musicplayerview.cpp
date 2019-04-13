@@ -43,6 +43,28 @@ void MusicPlayerView::init_view()
 
 }
 
+void MusicPlayerView::updateCreatedMusicSheet(QList<MusicSheet> msList)
+{
+    this->ui->listWdgSongSheet->clear();
+    for(int i=0;i<msList.size();i++){
+        //QListWidgetItem* item = new QListWidgetItem;
+        this->ui->listWdgSongSheet->addItem(msList.at(i).sheetName());
+
+    }
+
+
+}
+
+void MusicPlayerView::updateCollectedMusicSheet(QList<MusicSheet> msList)
+{
+    this->ui->listWidgetCollect->clear();
+    for(int i=0;i<msList.size();i++){
+        //QListWidgetItem* item = new QListWidgetItem;
+        this->ui->listWidgetCollect->addItem(msList.at(i).sheetName());
+
+    }
+}
+
 void MusicPlayerView::setBackgroundImage(QPixmap &p)
 {
     QLabel* label = new QLabel(this);
@@ -71,6 +93,7 @@ void MusicPlayerView::setMainWindowWidget(QWidget *w)
     }else{
         w->show();
     }
+    qDebug()<<this->size();
 
 }
 
@@ -146,6 +169,14 @@ void MusicPlayerView::on_btnMaxWindow_clicked()
 void MusicPlayerView::on_btnNewMusicSheet_clicked()
 {
     //新建歌单
-
+    NewMusicSheetDialog nmsDialog;
+    if(nmsDialog.exec()==QDialog::Accepted){
+        //如果要创建
+        QString sheetName = nmsDialog.getValue();
+        MusicSheet ms;
+        ms.setSheetName(sheetName);
+        ms.setCreateTime(QDateTime::currentDateTime().toString(Qt::TextDate));
+        this->_musicPlayerController->createMusicSheet(ms);
+    }
 
 }

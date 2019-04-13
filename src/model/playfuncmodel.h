@@ -48,7 +48,7 @@ public:
     //当前播放列表   暂用
     MusicSheet _curMusicSheet;
     //历史播放记录
-    MusicSheet _lastMusicSheet;
+    MusicSheet _PlayedMusicSheet;
 
 
     QMediaPlayer* _mediaPlayer;
@@ -64,12 +64,17 @@ public:
 
 
     /*
+     * 获得当前播放音乐
+     */
+    Music getCurPlayMusic();
+
+    /*
      * 添加歌曲至当前播放列表
      */
-    void addMusicToCurMusicSheet(Music& music);
+    int addMusicToCurMusicSheet(Music music);
 
-    //改变当前播放列表
-    void changeMediaPlaySheet(MusicSheet& musicSheet);
+    //改变当前播放列表  未使用
+    void changeMediaPlaySheet(MusicSheet musicSheet);
 
 
     Music music() const;
@@ -80,7 +85,7 @@ public:
     void setMediaPlayList(QMediaPlaylist *mediaPlayList);
 
     MusicSheet curMusicSheet() const;
-    void setCurMusicSheet(const MusicSheet &curMusicSheet);
+    void setCurMusicSheet(const MusicSheet curMusicSheet);
     QList<Music> musics() const;
     void setMusics(const QList<Music> &musics);
 
@@ -98,11 +103,11 @@ public:
 
     MusicSheet getCurMusicSheet() const;
 
-    MusicSheet getLastMusicSheet() const;
-    void setLastMusicSheet(const MusicSheet &lastMusicSheet);
-
     PlayMusicDetialController *getPlayMusicDetialCtrl() const;
     void setPlayMusicDetialCtrl(PlayMusicDetialController *playMusicDetialCtrl);
+
+    MusicSheet getPlayedMusicSheet() const;
+    void setPlayedMusicSheet(const MusicSheet PlayedMusicSheet);
 
 private:
     PlayMusicDetialController* __playMusicDetialCtrl;

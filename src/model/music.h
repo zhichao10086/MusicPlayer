@@ -9,6 +9,8 @@
 #include <QMediaMetaData>
 #include <QMediaPlayer>
 #include <QObject>
+#include <QJsonObject>
+#include <QJsonArray>
 
 class Music
 {
@@ -22,7 +24,18 @@ public:
     Music(QString name,QString singer,QString time);
 
 
+    static Music fromJsonObj2Music(QJsonObject& obj);
+    QJsonObject toJsonObj() const;
+
     void init();
+
+
+    bool isEmpty();
+
+    //相等
+    bool operator==(const Music& a);
+
+
 
     //歌名
     QString _musicName;
@@ -34,7 +47,7 @@ public:
     //专辑
     QString _album;
 
-    //歌路径
+    //歌本地路径
     QString _musicPath;
 
     //网络路径
@@ -43,6 +56,8 @@ public:
     double _musicHot;
 
     int _fileSize;
+
+    QString _musicLyrics;
 
 
     QString musicName() const;
@@ -62,6 +77,10 @@ public:
     void setFileSize(int fileSize);
 
 
+    QString musicNetPath() const;
+    void setMusicNetPath(const QString &musicNetPath);
+    QString musicLyrics() const;
+    void setMusicLyrics(const QString &musicLyrics);
 };
 
 Q_DECLARE_METATYPE(Music)

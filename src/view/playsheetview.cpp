@@ -78,6 +78,7 @@ void PlaySheetView::initView()
 {
     ui->setupUi(this);
     this->setWindowFlag(Qt::FramelessWindowHint);
+    this->resize(QSize(700,400));
     //this->__pfCtrl->updateView();
     //installEventFilter(this);
 }
@@ -104,15 +105,16 @@ void PlaySheetView::updateListWidgetPlaySheet(const MusicSheet &musicSheet)
 
 void PlaySheetView::updateListWidgetRecentPlaySheet(const MusicSheet &musicSheet)
 {
+    this->ui->lwRecentPlaySheet->clear();
     QList<Music> musics = musicSheet.musics();
     for(int i =0;i<musics.size();i++){
         QListWidgetItem* item = new QListWidgetItem;
         //QLabel *label  = new QLabel(musics.at(i).musicName());
         MusicListItemView* itemView = new MusicListItemView(i,musics.at(i),MusicListItemView::ViewMode::RecentSheetListItem);
         QSize size = item->sizeHint();
-        item->setSizeHint(QSize(size.width(),28));
-        this->ui->lwplaySheet->addItem(item);
-        this->ui->lwplaySheet->setItemWidget(item,itemView);
+        item->setSizeHint(QSize(this->ui->lwRecentPlaySheet->sizeHint().width(),28));
+        this->ui->lwRecentPlaySheet->addItem(item);
+        this->ui->lwRecentPlaySheet->setItemWidget(item,itemView);
     }
 
 }

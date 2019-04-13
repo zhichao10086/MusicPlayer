@@ -23,7 +23,9 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">
+font: 9pt &quot;楷体&quot;;
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -52,8 +54,11 @@
          </property>
          <property name="font">
           <font>
-           <family>Adobe 楷体 Std R</family>
-           <pointsize>36</pointsize>
+           <family>楷体</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -246,16 +251,11 @@
               <x>0</x>
               <y>0</y>
               <width>179</width>
-              <height>596</height>
+              <height>594</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel{
-	
-	color: rgb(11, 96, 255);
-	
-	font: 12pt &quot;华文行楷&quot;;
-}</string>
+             <string notr="true"/>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,1,1,1">
              <item>
@@ -270,7 +270,7 @@
                 <item>
                  <widget class="QPushButton" name="btnFindMusic">
                   <property name="styleSheet">
-                   <string notr="true">background-color:transparent;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>发现音乐</string>

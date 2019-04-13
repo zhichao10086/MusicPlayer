@@ -10,6 +10,16 @@ PlayMusicDetialModel::PlayMusicDetialModel(PlayFuncController *pfc, QObject *par
     this->__init(pfc);
 }
 
+Music PlayMusicDetialModel::getMusic() const
+{
+    return music;
+}
+
+void PlayMusicDetialModel::setMusic(const Music &value)
+{
+    music = value;
+}
+
 PlayFuncController *PlayMusicDetialModel::playFuncCtrl() const
 {
     return __playFuncCtrl;

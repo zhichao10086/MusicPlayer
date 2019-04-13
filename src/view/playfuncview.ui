@@ -135,7 +135,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,14,0,4,0,0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,14,0,4,0,0,0">
        <property name="bottomMargin">
         <number>0</number>
        </property>
@@ -189,6 +189,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QMenuButton" name="btnPlayMode">
+         <property name="text">
+          <string>播放顺序</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="btnPlaySheet">
          <property name="text">
           <string>播放列表</string>
@@ -212,6 +219,13 @@ color: rgb(18, 150, 219);</string>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QMenuButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">qmenubutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

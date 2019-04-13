@@ -47,11 +47,20 @@ public:
 
     QPoint getMusicPlayerViewPos();
 
+    QMediaPlayer *getMediaPlayer();
+
+
+
+
     //未用
     void show();
 
-    //显示详细播放音乐界面
-    void showDetialMusicView();
+
+
+    /*
+     * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+     * 已下是播放功能函数
+     */
 
     /*
      *播放
@@ -85,7 +94,7 @@ public:
      *只添加歌曲时，调用一次
      * 添加歌曲至当前列表
      */
-    void addMusicToCurMusicSheet(Music& music);
+    int addMusicToCurMusicSheet(Music music);
 
 
     /*
@@ -96,14 +105,23 @@ public:
 
     void updateRecentMusicSheet(Music music);
 
+    /*
+     * 当前播放歌曲
+     */
+    Music currentPlayMusic();
+
+    /*
+     * playmusic播放当前歌曲的时候会调用setcurrentMusic
+     *
+     */
 
     /*
      * 设置当前歌曲
      */
-    void setCurrentMusic(Music music);
+    void setCurrentMusic(const Music& music);
 
     /*
-     * 根据播放列表设置当前歌曲
+     * 在当前播放列表设置当前歌曲
      */
     void setCurrentMusic(int index);
 
@@ -115,17 +133,14 @@ public:
     /*
      * 播放歌曲
      */
-    void playMusic(Music& music);
+    void playMusic(const Music& music);
 
     /*
      * 播放当前列表歌曲
      */
-    void playMusic(QModelIndex index);
+    void playMusic(int index);
 
-    /*
-     * 设置播放模式
-     */
-    void setMusicListMode(int mode);
+
 
     /*
      * 连接时间显示
@@ -148,6 +163,11 @@ public:
     void connectVolumeSlider();
 
 
+    /*
+     *连接当前音乐与详细音乐界面刷新的事件
+     */
+    void connectCurMusicToDetialView();
+
     PlaySheetView *getPlaySheetView();
 
     PlayFuncModel *playFuncModel() const;
@@ -168,11 +188,36 @@ signals:
      */
     preSignal(int);
 
+public slots:
+    //显示详细播放音乐界面
+    void showDetialMusicView();
+
+    /*
+     * 刷新详细播放音乐界面
+     */
+    void updateDetialMusicView();
+
+    /*
+     * 添加当前音乐到最近播放列表
+     */
+    void addMusicToRecentPlaySheet(int index);
+
+    /*
+     * 设置歌词
+     */
+    void setLyricsInMusic();
+
+    /*
+     * 设置播放模式
+     */
+    void setMusicListMode(QMediaPlaylist::PlaybackMode mode);
+
 private:
     /*
      * 设置当前播放列表
      */
     void __setCurrentMusicList(QList<Music> musics);
+
 
 };
 

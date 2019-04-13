@@ -4,6 +4,7 @@
 #include <QObject>
 #include "playfunccontroller.h"
 #include "playmusicdetialcontroller.h"
+#include "music.h"
 
 class PlayMusicDetialController;
 class PlayFuncController;
@@ -15,8 +16,14 @@ public:
     explicit PlayMusicDetialModel(QObject *parent = nullptr);
     PlayMusicDetialModel(PlayFuncController* pfc, QObject *parent = nullptr);
 
+
+    Music music;
+
     PlayFuncController *playFuncCtrl() const;
     void setPlayFuncCtrl(PlayFuncController *playFuncCtrl);
+
+    Music getMusic() const;
+    void setMusic(const Music &value);
 
 signals:
 

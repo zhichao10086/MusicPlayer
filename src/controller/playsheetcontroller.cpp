@@ -15,14 +15,16 @@ void PlaySheetController::init(PlayFuncController *pfc)
 {
     this->_pfCtrl = pfc;
     this->_playSheetModel = new PlaySheetModel(pfc);
+
     this->_playSheetView = new PlaySheetView(this);
+    this->updateView();
 
 }
 
 void PlaySheetController::playMusic(QModelIndex index)
 {
     //Music music = this->_playSheetModel->curMusicSheet().musics().at(index.row());
-    this->_pfCtrl->playMusic(index);
+    this->_pfCtrl->playMusic(index.row());
 }
 
 void PlaySheetController::updateView()

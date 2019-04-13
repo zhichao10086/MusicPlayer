@@ -12,15 +12,16 @@ PlayFuncModel::PlayFuncModel(PlayFuncController *pfc)
 
 }
 
-MusicSheet PlayFuncModel::getLastMusicSheet() const
+MusicSheet PlayFuncModel::getPlayedMusicSheet() const
 {
-    return _lastMusicSheet;
+    return _PlayedMusicSheet;
 }
 
-void PlayFuncModel::setLastMusicSheet(const MusicSheet &lastMusicSheet)
+void PlayFuncModel::setPlayedMusicSheet(const MusicSheet PlayedMusicSheet)
 {
-    _lastMusicSheet = lastMusicSheet;
+    _PlayedMusicSheet = PlayedMusicSheet;
 }
+
 
 PlayMusicDetialController *PlayFuncModel::getPlayMusicDetialCtrl() const
 {
@@ -84,7 +85,7 @@ MusicSheet PlayFuncModel::curMusicSheet() const
     return _curMusicSheet;
 }
 
-void PlayFuncModel::setCurMusicSheet(const MusicSheet &curMusicSheet)
+void PlayFuncModel::setCurMusicSheet(const MusicSheet curMusicSheet)
 {
     _curMusicSheet = curMusicSheet;
 }
@@ -106,10 +107,14 @@ void PlayFuncModel::init()
     this->_mediaPlayer = new QMediaPlayer;
     this->_mediaPlayList = new QMediaPlaylist;
     this->_mediaPlayer->setPlaylist(this->_mediaPlayList);
+    this->_PlayedMusicSheet = GlobalVariable::get_global_User().playedMusicSheet();
 
     //播放列表的控制器
     _playSheetCtrl = new PlaySheetController(this->_pfc);
+    //_playSheetCtrl->updateRecentPlaySheet(this->_PlayedMusicSheet);
     this->_playSheetView = _playSheetCtrl->playSheetView();
+    this->playSheetCtrl()->updateRecentPlaySheet(this->_PlayedMusicSheet);
+    this->_playSheetCtrl->updateView();
 
     //音乐详细界面控制器
     //this->__playMusicDetialCtrl = PlayMusicDetialController::newInstance()
@@ -122,12 +127,24 @@ MusicPlayerView* PlayFuncModel::getMusicPlayerView()
 
 }
 
-void PlayFuncModel::addMusicToCurMusicSheet(Music &music)
+Music PlayFuncModel::getCurPlayMusic()
 {
-    this->_curMusicSheet.musics().append(music);
+    int index = this->mediaPlayList()->currentIndex();
+    return this->curMusicSheet().musics().at(index);
 }
 
-void PlayFuncModel::changeMediaPlaySheet(MusicSheet &musicSheet)
+int PlayFuncModel::addMusicToCurMusicSheet(Music music)
+{
+
+    int index  = this->_curMusicSheet.addMusic(music);
+    if(index == -1){
+        this->_mediaPlayList->insertMedia(0,QMediaContent(QUrl::fromLocalFile(music.musicPath())));
+        return 0;
+    }
+    return index;
+}
+
+void PlayFuncModel::changeMediaPlaySheet(MusicSheet musicSheet)
 {
 
 }

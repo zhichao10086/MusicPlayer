@@ -34,19 +34,94 @@ MusicPlayerView *MusicPlayerController::getMusicPlayerView() const
 
 void MusicPlayerController::init()
 {
+    /*
+     * 初始化环境变量
+     */
+    this->initEnv();
+
+
+    /*
+     * 初始化全局变量
+     */
+
     _musicPlayerModel = new MusicPlayerModel(this);
     _musicPlayerView = new MusicPlayerView(this);
+    this->init_view();
+
+}
+
+void MusicPlayerController::initEnv()
+{
+    /*
+     *初始化环境
+     */
+    QString appPath = QDir::currentPath();
+    QDir curDir(appPath);
+    QDir localDir(appPath +"/"+ CONST_GLOBAL_STRING_LOCAL_DIR);
+
+    if(!localDir.exists()){
+        curDir.mkdir(CONST_GLOBAL_STRING_LOCAL_DIR);
+    }
+    QDir downloadDir(appPath +"/" + CONST_GLOBAL_STRING_DOWNLOAD_DIR);
+    if(!downloadDir.exists()){
+        curDir.mkdir(CONST_GLOBAL_STRING_DOWNLOAD_DIR);
+    }
+
+    QDir userDir(appPath + "/" + CONST_GLOBAL_STRING_USER_DIR);
+
+    if(!userDir.exists()){
+        curDir.mkdir(CONST_GLOBAL_STRING_USER_DIR);
+    }
+
+    QDir settingDir(appPath + "/" + CONST_GLOBAL_STRING_SETTING_DIR);
+
+    if(!settingDir.exists()){
+        curDir.mkdir(CONST_GLOBAL_STRING_SETTING_DIR);
+    }
+
+    //先读取配置文件，然后在判断要做的事情
+    QFile settingFile(settingDir.absolutePath()  + "/"+ CONST_GLOBAL_STRING_SETTING_FILE_NAME);
+    QJsonObject settingObj =  FileFuncController::getJsonObjFromFile(settingFile);
+
+    GlobalVariable::settingObj = settingObj;
+
+
+
+    if(!settingObj.value("autologin").toBool(false)){
+        //如果不自动登陆则解析本地用户
+        QFile userFile(userDir.absolutePath()+ "/"+ CONST_GLOBAL_STRING_LOCAL_USER_FILE_NAME);
+        QJsonObject localUserObj = FileFuncController::getJsonObjFromFile(userFile);
+
+        GlobalVariable::global_User =  User::jsonObj2User(localUserObj);
+        GlobalVariable::global_user_absolute_file = userDir.absoluteFilePath(CONST_GLOBAL_STRING_LOCAL_USER_FILE_NAME);
+    }
+
+    //解析userObj
+    //如果没有登陆 则初始化本地用户
+    if(!GlobalVariable::IsLogin()){
+        qDebug()<<"未实现 login";
+    }
 
 }
 
 void MusicPlayerController::init_view()
 {
+    User& user = GlobalVariable::get_global_User();
+
+    this->updateCreatedMusicSheetView(user.createdMusicSheets());
+    this->updateCollectedMusicSheetView(user.collectedMusicSheets());
 
 }
 
 void MusicPlayerController::closeApp()
 {
     //MainWindow* mw = this->_musicPlayerModel->mainWindowCtrl()->getMainWindow();
+
+    User& user = GlobalVariable::get_global_User();
+
+    QFile userFile(GlobalVariable::global_user_absolute_file);
+    FileFuncController::saveJsonObjToFile(user.toJsonObj(),GlobalVariable::global_user_absolute_file);
+
     qApp->exit(0);
 }
 
@@ -72,6 +147,14 @@ void MusicPlayerController::maxApp()
     //    cout<<"maxApp"<<endl;
 //    mw->setWindowState(Qt::WindowMaximized);
     this->_musicPlayerModel->mainWindowCtrl()->maxApp();
+}
+
+void MusicPlayerController::createMusicSheet(MusicSheet ms)
+{
+    User& user = GlobalVariable::get_global_User();
+    user.addCreatedMusicSheet(ms);
+    this->updateCreatedMusicSheetView(user.createdMusicSheets());
+
 }
 
 void MusicPlayerController::show()
@@ -112,6 +195,16 @@ void MusicPlayerController::removeMainWindowWidget(int mode)
 LocalMusicView *MusicPlayerController::getLocalMusicView()
 {
     return this->_musicPlayerModel->_localMusicView;
+}
+
+void MusicPlayerController::updateCreatedMusicSheetView(QList<MusicSheet> msList)
+{
+    this->_musicPlayerView->updateCreatedMusicSheet(msList);
+}
+
+void MusicPlayerController::updateCollectedMusicSheetView(QList<MusicSheet> msList)
+{
+    this->_musicPlayerView->updateCollectedMusicSheet(msList);
 }
 
 void MusicPlayerController::connectLocalMusicListAndPlayFunc()

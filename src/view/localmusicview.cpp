@@ -65,17 +65,20 @@ void LocalMusicView::on_btnOpenDir_clicked()
 
 void LocalMusicView::on_lwMusicList_doubleClicked(const QModelIndex &index)
 {
+    int music_index = index.row();
     //如果同意切换列表
     if(QMessageBox::Yes == QMessageBox::question(this,"切换提示","是否要切换播放列表",QMessageBox::Yes | QMessageBox::No)){
 
         this->_localMusicCtrl->addSheetToMedia();
+        //this->_localMusicCtrl->playMusic(music_index);
+
         qDebug()<<"local"<<endl;
     }else{
-        this->_localMusicCtrl->addMusicToCurSheet(index);
-
+        music_index = this->_localMusicCtrl->addMusicToCurSheet(index);
+        qDebug()<<"..";
+        //this->_localMusicCtrl->playMusic(index);
     }
-
-    this->_localMusicCtrl->playMusic(index);
+    this->_localMusicCtrl->playMusic(music_index);
 
 }
 

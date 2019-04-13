@@ -1,6 +1,7 @@
 #include "localmusiccontroller.h"
 #include "util.h"
 #include <iostream>
+#include "mp3header.h"
 
 LocalMusicController::LocalMusicController()
 {
@@ -75,8 +76,19 @@ QList<Music> LocalMusicController::searchMusics(QStringList dirs)
 
     }
     for(int i=0;i<files.size();i++){
-        Music music(files.at(i));
-        music.setMusicName(filenames.at(i));
+        //Music music(files.at(i));
+        //music.setMusicName(filenames.at(i));
+        //musics.append(music);
+
+        MP3Header mp3h;
+        const wchar_t* file = reinterpret_cast<const wchar_t*>(files.at(i).utf16());
+        MP3INFO mp3info =  mp3h.GetAllInfo(file,i);
+        Music music;
+        music.setAlbum(mp3info.Album);
+        music.setFileSize(mp3info.lenth);
+        music.setMusicName(mp3info.Name);
+        music.setSinger(mp3info.Singer);
+        music.setMusicPath(mp3info.Url);
         musics.append(music);
     }
 
@@ -94,23 +106,29 @@ Music LocalMusicController::getMusic(int index)
     return this->_localMusicModel->musics().at(index);
 }
 
-void LocalMusicController::playMusic(const QModelIndex &index)
+void LocalMusicController::playMusic(int index)
 {
     //找到歌曲位置
-    Music music = this->localMusicModel()->musics().at(index.row());
+    //Music music = this->localMusicModel()->musics().at(index.row());
     //this->_localMusicModel->getPlayFuncCtrl()->playMusic(music);
     //添加本地歌单至歌曲库
-    this->addMusicsToMedia();
+    //this->addMusicsToMedia();
     //this->localMusicModel()->getPlayFuncCtrl()->setCurrentMusic(index.row());
-    this->localMusicModel()->getPlayFuncCtrl()->play();
+    this->localMusicModel()->getPlayFuncCtrl()->playMusic(index);
 
 }
 
-void LocalMusicController::addMusicToCurSheet(const QModelIndex &index)
+void LocalMusicController::playMusic(const QModelIndex& index)
+{
+    const Music& music  = this->localMusicModel()->getMusicSheet().musics().at(index.row());
+    this->localMusicModel()->getPlayFuncCtrl()->playMusic(music);
+}
+
+int LocalMusicController::addMusicToCurSheet(const QModelIndex &index)
 {
     Music music = this->_localMusicModel->getMusicByIndex(index);
 
-    this->_localMusicModel->getPlayFuncCtrl()->addMusicToCurMusicSheet(music);
+    return this->_localMusicModel->getPlayFuncCtrl()->addMusicToCurMusicSheet(music);
 }
 
 void LocalMusicController::addMusicsToMedia()

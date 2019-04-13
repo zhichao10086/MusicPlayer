@@ -15,6 +15,13 @@
 #include <QMainWindow>
 #include <QDesktopWidget>
 #include "playmusicdetialview.h"
+#include "globalvariable.h"
+#include "filefunccontroller.h"
+#include <QDir>
+#include <QFile>
+#include "filefunccontroller.h"
+#include "user.h"
+#include "globalconstant.h"
 
 
 using namespace std;
@@ -54,6 +61,11 @@ public:
     //初始化controller
     void init();
 
+    /*
+     * 初始化环境
+     */
+    void initEnv();
+
     //初始化界面
     void init_view();
 
@@ -72,9 +84,18 @@ public:
      */
     void maxApp();
 
+
+    /*
+     *新建歌单
+     */
+    void createMusicSheet(MusicSheet ms);
+
+
     void show();
 
-
+    /*
+     * 显示详情页
+     */
     void showMusicDetialView(PlayMusicDetialView* pmdv);
 
 
@@ -94,6 +115,15 @@ public:
     LocalMusicView* getLocalMusicView();
 
 
+    /*
+     * 更新自己创建的音乐歌单
+     */
+    void updateCreatedMusicSheetView(QList<MusicSheet> msList);
+
+    /*
+     * 更新收藏的音乐歌单
+     */
+    void updateCollectedMusicSheetView(QList<MusicSheet> msList);
 
 
     /*

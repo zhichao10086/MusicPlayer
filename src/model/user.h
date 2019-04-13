@@ -7,6 +7,8 @@
 #include <QJsonArray>
 #include <QList>
 #include "musicsheet.h"
+#include <QDateTime>
+
 
 
 class User
@@ -16,30 +18,52 @@ public:
     User();
 
 
+
+    /*
+     * json文件转换为user类
+     */
+    static User jsonObj2User(const QJsonObject& obj);
+
+    /*
+     * user类转为json
+     */
+    QJsonObject toJsonObj();
+
+
     QString name() const;
     void setName(const QString &name);
 
     int age() const;
     void setAge(int age);
 
-    QVariant createdMusicSheets() const;
-    void setCreatedMusicSheets(const QVariant &createdMusicSheets);
+    /*
+     * 添加最近播放音乐
+     */
+    void addRecentPlayMusic(Music music);
 
-    QVariant collectedMusicSheets() const;
-    void setCollectedMusicSheets(const QVariant &collectedMusicSheets);
+    void addCreatedMusicSheet(MusicSheet musicSheet);
+
+
+    QList<MusicSheet> createdMusicSheets() const;
+    void setCreatedMusicSheets(const QList<MusicSheet> createdMusicSheets);
+
+    QList<MusicSheet> collectedMusicSheets() const;
+    void setCollectedMusicSheets(const QList<MusicSheet> collectedMusicSheets);
+
+
+    MusicSheet playedMusicSheet() const;
+    void setPlayedMusicSheet(const MusicSheet playedMusicSheet);
 
 private:
     QString __name;
     int __age;
 
     //创建的歌单
-    QVariant __createdMusicSheets;
+    QList<MusicSheet> __createdMusicSheets;
     //收藏的歌单
-    QVariant __collectedMusicSheets;
-
-
-
-
+    QList<MusicSheet> __collectedMusicSheets;
+    //播放记录
+    MusicSheet  __playedMusicSheet;
 
 
 };
