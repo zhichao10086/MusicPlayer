@@ -72,7 +72,7 @@ public slots:
      */
     void updateView(Music music);
 
-
+    void updateLyricsView(qint64 position);
 };
 
 

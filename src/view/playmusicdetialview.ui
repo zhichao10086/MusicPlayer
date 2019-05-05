@@ -13,6 +13,27 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#PlayMusicDetialView{
+	background-color: rgb(249, 255, 239,20)
+}
+
+
+QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+	min-height:25;
+}
+QLabel{
+font: 9pt &quot;楷体&quot;;
+	
+}
+
+</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -52,8 +73,15 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{border-image: url(:/images/icon/images/缩小(3).png);
+}
+QPushButton:hover{
+	border-image: url(:/images/icon/images/缩小(5).png);
+}</string>
+       </property>
        <property name="text">
-        <string>缩小</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -61,6 +89,9 @@
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(249, 255, 239,5)</string>
+     </property>
      <property name="widgetResizable">
       <bool>true</bool>
      </property>
@@ -69,8 +100,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1068</width>
-        <height>577</height>
+        <width>1047</width>
+        <height>588</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -82,7 +113,7 @@
             <widget class="QWidget" name="widget" native="true">
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_4">
+               <layout class="QVBoxLayout" name="verticalLayout_4" stretch="2,0,0">
                 <property name="topMargin">
                  <number>50</number>
                 </property>
@@ -90,14 +121,36 @@
                  <number>20</number>
                 </property>
                 <item>
+                 <widget class="QLabel" name="labMusicImage">
+                  <property name="minimumSize">
+                   <size>
+                    <width>400</width>
+                    <height>400</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>歌曲配图</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <spacer name="verticalSpacer">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
                   </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
+                  </property>
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>20</width>
-                    <height>40</height>
+                    <height>20</height>
                    </size>
                   </property>
                  </spacer>
@@ -105,28 +158,31 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_6">
                   <item>
-                   <widget class="QPushButton" name="pushButton_2">
+                   <widget class="QPushButton" name="btnLike">
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
                     <property name="text">
                      <string>喜欢</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_3">
+                   <widget class="QPushButton" name="btnCollect">
                     <property name="text">
                      <string>收藏</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_4">
+                   <widget class="QPushButton" name="btnDownload">
                     <property name="text">
                      <string>下载</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton">
+                   <widget class="QPushButton" name="btnShare">
                     <property name="text">
                      <string>分享</string>
                     </property>
@@ -148,13 +204,16 @@
                       <height>0</height>
                      </size>
                     </property>
+                    <property name="styleSheet">
+                     <string notr="true">font: 11pt &quot;楷体&quot;;</string>
+                    </property>
                     <property name="text">
-                     <string>歌名</string>
+                     <string>歌名：</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_5">
+                   <widget class="QPushButton" name="btn_mv">
                     <property name="maximumSize">
                      <size>
                       <width>40</width>
@@ -182,11 +241,21 @@
                  </layout>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                 <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,1">
+                  <item>
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>歌曲介绍：</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item>
                    <widget class="QLabel" name="labMusicIntroducment">
+                    <property name="styleSheet">
+                     <string notr="true">font: 10pt &quot;楷体&quot;;</string>
+                    </property>
                     <property name="text">
-                     <string>歌曲介绍</string>
+                     <string/>
                     </property>
                    </widget>
                   </item>
@@ -195,7 +264,7 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_3">
                   <property name="leftMargin">
-                   <number>20</number>
+                   <number>0</number>
                   </property>
                   <property name="rightMargin">
                    <number>20</number>
@@ -204,13 +273,25 @@
                    <layout class="QHBoxLayout" name="horizontalLayout_11">
                     <item>
                      <widget class="QLabel" name="label_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>50</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>歌手：</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QLabel" name="labSinger">
+                      <property name="styleSheet">
+                       <string notr="true">font: 10pt &quot;楷体&quot;;</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -222,13 +303,25 @@
                    <layout class="QHBoxLayout" name="horizontalLayout_10">
                     <item>
                      <widget class="QLabel" name="label">
+                      <property name="maximumSize">
+                       <size>
+                        <width>50</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>专辑：</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QLabel" name="labAlbum">
+                      <property name="styleSheet">
+                       <string notr="true">font: 10pt &quot;楷体&quot;;</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -240,13 +333,25 @@
                    <layout class="QHBoxLayout" name="horizontalLayout_12">
                     <item>
                      <widget class="QLabel" name="label_3">
+                      <property name="maximumSize">
+                       <size>
+                        <width>50</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>来源：</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QLabel" name="label_4">
+                      <property name="styleSheet">
+                       <string notr="true">font: 10pt &quot;楷体&quot;;</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -259,7 +364,7 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_8">
                   <item>
-                   <widget class="QListWidget" name="lwMusicLyrics">
+                   <widget class="LyricsDisplayView" name="lwMusicLyrics">
                     <property name="styleSheet">
                      <string notr="true">QListWidget#lwMusicLyrics{
 	
@@ -288,6 +393,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LyricsDisplayView</class>
+   <extends>QListWidget</extends>
+   <header location="global">lyricsdisplayview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

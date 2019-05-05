@@ -22,10 +22,80 @@ MusicPlayerView::~MusicPlayerView()
     delete ui;
 }
 
+bool MusicPlayerView::eventFilter(QObject *watched, QEvent *event)
+{
+
+    if(watched == this){
+        if(event->type() == QEvent::Resize){
+            QResizeEvent* resizeEvent = (QResizeEvent*) event;
+            if(this->__p.isNull()){
+                this->__p = QPixmap(":/images/images/flower.jpg");
+            }
+            this->__p = this->__p.scaled(resizeEvent->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation);
+            this->setBackgroundImage(this->__p);
+        }
+    }/*else if(watched == this->ui->stackedWidget->children().last()){
+        int count = this->ui->stackedWidget->count();
+        qDebug()<<"count:"<<count;
+        if(count == 1){
+            this->setMainWindowWidget(this->ui->stackedWidget->widget(0));
+        }else{
+            this->setMainWindowWidget(this->ui->stackedWidget->widget(count-1));
+        }
+    }*/
+
+
+
+
+}
+
 void MusicPlayerView::init_view()
 {
     ui = new Ui::MusicPlayerView;
     ui->setupUi(this);
+
+    this->installEventFilter(this);
+    this->__isMax = false;
+    this->ui->leSearch->setPlaceholderText("搜索");
+    this->removeMainWindowWidget();
+
+//    case 居中:
+//        label->setStyleSheet("background-color:black;background-image:url(1.jpg);background-position:center;background-repeat:no-repeat;");
+//        break;
+
+//    case 缩放:
+//        label->setStyleSheet("background-color:black");
+//        label->setAlignment(Qt::AlignCenter);
+//        label->setPixmap(bgImage.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+//        break;
+
+//    case 拉伸:
+//        label->setStyleSheet("background-color:black");
+//        label->setPixmap(bgImage.scaled(this->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+//        break;
+
+//    case 平铺:
+//        label->setStyleSheet("background-color:black;background-image:url(1.jpg);background-position:top left;background-repeat:repeat-xy;");
+//        break;
+
+
+//    pal.setBrush(QPalette::Background,QBrush(QPixmap("")));
+//    this->setPalette(pal);
+
+    /*
+     *未实现拉伸功能
+     */
+    //this->setAttribute();
+
+    //this->__p == QPixmap(":/images/images/flower.jpg");
+    //this->__p = this->__p.scaled(this->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    //this->setBackgroundImage(p);
+
+
+    //this->setStyleSheet("QWidget#MusicPlayerView{background-image: url(:/images/images/flower.jpg);}");
+
+    //this->setBackgroundImage(p);
+
     //this->setBackground(QUrl(":/images/images/background-hai.jpg"));
 
     //QPixmap p(":/images/images/background1.jpg");
@@ -40,6 +110,9 @@ void MusicPlayerView::init_view()
 
     QWidget* localMusicWidget = (QWidget*)this->_musicPlayerController->getLocalMusicView();
     this->setMainWindowWidget(localMusicWidget);
+
+    //this->ui->btnPullMySheet->setText("收起");
+    //this->ui->btnCollectSheetPull->setText("收起");
 
 }
 
@@ -67,9 +140,12 @@ void MusicPlayerView::updateCollectedMusicSheet(QList<MusicSheet> msList)
 
 void MusicPlayerView::setBackgroundImage(QPixmap &p)
 {
-    QLabel* label = new QLabel(this);
-    label->setGeometry(0,0,this->width(),this->height());
-    label->setPixmap(p.scaled(this->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    this->setAutoFillBackground(true);
+    //设置背景
+
+    QPalette pal;
+    pal.setBrush(QPalette::Background,QBrush(p));
+    this->setPalette(pal);
 }
 
 void MusicPlayerView::setBackground(QUrl url)
@@ -83,17 +159,43 @@ void MusicPlayerView::setMainWindowWidget(QWidget *w)
 //        //this->removeMainWindowWidget();
 //        this->hideCurMainWindowWidget();
 //    }
-    this->hideMainWindowWidget();
-    int index = ui->vLayoutMainWindow->indexOf(w);
-    qDebug()<<index;
-    if(index <0){
-        ui->vLayoutMainWindow->addWidget(w);
-        qDebug()<<ui->vLayoutMainWindow->layout()->count();
-        this->_curMainWindowWidget = w;
+    int DEBUG = 0;
+    if(DEBUG){
+        this->hideMainWindowWidget();
+        int index = ui->vLayoutMainWindow->indexOf(w);
+        qDebug()<<index;
+        if(index <0){
+            ui->vLayoutMainWindow->addWidget(w);
+            w->installEventFilter(this);
+            qDebug()<<ui->vLayoutMainWindow->layout()->count();
+            if(this->ui->vLayoutMainWindow->layout()->count() > 1){
+                this->_lastMainWindowWidget =this->_curMainWindowWidget;
+            }else{
+                this->_curMainWindowWidget = w;
+                this->_lastMainWindowWidget = this->_curMainWindowWidget;
+            }
+
+        }else{
+            this->_lastMainWindowWidget = this->_curMainWindowWidget;
+            this->_curMainWindowWidget = w;
+            w->show();
+        }
     }else{
-        w->show();
+        //如果不在stackedwidget里
+        int index = this->ui->stackedWidget->indexOf(w);
+        if(index <0){
+            w->installEventFilter(this);
+            index = this->ui->stackedWidget->addWidget(w);
+
+        }else{
+            qDebug()<<"index : "<<index;
+            QWidget* curWidget = this->ui->stackedWidget->widget(index);
+            this->ui->stackedWidget->removeWidget(curWidget);
+            index = this->ui->stackedWidget->addWidget(w);
+        }
+        this->ui->stackedWidget->setCurrentIndex(index);
     }
-    qDebug()<<this->size();
+
 
 }
 
@@ -109,12 +211,20 @@ QWidget* MusicPlayerView::getCurMainWindowWidget()
 
 void MusicPlayerView::removeMainWindowWidget()
 {
-    cout<<"remove mainwindowWidget"<<endl;
-    cout<<this->_curMainWindowWidget<<endl;
-    int index = this->ui->vLayoutMainWindow->indexOf(this->_curMainWindowWidget);
-    QLayoutItem* item = this->ui->vLayoutMainWindow->itemAt(index);
-    this->ui->vLayoutMainWindow->removeItem(item);
-    this->ui->vLayoutMainWindow->removeWidget(this->_curMainWindowWidget);
+
+    for(int i=this->ui->stackedWidget->count()-1;i>=0;i--){
+        QWidget* w  = this->ui->stackedWidget->widget(i);
+        this->ui->stackedWidget->removeWidget(w);
+        qDebug()<<i;
+    }
+    qDebug()<<"ss";
+
+//    cout<<"remove mainwindowWidget"<<endl;
+//    cout<<this->_curMainWindowWidget<<endl;
+//    int index = this->ui->vLayoutMainWindow->indexOf(this->_curMainWindowWidget);
+//    QLayoutItem* item = this->ui->vLayoutMainWindow->itemAt(index);
+//    this->ui->vLayoutMainWindow->removeItem(item);
+//    this->ui->vLayoutMainWindow->removeWidget(this->_curMainWindowWidget);
     //鍦ㄧЩ闄ゆ椂鏈変竴浜涘伐浣滆¦佸仛
     //this->_musicPlayerController->hiddenWidgetToDo((BaseView*)this->_curMainWindowWidget);
 }
@@ -163,7 +273,35 @@ void MusicPlayerView::on_btnMinWindow_clicked()
 
 void MusicPlayerView::on_btnMaxWindow_clicked()
 {
+
     this->_musicPlayerController->maxApp();
+
+    if(this->__isMax){
+
+        this->__isMax = false;
+        this->ui->btnMaxWindow->setStyleSheet("QPushButton{\
+                                          border-image: url(:/images/icon/images/放大(1).png);\
+                                      }\
+                                      QPushButton:hover{\
+                                          border-image: url(:/images/icon/images/放大(2).png);\
+                                      }");
+
+
+
+    }else{
+
+
+        this->ui->btnMaxWindow->setStyleSheet("QPushButton{\
+                                              border-image: url(:/images/icon/images/缩小(6).png);\
+                                          }\
+                                          QPushButton:hover{\
+                                              border-image: url(:/images/icon/images/缩小(7).png);\
+                                          }");
+
+        this->__isMax = true;
+    }
+
+
 }
 
 void MusicPlayerView::on_btnNewMusicSheet_clicked()
@@ -179,4 +317,76 @@ void MusicPlayerView::on_btnNewMusicSheet_clicked()
         this->_musicPlayerController->createMusicSheet(ms);
     }
 
+}
+
+void MusicPlayerView::on_listWdgSongSheet_doubleClicked(const QModelIndex &index)
+{
+    int row = index.row();
+    //this->_musicPlayerController
+    //this->_musicPlayerController->setMainWindowWidget();
+//    MusicSheetDetialView* msd =  this->_musicPlayerController->getMusicSheetDetialView();
+//    this->_musicPlayerController->
+//    msd->updateView();
+
+//    this->setMainWindowWidget();
+
+    MusicSheet ms = this->_musicPlayerController->getCreatedSheet().value(row);
+    this->_musicPlayerController->showMusicSheetDetialView(ms);
+}
+
+void MusicPlayerView::on_listWidgetCollect_doubleClicked(const QModelIndex &index)
+{
+    int row = index.row();
+    MusicSheet ms = this->_musicPlayerController->getCollectSheet().value(row);
+    this->_musicPlayerController->showMusicSheetDetialView(ms);
+}
+
+
+
+void MusicPlayerView::on_btnPullMySheet_clicked()
+{
+    if(this->ui->listWdgSongSheet->isHidden()){
+        this->ui->listWdgSongSheet->show();
+        //this->ui->btnPullMySheet->setText("收起");
+        this->ui->btnPullMySheet->setStyleSheet("QPushButton{\
+                                                border-image: url(:/images/icon/images/收起.png);\
+                                                }\
+                                                 QPushButton:hover{border-image: url(:/images/icon/images/收起(1).png);}\
+                                            ");
+    }else{
+        this->ui->listWdgSongSheet->hide();
+        //this->ui->btnPullMySheet->setText("下拉");
+        this->ui->btnPullMySheet->setStyleSheet("QPushButton{\
+                                        border-image: url(:/images/icon/images/下拉.png);\
+                                        }\
+                                         QPushButton:hover{border-image: url(:/images/icon/images/下拉(1).png);}\
+                                    ");
+    }
+}
+
+void MusicPlayerView::on_btnCollectSheetPull_clicked()
+{
+    if(this->ui->listWidgetCollect->isHidden()){
+        this->ui->listWidgetCollect->show();
+        //this->ui->btnCollectSheetPull->setText("收起");
+        this->ui->btnCollectSheetPull->setStyleSheet("QPushButton{\
+                                                border-image: url(:/images/icon/images/收起.png);\
+                                                }\
+                                                 QPushButton:hover{border-image: url(:/images/icon/images/收起(1).png);}\
+                                            ");
+    }else{
+        this->ui->listWidgetCollect->hide();
+        //this->ui->btnCollectSheetPull->setText("下拉");
+        this->ui->btnCollectSheetPull->setStyleSheet("QPushButton{\
+                                        border-image: url(:/images/icon/images/下拉.png);\
+                                        }\
+                                         QPushButton:hover{border-image: url(:/images/icon/images/下拉(1).png);}\
+                                    ");
+    }
+}
+
+void MusicPlayerView::on_btnMusicCut_clicked()
+{
+    MusicCutView* mcView = new MusicCutView;
+    mcView->show();
 }

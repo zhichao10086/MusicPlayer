@@ -48,8 +48,8 @@ MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidge
 
 
     ui->labIndex->setText(QString::number(index));
-    if(!music.musicName().isEmpty()){
-        this->setTextElide(this->ui->labMusicName,music.musicName());
+    if(!music.title().isEmpty()){
+        this->setTextElide(this->ui->labMusicName,music.title());
     }
     if(!music.time().isEmpty())
         this->ui->labTime->setText(music.time());
@@ -57,8 +57,8 @@ MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidge
     if(!music.album().isEmpty())
         this->setTextElide(ui->labAlbum,music.album());
 
-    if(!music.singer().isEmpty())
-        this->setTextElide(ui->labSinger,music.singer());
+    if(!music.artist().isEmpty())
+        this->setTextElide(ui->labSinger,music.artist());
 
     if(mode == ViewMode::LocalMusicListItem){
         this->localMusicListItemShow();
@@ -68,6 +68,8 @@ MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidge
         this->playSheetListItemShow();
     }else if(mode == ViewMode::RecentSheetListItem){
         this->recentSheetListItemShow();
+    }else if(mode == ViewMode::MusicSheetListItem){
+        this->MusicSheetListItemShow();
     }
 
 }
@@ -99,14 +101,21 @@ void MusicListItemView::setTextElide(QLabel *label, QString string)
 void MusicListItemView::localMusicListItemShow()
 {
     if(__music.fileSize()>=0){
-        double fileSize = ((double)this->__music.fileSize())/1024;
+        double fileSize = ((double)this->__music.fileSize())/(1024*1024);
 
-        ui->labFileSize->setText(QString::number(fileSize) + "MB");
+        ui->labFileSize->setText(QString::number(fileSize,'f',2) + "MB");
     }
 
     ui->btnDownload->hide();  //1
     ui->btnLike->hide();
     ui->progBarHot->hide();
+
+//    this->ui->horizontalLayout->setStretch(0,1);
+//    this->ui->horizontalLayout->setStretch(1,4);
+//    this->ui->horizontalLayout->setStretch(2,2);
+//    this->ui->horizontalLayout->setStretch(3,2);
+//    this->ui->horizontalLayout->setStretch(4,2);
+//    this->ui->horizontalLayout->setStretch(5,2);
 
 }
 
@@ -139,6 +148,11 @@ void MusicListItemView::recentSheetListItemShow()
     ui->progBarHot->hide();
 }
 
+void MusicListItemView::MusicSheetListItemShow()
+{
+
+}
+
 void MusicListItemView::initView()
 {
     QSize size = this->parentWidget()->size();
@@ -155,10 +169,7 @@ void MusicListItemView::setMusic(const Music &music)
     __music = music;
 }
 
-void MusicListItemView::on_labMusicName_linkHovered(const QString &link)
-{
 
-}
 
 void MusicListItemView::popupContextMenu(QPoint p)
 {

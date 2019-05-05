@@ -22,6 +22,9 @@
 #include "filefunccontroller.h"
 #include "user.h"
 #include "globalconstant.h"
+#include "musicsheetdetialcontroller.h"
+#include "musicsheetdetialview.h"
+
 
 
 using namespace std;
@@ -30,12 +33,16 @@ class MusicPlayerModel;
 class MusicPlayerView;
 class MainWindowController;
 class PlayMusicDetialView;
+class MusicSheetDetialView;
 
 
 
 class MusicPlayerController
 {
 public:
+
+
+
     MusicPlayerController();
 
     MusicPlayerController(MainWindowController* mwc);
@@ -47,6 +54,23 @@ public:
 
 
     /*
+     * 全局单例
+     * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+     *
+     *
+     */
+
+    static PlayFuncController* single_playfuncCtrl;
+
+    static PlayFuncController* getSinglePlayFuncCtrl();
+
+    /*
+     * 获取歌单列表界面
+     *
+     */
+    MusicSheetDetialView* getMusicSheetDetialView();
+
+    /*
      * 获取播放控制的界面
      */
     PlayFuncView* getPlayFuncView() const;
@@ -56,6 +80,17 @@ public:
 
     MusicPlayerModel* _musicPlayerModel;
     MusicPlayerView* _musicPlayerView;
+
+    /*
+     * 获取数据区域
+     * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+     */
+    QList<MusicSheet> getCollectSheet();
+
+
+    QList<MusicSheet> getCreatedSheet();
+
+
 
 
     //初始化controller
@@ -94,10 +129,20 @@ public:
     void show();
 
     /*
-     * 显示详情页
+     * 显示正在播放详情页
      */
     void showMusicDetialView(PlayMusicDetialView* pmdv);
 
+
+    /*
+     *显示歌单详情页
+     */
+    void showMusicSheetDetiaView(int index);
+
+    /*
+     * 显示歌单详情页
+     */
+    void showMusicSheetDetialView(MusicSheet& musicSheet);
 
     /*
      * 设置主窗口界面

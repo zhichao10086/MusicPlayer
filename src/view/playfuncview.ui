@@ -51,13 +51,26 @@
        <item>
         <widget class="QPushButton" name="btnMusicDetial">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+border-radius :3px;
+	background-color: rgb(252, 255, 251,150);
+
+}</string>
+         </property>
          <property name="text">
-          <string>缩略图</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -80,7 +93,13 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border-image: url(:/images/icon/images/pre_1296db.png);</string>
+          <string notr="true">QPushButton{
+border-image: url(:/images/icon/images/上一首.png);
+}
+
+QPushButton:hover{
+border-image: url(:/images/icon/images/上一首(1).png);
+}</string>
          </property>
          <property name="text">
           <string/>
@@ -102,7 +121,13 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border-image: url(:/images/icon/images/play_1296db.png);</string>
+          <string notr="true">QPushButton{	
+	
+	border-image: url(:/images/icon/images/播放(7).png);
+}
+QPushButton:hover{
+	border-image: url(:/images/icon/images/播放(6).png);
+}</string>
          </property>
          <property name="text">
           <string/>
@@ -124,8 +149,13 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border-image: url(:/images/icon/images/next_1296db.png);
-</string>
+          <string notr="true">QPushButton{
+border-image: url(:/images/icon/images/下一首.png);
+}
+
+QPushButton:hover{
+border-image: url(:/images/icon/images/下一首(1).png);
+}</string>
          </property>
          <property name="text">
           <string/>
@@ -135,7 +165,10 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,14,0,4,0,0,0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,1,0,0,0,0,0">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="bottomMargin">
         <number>0</number>
        </property>
@@ -145,6 +178,12 @@
           <size>
            <width>70</width>
            <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="text">
@@ -157,6 +196,49 @@
        </item>
        <item>
         <widget class="QSlider" name="timeSlider">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QSlider{
+border-color: #bcbcbc;
+background-color: rgb(245, 255, 229,100);
+}
+
+QSlider::groove:horizontal {                                
+     border: 1px solid #999999;                             
+     height: 1px;                                           
+    margin: 0px 0;                                         
+     left: 5px; right: 5px; 
+ }
+
+QSlider::handle:horizontal {                               
+     border: 0px ;                           
+     
+	border-image: url(:/images/icon/images/圆形.png);
+     width: 15px;                                           
+     margin: -7px -7px -7px -7px;                  
+} 
+
+QSlider::add-page:horizontal{
+background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 #bcbcbc, stop:0.25 #bcbcbc, stop:0.5 #bcbcbc, stop:1 #bcbcbc); 
+
+}
+
+QSlider::sub-page:horizontal{                               
+ background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(245, 255, 229,100), stop:0.25 rgb(245, 255, 229,100), stop:0.5 rgb(245, 255, 229,100), stop:1 rgb(245, 255, 229,100));                     
+}</string>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -170,6 +252,12 @@
            <height>0</height>
           </size>
          </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>00:00</string>
          </property>
@@ -180,8 +268,42 @@
        </item>
        <item>
         <widget class="QSlider" name="volumeSlider">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">
+QSlider{
+border-color: #bcbcbc;
+background-color: rgb(245, 255, 229,100);
+}
+
+QSlider::groove:horizontal {                                
+     border: 1px solid #999999;                             
+     height: 1px;                                           
+    margin: 0px 0;                                         
+     left: 5px; right: 5px; 
+ }
+
+QSlider::handle:horizontal {                               
+     border: 0px ;                           
+     
+	border-image: url(:/images/icon/images/圆形.png);
+     width: 15px;                                           
+     margin: -7px -7px -7px -7px;                  
+} 
+
+QSlider::add-page:horizontal{
+background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 #bcbcbc, stop:0.25 #bcbcbc, stop:0.5 #bcbcbc, stop:1 #bcbcbc); 
+
+}
+
+QSlider::sub-page:horizontal{                               
+ background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(245, 255, 229,100), stop:0.25 rgb(245, 255, 229,100), stop:0.5 rgb(245, 255, 229,100), stop:1 rgb(245, 255, 229,100));                     
+}</string>
          </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -190,26 +312,115 @@
        </item>
        <item>
         <widget class="QMenuButton" name="btnPlayMode">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton{
+border-image: url(:/images/icon/images/列表顺序.png);
+}
+QPushButton:hover{
+border-image: url(:/images/icon/images/列表顺序(1).png);
+}</string>
+         </property>
          <property name="text">
-          <string>播放顺序</string>
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnPlaySheet">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+
+border-image: url(:/images/icon/images/音乐列表.png);
+}
+QPushButton:hover{
+border-image: url(:/images/icon/images/音乐列表(1).png);
+}</string>
+         </property>
          <property name="text">
-          <string>播放列表</string>
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnLyrics">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="styleSheet">
-          <string notr="true">
-color: rgb(18, 150, 219);</string>
+          <string notr="true">QPushButton{
+
+	border-image: url(:/images/icon/images/词 (3).png);
+}
+QPushButton:hover{
+border-image: url(:/images/icon/images/词 (2).png);
+}</string>
          </property>
          <property name="text">
-          <string>歌词</string>
+          <string/>
          </property>
         </widget>
        </item>

@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include "playmusicdetialcontroller.h"
+#include <QPixmap>
+#include "lyrics.h"
+#include <QIcon>
 
 class PlayMusicDetialController;
 
@@ -22,6 +25,9 @@ public:
 
     void updateView(Music music);
 
+    // QObject interface
+    bool event(QEvent *event);
+
 private:
     Ui::PlayMusicDetialView *ui;
     PlayMusicDetialController* __playMusicDetialCtrl;
@@ -29,9 +35,14 @@ private:
 
     void __initView();
 
-    // QObject interface
-public:
-    bool event(QEvent *event);
+
+    Music __music;
+
+public slots:
+    void updateLyrics(qint64 position);
+
+private slots:
+    void on_btnMin_clicked();
 };
 
 #endif // PLAYMUSICDETIALVIEW_H

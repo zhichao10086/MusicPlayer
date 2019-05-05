@@ -14,7 +14,95 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QWidget#DownLoadView{
+background-color: rgb(249, 255, 239,50);
+}
+QListWidget{
+background-color: rgb(249, 255, 239,50);
+}
+
+
+QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+QTabBar::tab:hover{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+
+QListWidget{
+	background-color: rgb(252, 255, 251,100);
+}
+
+
+QLabel{
+	font: 9pt &quot;楷体&quot;;
+}
+
+QLineEdit{
+
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,100);
+
+}
+QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+}
+
+
+QTabWidget::tab-bar {  		/*整个最上面的tab栏*/
+    alignment: center;  
+	left:20px;
+
+	
+} 
+
+QTabWidget::QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+
+}
+
+QTabWidget{
+
+	background-color: rgb(249, 255, 239,0);
+
+}
+
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
    <property name="spacing">
@@ -34,8 +122,11 @@
    </property>
    <item>
     <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="downloadedWidget">
       <attribute name="title">
@@ -61,9 +152,11 @@
               <widget class="QLabel" name="label_2">
                <property name="font">
                 <font>
-                 <pointsize>20</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <family>楷体</family>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="styleSheet">
@@ -79,6 +172,12 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnOpenDir_2">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="text">
                 <string>目录</string>
                </property>
@@ -172,7 +271,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,19">
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>

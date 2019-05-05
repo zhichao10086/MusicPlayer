@@ -4,6 +4,7 @@
 #include <QStringList>
 #include <QDir>
 #include <iostream>
+#include <QTextCodec>
 
 using namespace std;
 
@@ -22,6 +23,12 @@ public:
     static QString qint642QString(qint64);
 
     static QString qint642QStringMinSec(qint64);
+
+    static QString GetCorrectUnicode(const QByteArray &ba);
+
+    static bool time2double(QString time,double& ret);
+
+
 };
 
 #endif // UTIL_H

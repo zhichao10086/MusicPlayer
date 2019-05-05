@@ -26,7 +26,7 @@ void LocalMusicController::init(PlayFuncController *pfc)
     this->_localMusicModel->setPlayFuncCtrl(pfc);
     this->_localMusicView = new LocalMusicView(this);
 
-
+    qDebug()<<"开始搜索";
     this->_localMusicModel->setMusics(this->searchMusics(this->_localMusicModel->dirs()));
     this->_localMusicView->updateListWidget(this->_localMusicModel->musics());
 
@@ -75,23 +75,13 @@ QList<Music> LocalMusicController::searchMusics(QStringList dirs)
         filenames.append(Util::getFileNames(dirs.at(i)));
 
     }
-    for(int i=0;i<files.size();i++){
-        //Music music(files.at(i));
-        //music.setMusicName(filenames.at(i));
-        //musics.append(music);
 
-        MP3Header mp3h;
-        const wchar_t* file = reinterpret_cast<const wchar_t*>(files.at(i).utf16());
-        MP3INFO mp3info =  mp3h.GetAllInfo(file,i);
-        Music music;
-        music.setAlbum(mp3info.Album);
-        music.setFileSize(mp3info.lenth);
-        music.setMusicName(mp3info.Name);
-        music.setSinger(mp3info.Singer);
-        music.setMusicPath(mp3info.Url);
-        musics.append(music);
-    }
+    musics =  FileFuncController::fromFilesGetMusicTags(files);
 
+
+
+
+    qDebug()<<"搜索结束";
     return musics;
 //    for(int i =0;i<files.size();i++){
 
@@ -100,6 +90,13 @@ QList<Music> LocalMusicController::searchMusics(QStringList dirs)
 //    }
 
 }
+
+MusicSheet LocalMusicController::getCurMusicSheet()
+{
+    return this->localMusicModel()->getPlayFuncCtrl()->currentMusicSheet();
+}
+
+
 
 Music LocalMusicController::getMusic(int index)
 {

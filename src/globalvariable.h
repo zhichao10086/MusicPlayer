@@ -9,6 +9,7 @@
 #include "user.h"
 #include <QJsonObject>
 #include "filefunccontroller.h"
+#include "musicplayercontroller.h"
 
 class PlayMusicDetialController;
 class user;
@@ -27,8 +28,12 @@ public:
     //是否登陆
     static bool global_Islogin;
 
+    //本地文件夹绝对路径
+    static QString global_local_file_path;
+
     //用户文件绝对路径
     static QString global_user_absolute_file;
+
 
 
     //判断是否登陆

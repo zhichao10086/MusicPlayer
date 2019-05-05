@@ -60,8 +60,17 @@ void PlayMusicDetialController::setCurPlayMusic(Music value)
 
 void PlayMusicDetialController::updateView(Music music)
 {
+    if(this->__playMusicDetialModel->getMusic() == music){
+        return;
+    }
+    this->__playMusicDetialModel->setMusic(music);
 
     this->__playMusicDetialView->updateView(music);
+}
+
+void PlayMusicDetialController::updateLyricsView(qint64 position)
+{
+    this->__playMusicDetialView->updateLyrics(position);
 }
 
 

@@ -130,6 +130,10 @@ MusicPlayerView* PlayFuncModel::getMusicPlayerView()
 Music PlayFuncModel::getCurPlayMusic()
 {
     int index = this->mediaPlayList()->currentIndex();
+    if(index <0 || index >= this->curMusicSheet().musics().size()){
+        Music a;
+        return a;
+    }
     return this->curMusicSheet().musics().at(index);
 }
 

@@ -13,6 +13,7 @@
 #include <qmenubutton.h>
 #include <QMenu>
 #include <QAction>
+#include <QIcon>
 
 class PlayFuncController;
 
@@ -50,6 +51,8 @@ public:
     //设置背景图片
     void setBackgroundImage(QPixmap& p);
 
+
+
     //设置音量滑动条
     void setVolume(int);
 
@@ -61,7 +64,7 @@ public:
 
 
     //连接进度与滑动条
-    void connectTimeAndSlider(QMediaPlayer* mp);
+    //void connectTimeAndSlider(QMediaPlayer* mp);
 
 Q_SIGNALS:
     //自定义滑动条拖动事件
@@ -72,6 +75,8 @@ public slots:
     void showCurPosition(qint64);
     void setTimeSLiderRange(qint64);
     void setTimeSliderPosition(qint64);
+
+    void setMusicImageThumbnail(QPixmap& p);
 
 
 
@@ -89,9 +94,7 @@ private slots:
     //播放列表
     void on_btnPlaySheet_clicked();
 
-
-
-
+    //详细播放界面
     void on_btnMusicDetial_clicked();
 
     void on_btnPlayMode_clicked();

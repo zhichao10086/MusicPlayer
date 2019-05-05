@@ -33,6 +33,7 @@ public:
     QString name() const;
     void setName(const QString &name);
 
+
     int age() const;
     void setAge(int age);
 
@@ -54,9 +55,14 @@ public:
     MusicSheet playedMusicSheet() const;
     void setPlayedMusicSheet(const MusicSheet playedMusicSheet);
 
+    QString getUserID() const;
+    void setUserID(const QString &value);
+
 private:
     QString __name;
     int __age;
+
+    QString userID;
 
     //创建的歌单
     QList<MusicSheet> __createdMusicSheets;

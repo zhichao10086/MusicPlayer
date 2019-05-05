@@ -12,23 +12,18 @@ Music::Music(QString path):
     init();
 }
 
-Music::Music(QString name, QString singer, QString time):
-    _musicName(name),_singer(singer),_time(time)
-{
-    init();
-}
 
 Music Music::fromJsonObj2Music(QJsonObject &obj)
 {
     Music music;
     if(obj.empty())
         return music;
-    music.setMusicName(obj.value("musicName").toString());
+    music.setTitle(obj.value("title").toString());
     music.setAlbum(obj.value("album").toString());
     music.setFileSize(obj.value("fileSize").toInt());
     music.setMusicPath(obj.value("musicPath").toString());
     music.setMusicNetPath(obj.value("musicNetPath").toString());
-    music.setSinger(obj.value("singer").toString());
+    music.setArtist(obj.value("artist").toString());
     music.setTime(obj.value("time").toString());
     music.setMusicHot(obj.value("musicHot").toInt());
 
@@ -39,8 +34,8 @@ Music Music::fromJsonObj2Music(QJsonObject &obj)
 QJsonObject Music::toJsonObj() const
 {
     QJsonObject obj;
-    obj.insert(QString("musicName"),this->musicName());
-    obj.insert(QString("singer"),this->singer());
+    obj.insert(QString("title"),this->title());
+    obj.insert(QString("artist"),this->artist());
     obj.insert(QString("album"),this->album());
     obj.insert(QString("time"),this->time());
     obj.insert(QString("musicPath"),this->musicPath());
@@ -61,9 +56,10 @@ void Music::init()
 
 bool Music::isEmpty()
 {
-    if(this->_musicName.isEmpty()){
+    if(this->_title.isEmpty()){
         return true;
     }
+    return false;
 }
 
 bool Music::operator==(const Music &a)
@@ -72,6 +68,118 @@ bool Music::operator==(const Music &a)
         return true;
     }
     return false;
+}
+
+QString Music::lyricsPath() const
+{
+    return _lyricsPath;
+}
+
+void Music::setLyricsPath(const QString &lyricsPath)
+{
+    _lyricsPath = lyricsPath;
+}
+
+Lyrics Music::lyrics() const
+{
+    return _lyrics;
+}
+
+void Music::setLyrics(const Lyrics &lyrics)
+{
+    _lyrics = lyrics;
+}
+
+QList<QImage> Music::images() const
+{
+    return _images;
+}
+
+void Music::setImages(const QList<QImage> &images)
+{
+    _images = images;
+}
+
+
+QString Music::comment() const
+{
+    return _comment;
+}
+
+void Music::setComment(const QString &comment)
+{
+    _comment = comment;
+}
+
+QString Music::encoder() const
+{
+    return _encoder;
+}
+
+void Music::setEncoder(const QString &encoder)
+{
+    _encoder = encoder;
+}
+
+QString Music::imageUrl() const
+{
+    return _imageUrl;
+}
+
+void Music::setImageUrl(const QString &imageUrl)
+{
+    _imageUrl = imageUrl;
+}
+
+
+int Music::track() const
+{
+    return _track;
+}
+
+void Music::setTrack(int track)
+{
+    _track = track;
+}
+
+int Music::disc() const
+{
+    return _disc;
+}
+
+void Music::setDisc(int disc)
+{
+    _disc = disc;
+}
+
+QString Music::publishDate() const
+{
+    return _publishDate;
+}
+
+void Music::setPublishDate(const QString &publishDate)
+{
+    _publishDate = publishDate;
+}
+
+QString Music::artist() const
+{
+    return _artist;
+}
+
+void Music::setArtist(const QString &artist)
+{
+    _artist = artist;
+}
+
+QString Music::title() const
+{
+    return _title;
+}
+
+void Music::setTitle(const QString &title)
+{
+    _title = title;
 }
 
 
@@ -126,15 +234,6 @@ void Music::setAlbum(const QString &album)
     _album = album;
 }
 
-QString Music::singer() const
-{
-    return _singer;
-}
-
-void Music::setSinger(const QString &singer)
-{
-    _singer = singer;
-}
 
 QString Music::time() const
 {
@@ -156,14 +255,3 @@ void Music::setMusicPath(const QString &musicPath)
     _musicPath = musicPath;
 }
 
-
-
-QString Music::musicName() const
-{
-    return _musicName;
-}
-
-void Music::setMusicName(const QString &musicName)
-{
-    _musicName = musicName;
-}

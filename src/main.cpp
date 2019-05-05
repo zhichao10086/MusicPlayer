@@ -2,11 +2,19 @@
 #include <QApplication>
 #include "mainwindowcontroller.h"
 #include <iostream>
-#include <Python.h>
-#include "mp3header.h"
+
+
 extern "C"
 {
-    #include <libavutil/avutil.h>
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+#include <libavutil/avutil.h>
+#include <libswscale/swscale.h>
+#include <libavutil/imgutils.h>
+#include <libavutil/opt.h>
+#include <libavutil/mathematics.h>
+#include <libavutil/samplefmt.h>
+#include <libavdevice/avdevice.h>
 }
 
 
@@ -26,7 +34,12 @@ int main(int argc, char *argv[])
     }
     Py_Finalize();
     */
-    cout<<av_version_info()<<endl;
+    //avcodec_init();
+    //av_register_all();
+    //avformat_network_init();
+    //avdevice_register_all();
+
+    //cout<<av_version_info()<<endl;
 
     QApplication a(argc, argv);
 

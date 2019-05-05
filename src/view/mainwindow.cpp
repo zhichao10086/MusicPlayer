@@ -26,7 +26,8 @@ void MainWindow::init_view()
     ui->setupUi(this);
     //无边框
     this->setWindowFlags(windowFlags()|Qt::FramelessWindowHint);
-
+    this->setWindowState(Qt::WindowActive);
+    this->ui->statusbar->hide();
 
     QMainWindow::setCentralWidget(this->_mainWindowCtrl->getMusicPlayerView());
     //cout<<this->_mainWindowCtrl->getMusicPlayerView()->size().height();

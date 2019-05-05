@@ -32,8 +32,12 @@ class PlayFuncController:public QObject
     Q_OBJECT
 public:
 
+    static PlayFuncController* global_PlayFuncCtrl;
+
     PlayFuncController();
     PlayFuncController(MusicPlayerController* mpc);
+
+    static PlayFuncController* newInstance();
 
 
     PlayFuncModel* _playFuncModel;
@@ -110,6 +114,13 @@ public:
      */
     Music currentPlayMusic();
 
+
+    /*
+     *当前歌单
+     *
+     */
+    MusicSheet currentMusicSheet();
+
     /*
      * playmusic播放当前歌曲的时候会调用setcurrentMusic
      *
@@ -141,6 +152,8 @@ public:
     void playMusic(int index);
 
 
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    //连接信号槽
 
     /*
      * 连接时间显示
@@ -198,6 +211,11 @@ public slots:
     void updateDetialMusicView();
 
     /*
+     * 刷新详细页面的歌词
+     */
+    void updateDetialMusicLyricsView(qint64);
+
+    /*
      * 添加当前音乐到最近播放列表
      */
     void addMusicToRecentPlaySheet(int index);
@@ -211,6 +229,11 @@ public slots:
      * 设置播放模式
      */
     void setMusicListMode(QMediaPlaylist::PlaybackMode mode);
+
+
+    /*
+     * 设置缩略图
+     */
 
 private:
     /*

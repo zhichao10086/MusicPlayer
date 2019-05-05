@@ -9,6 +9,7 @@
 #include "music.h"
 #include <QModelIndex>
 #include "playfunccontroller.h"
+#include "filefunccontroller.h"
 
 class LocalMusicModel;
 class LocalMusicView;
@@ -44,6 +45,8 @@ public:
      */
     QList<Music> searchMusics(QStringList paths);
 
+
+    MusicSheet getCurMusicSheet();
 
     Music getMusic(int index);
 

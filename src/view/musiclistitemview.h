@@ -29,7 +29,8 @@ public:
         LocalMusicListItem,
         SearchMusicListItem,
         PlaySheetListItem,
-        RecentSheetListItem
+        RecentSheetListItem,
+        MusicSheetListItem
     };
 
 
@@ -64,6 +65,8 @@ public:
 
     void recentSheetListItemShow();
 
+    void MusicSheetListItemShow();
+
     void initView();
 
 
@@ -73,7 +76,6 @@ public:
     void setMusic(const Music &music);
 
 private slots:
-    void on_labMusicName_linkHovered(const QString &link);
 
     void popupContextMenu(QPoint p);
 

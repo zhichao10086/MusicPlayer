@@ -17,6 +17,18 @@
    <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="5,2,1">
      <property name="rightMargin">
@@ -49,6 +61,22 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnOpenDir">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background-color: rgb(255, 255, 255,100);
+	border-radius:5px ;
+}
+QPushButton:hover{
+	background-color: rgb(255, 255, 255);
+	border-radius:5px ;
+}</string>
+         </property>
          <property name="text">
           <string>目录</string>
          </property>
@@ -56,6 +84,16 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255,200);
+border-radius:10px ;</string>
+         </property>
          <property name="text">
           <string>./local/</string>
          </property>
@@ -147,6 +185,10 @@
          <height>30</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255,200);
+border-radius:10px ;</string>
+       </property>
        <property name="text">
         <string>搜索</string>
        </property>
@@ -160,7 +202,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,4,2,2,2,2">
+      <layout class="QHBoxLayout" name="HL_header" stretch="1,4,2,2,2,2">
        <property name="rightMargin">
         <number>0</number>
        </property>
@@ -189,6 +231,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QLabel" name="label_4">
            <property name="sizePolicy">
@@ -268,7 +313,7 @@
            </property>
            <property name="minimumSize">
             <size>
-             <width>50</width>
+             <width>100</width>
              <height>0</height>
             </size>
            </property>
@@ -284,14 +329,14 @@
          <item>
           <widget class="QLabel" name="label_7">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>50</width>
+             <width>120</width>
              <height>0</height>
             </size>
            </property>
@@ -305,7 +350,13 @@
       </layout>
      </item>
      <item>
-      <widget class="QListWidget" name="lwMusicList"/>
+      <widget class="QListWidget" name="lwMusicList">
+       <property name="styleSheet">
+        <string notr="true">QListWidget{background-color: rgb(255, 255, 255,100);
+border-radius:10px ;
+}</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

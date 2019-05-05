@@ -16,6 +16,11 @@
 #include <QDateTime>
 #include <QListWidget>
 #include <QListWidgetItem>
+#include "musicsheetdetialview.h"
+#include <QPixmap>
+#include <QPalette>
+#include <QBrush>
+#include "musiccutview.h"
 
 
 namespace Ui {
@@ -24,6 +29,7 @@ class MusicPlayerView;
 
 using namespace std;
 class MusicPlayerController;
+class PlayMusicDetialView;
 
 class MusicPlayerView : public QWidget
 {
@@ -35,7 +41,8 @@ public:
     MusicPlayerView(MusicPlayerController* mpc);
     ~MusicPlayerView();
 
-
+    //重写
+    bool eventFilter(QObject *watched, QEvent *event);
 
 
     QPoint _dragPosition;
@@ -88,7 +95,7 @@ public:
 
     MusicPlayerController* _musicPlayerController;
     QWidget* _curMainWindowWidget = nullptr;
-
+    QWidget* _lastMainWindowWidget = nullptr;
 
 
 
@@ -105,8 +112,23 @@ private slots:
 
     void on_btnNewMusicSheet_clicked();
 
+    void on_listWdgSongSheet_doubleClicked(const QModelIndex &index);
+
+    void on_listWidgetCollect_doubleClicked(const QModelIndex &index);
+
+
+    void on_btnPullMySheet_clicked();
+
+    void on_btnCollectSheetPull_clicked();
+
+    void on_btnMusicCut_clicked();
+
 private:
     Ui::MusicPlayerView *ui;
+
+    bool __isMax;
+
+    QPixmap __p;
 };
 
 #endif // MUSICPLAYERVIEW_H

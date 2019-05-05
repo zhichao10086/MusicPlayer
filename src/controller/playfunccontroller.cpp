@@ -1,5 +1,7 @@
 #include "playfunccontroller.h"
 
+PlayFuncController* PlayFuncController::global_PlayFuncCtrl = nullptr;
+
 PlayFuncController::PlayFuncController()
 {
     this->init();
@@ -9,6 +11,11 @@ PlayFuncController::PlayFuncController(MusicPlayerController *mpc)
 {
     this->init();
     this->_playFuncModel->setMusicPlayerCtrl(mpc);
+}
+
+PlayFuncController *PlayFuncController::newInstance()
+{
+    return PlayFuncController:: global_PlayFuncCtrl;
 }
 
 
@@ -44,7 +51,7 @@ void PlayFuncController::init()
     //this->_playFuncModel->setPlaySheetCtrl(psc);
 
     this->_playFuncView = new PlayFuncView(this);
-
+    qDebug()<<"播放界面初始化完毕";
 
     //播放详细界面控制器
     PlayMusicDetialController* pmdc = PlayMusicDetialController::newInstance(this);
@@ -57,7 +64,7 @@ void PlayFuncController::init()
 void PlayFuncController::init_view()
 {
     this->init_Music_View();
-    this->connectCurMusicToDetialView();
+
 }
 
 MusicPlayerView *PlayFuncController::getMusicPlayerView()
@@ -87,6 +94,9 @@ void PlayFuncController::addMusicToRecentPlaySheet(int index)
 
     MusicSheet ms =  pfm->curMusicSheet();
 
+    /*
+     * 用全局用户实现
+     */
     User& user = GlobalVariable::get_global_User();
     user.addRecentPlayMusic(ms.musics().at(index));
 
@@ -98,18 +108,25 @@ void PlayFuncController::addMusicToRecentPlaySheet(int index)
 }
 
 void PlayFuncController::setLyricsInMusic()
-{   QMediaPlayer* p = this->playFuncModel()->mediaPlayer();
+{   //QMediaPlayer* p = this->playFuncModel()->mediaPlayer();
     //p->pause();
-    qDebug()<<"lyrics:";
+    //qDebug()<<"lyrics:";
 }
 
 
 void PlayFuncController::showDetialMusicView()
 {
-    //让主控制器去显示详细音乐界面  此时应该把音乐界面传过去
-    PlayMusicDetialController* pmdc = this->playFuncModel()->getPlayMusicDetialCtrl();
+
     //if(this->currentPlayMusic() == pmdc->getCurPlayMusic()){
         //如果相等 则直接显示
+
+    if(this->playFuncModel()->getCurPlayMusic().isEmpty() ){
+        return;
+    }
+    qDebug()<<"显示正在播放："<<this->playFuncModel()->getCurPlayMusic().title()<<this->playFuncModel()->mediaPlayList()->currentIndex();
+    //让主控制器去显示详细音乐界面  此时应该把音乐界面传过去
+    PlayMusicDetialController* pmdc = this->playFuncModel()->getPlayMusicDetialCtrl();
+
 
     //每次都刷新一次界面
     pmdc->updateView(this->_playFuncModel->getCurPlayMusic());
@@ -121,15 +138,34 @@ void PlayFuncController::showDetialMusicView()
 
 void PlayFuncController::updateDetialMusicView()
 {
+
+
     //让主控制器去显示详细音乐界面  此时应该把音乐界面传过去
     PlayMusicDetialController* pmdc = this->playFuncModel()->getPlayMusicDetialCtrl();
     //if(this->currentPlayMusic() == pmdc->getCurPlayMusic()){
         //如果相等 则直接显示
 
-    pmdc->setCurPlayMusic(this->_playFuncModel->getCurPlayMusic());
+    Music music = this->_playFuncModel->getCurPlayMusic();
+
+
+    //刷新缩略图
+    if(!music.images().empty()){
+        QPixmap p = QPixmap::fromImage(music.images().at(0));
+        this->_playFuncView->setMusicImageThumbnail(p);
+    }
+
 
     //每次都刷新一次界面
-    pmdc->updateView(this->_playFuncModel->getCurPlayMusic());
+    pmdc->updateView(music);
+
+
+}
+
+void PlayFuncController::updateDetialMusicLyricsView(qint64 position)
+{
+    PlayMusicDetialController* pmdc = this->playFuncModel()->getPlayMusicDetialCtrl();
+    qDebug()<<position;
+    pmdc->updateLyricsView(position);
 }
 
 void PlayFuncController::play()
@@ -227,6 +263,7 @@ bool PlayFuncController::setCurrentMusicSheet(MusicSheet musicSheet)
     //psc->updatePlaySheet(this->playFuncModel()->getCurMusicSheet());
     qDebug()<<"updateplaysheetView"<<endl;
     psc->updatePlaySheetView(this->playFuncModel()->getCurMusicSheet());
+    return true;
 
 }
 
@@ -238,6 +275,11 @@ void PlayFuncController::updateRecentMusicSheet(Music music)
 Music PlayFuncController::currentPlayMusic()
 {
     return this->playFuncModel()->getCurPlayMusic();
+}
+
+MusicSheet PlayFuncController::currentMusicSheet()
+{
+    return this->playFuncModel()->curMusicSheet();
 }
 
 void PlayFuncController::setCurrentMusic(const Music& music)
@@ -274,13 +316,22 @@ void PlayFuncController::init_Music_View()
     this->connectTimeSlider();
     this->connectVolumeSlider();
 
+    this->connectCurMusicToDetialView();
+
+
+    //连接 缩略图
+
+    QObject::connect(this->playFuncModel()->mediaPlayer(),&QMediaPlayer::durationChanged,
+                     this,&PlayFuncController::updateDetialMusicView);
+
+
     //connect 当前音乐 添加到最近播放
     QObject::connect(this->playFuncModel()->mediaPlayList(),&QMediaPlaylist::currentIndexChanged,
                      this,&PlayFuncController::addMusicToRecentPlaySheet);
 
     //connect 当前音乐的歌词 添加到
-    QObject::connect(this->playFuncModel()->mediaPlayList(),&QMediaPlaylist::currentIndexChanged,
-                     this,&PlayFuncController::setLyricsInMusic);
+//    QObject::connect(this->playFuncModel()->mediaPlayList(),&QMediaPlaylist::currentIndexChanged,
+//                     this,&PlayFuncController::setLyricsInMusic);
 
 }
 
@@ -339,7 +390,7 @@ void PlayFuncController::connectTimeSlider()
     QMediaPlayer* mp = this->playFuncModel()->mediaPlayer();
     //1.将总时间连接到滑动条
     //2.将滑动条事件连接到数据播放器
-    QSlider* timeSlider = this->playFuncView()->getTimeSlider();
+    //QSlider* timeSlider = this->playFuncView()->getTimeSlider();
     QObject::connect(mp,&QMediaPlayer::durationChanged,this->playFuncView(),&PlayFuncView::setTimeSLiderRange);
 
     //QObject::connect(timeSlider,&QSlider::valueChanged,mp,&QMediaPlayer::setPosition);
@@ -361,8 +412,13 @@ void PlayFuncController::connectVolumeSlider()
 void PlayFuncController::connectCurMusicToDetialView()
 {
     QMediaPlayer* mp = this->playFuncModel()->mediaPlayer();
-    QObject::connect(mp,&QMediaPlayer::currentMediaChanged,
+    QObject::connect(mp,&QMediaPlayer::mediaChanged,
                      this,&PlayFuncController::updateDetialMusicView);
+
+    //连接刷新歌词界面
+    QObject::connect(mp,&QMediaPlayer::positionChanged,
+                     this,&PlayFuncController::updateDetialMusicLyricsView);
+
 }
 
 PlaySheetView *PlayFuncController::getPlaySheetView()

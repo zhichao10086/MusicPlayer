@@ -79,14 +79,28 @@ void PlayFuncView::init_view()
 
 void PlayFuncView::setStartView()
 {
-    this->ui->btnStartOrPause->setStyleSheet(tr("border-image: url(:/images/icon/images/play_1296db.png);"));
+    //this->ui->btnStartOrPause->setStyleSheet(tr("border-image: url(:/images/icon/images/play_1296db.png);"));
+    this->ui->btnStartOrPause->setStyleSheet("QPushButton{	\
+                                             border-image: url(:/images/icon/images/播放(7).png);\
+                                         }\
+                                         QPushButton:hover{\
+                                             border-image: url(:/images/icon/images/播放(6).png);\
+                                         }");
 }
 
 void PlayFuncView::setPauseView()
 {
     //设置停止界面
 
-    this->ui->btnStartOrPause->setStyleSheet(tr("border-image: url(:/images/icon/images/pause_1296db.png);"));
+    //this->ui->btnStartOrPause->setStyleSheet(tr("border-image: url(:/images/icon/images/pause_1296db.png);"));
+
+    this->ui->btnStartOrPause->setStyleSheet("QPushButton{	\
+                                             border-image: url(:/images/icon/images/暂停.png);\
+                                         }\
+                                         QPushButton:hover{\
+                                             border-image: url(:/images/icon/images/暂停(1).png);\
+                                         }");
+
 }
 
 void PlayFuncView::setBackgroundImage(QPixmap &p)
@@ -116,10 +130,7 @@ QSlider *PlayFuncView::getVolumeSlider()
     return this->ui->volumeSlider;
 }
 
-void PlayFuncView::connectTimeAndSlider(QMediaPlayer *mp)
-{
 
-}
 
 void PlayFuncView::showCurDuration(qint64 all)
 {
@@ -144,6 +155,21 @@ void PlayFuncView::setTimeSliderPosition(qint64 position)
     //qDebug()<<lastValue<<" "<<curValue;
     if (lastValue != curValue)
         this->ui->timeSlider->setValue(curValue);
+}
+
+void PlayFuncView::setMusicImageThumbnail(QPixmap &p)
+{
+    this->ui->btnMusicDetial->setText("");
+    this->ui->btnMusicDetial->setAutoFillBackground(true);
+    //设置背景
+    QPixmap p1 = p.scaled(this->ui->btnMusicDetial->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    QPalette pal;
+    pal.setBrush(QPalette::Button,QBrush(p1));
+    this->ui->btnMusicDetial->setPalette(pal);
+    //QSize size = this->ui->btnMusicDetial->size();
+    //this->ui->btnMusicDetial->setIconSize(size);
+    //this->ui->btnMusicDetial->setIcon(QIcon(p.scaled(size)));
+    //this->ui->btnMusicDetial->setPalette(pal);
 }
 
 void PlayFuncView::on_btnStartOrPause_clicked()

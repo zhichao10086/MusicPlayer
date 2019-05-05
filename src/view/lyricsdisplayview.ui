@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LyricsDisplayView</class>
+ <widget class="QWidget" name="LyricsDisplayView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>729</width>
+    <height>503</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QListWidget{
+background-color: rgba(253, 255, 248, 100);
+
+}
+QListWidget::Item{
+	padding-top:5px; padding-bottom:4px; 
+}
+QListWidget::Item:hover{
+background:rgba(119,119,119,50); color:black; 
+}
+
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QListWidget" name="listWidget"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

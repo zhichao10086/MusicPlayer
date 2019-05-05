@@ -13,17 +13,126 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#PlaySheetView{
+background-color: rgb(249, 255, 239,50);
+}
+
+QListWidget{
+background-color: rgba(253, 255, 248, 100);
+
+}
+QListWidget::Item{
+	padding-top:5px; padding-bottom:4px; 
+}
+QListWidget::Item:selected{
+	padding-top:5px; padding-bottom:4px; 
+	background:rgba(249, 255, 239,100);
+	min-height:35;
+}
+
+QListWidget::Item:hover{
+background:rgba(119,119,119,50); color:black; 
+}
+
+
+
+
+
+QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+QTabBar::tab:hover{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+
+
+
+
+QLabel{
+	font: 9pt &quot;楷体&quot;;
+}
+
+
+
+QTabWidget::tab-bar {  		/*整个最上面的tab栏*/
+    alignment: center;  
+	left:20px;
+
+	
+} 
+
+QTabWidget::QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+
+}
+
+QTabWidget{
+
+	background-color: rgb(249, 255, 239,0);
+
+}
+
+</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="widgetPlaySheet">
       <attribute name="title">
        <string>播放列表</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QListWidget" name="lwplaySheet"/>
        </item>
@@ -34,6 +143,18 @@
        <string>最近播放</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QListWidget" name="lwRecentPlaySheet"/>
        </item>

@@ -15,7 +15,7 @@ User User::jsonObj2User(const QJsonObject &obj)
 
     user.setName(obj.value("name").toString());
     user.setAge(obj.value("age").toInt(18));
-
+    user.setUserID(obj.value("userID").toString());
 
     //创建过的歌单列表
     QJsonArray cmsArray = obj.value("createdMusicSheets").toArray();
@@ -59,6 +59,7 @@ QJsonObject User::toJsonObj()
     //obj.insert()
     obj.insert("name",this->name());
     obj.insert("age",this->age());
+    obj.insert("userID",this->getUserID());
 
     QJsonArray createdSheetsArray;
     QList<MusicSheet> createdSheets = this->createdMusicSheets();
@@ -159,5 +160,15 @@ MusicSheet User::playedMusicSheet() const
 void User::setPlayedMusicSheet(const MusicSheet playedMusicSheet)
 {
     __playedMusicSheet = playedMusicSheet;
+}
+
+QString User::getUserID() const
+{
+    return userID;
+}
+
+void User::setUserID(const QString &value)
+{
+    userID = value;
 }
 

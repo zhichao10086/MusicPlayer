@@ -7,6 +7,7 @@
         <file>images/background1.jpg</file>
         <file>images/background_dang.jpg</file>
         <file>images/background_yun.png</file>
+        <file>images/flower.jpg</file>
     </qresource>
     <qresource prefix="/strings"/>
     <qresource prefix="/images/icon">
@@ -21,5 +22,91 @@
         <file>images/close.png</file>
         <file>images/max.png</file>
         <file>images/min.png</file>
+        <file>images/播放(1).png</file>
+        <file>images/播放(3).png</file>
+        <file>images/播放(4).png</file>
+        <file>images/播放(6).png</file>
+        <file>images/播放(7).png</file>
+        <file>images/播放(8).png</file>
+        <file>images/播放(9).png</file>
+        <file>images/播放.png</file>
+        <file>images/播放列表(1).png</file>
+        <file>images/播放列表(2).png</file>
+        <file>images/单曲循环_32.png</file>
+        <file>images/电脑(1).png</file>
+        <file>images/电脑.png</file>
+        <file>images/返回(1).png</file>
+        <file>images/返回.png</file>
+        <file>images/方向-左(1).png</file>
+        <file>images/方向-左.png</file>
+        <file>images/放大(1).png</file>
+        <file>images/放大(2).png</file>
+        <file>images/关闭(4).png</file>
+        <file>images/关闭(5).png</file>
+        <file>images/关闭(6).png</file>
+        <file>images/关闭(7).png</file>
+        <file>images/删除(1).png</file>
+        <file>images/删除(2).png</file>
+        <file>images/删除(3).png</file>
+        <file>images/删除.png</file>
+        <file>images/上一首(1).png</file>
+        <file>images/上一首.png</file>
+        <file>images/设置(3).png</file>
+        <file>images/设置(4).png</file>
+        <file>images/收藏(1).png</file>
+        <file>images/收藏(2).png</file>
+        <file>images/收藏(4).png</file>
+        <file>images/收藏(5).png</file>
+        <file>images/收藏.png</file>
+        <file>images/搜索(1).png</file>
+        <file>images/搜索.png</file>
+        <file>images/随机播放_32(1).png</file>
+        <file>images/随机播放_32.png</file>
+        <file>images/缩小(1).png</file>
+        <file>images/缩小(2).png</file>
+        <file>images/推荐(1).png</file>
+        <file>images/推荐.png</file>
+        <file>images/下载(1).png</file>
+        <file>images/下载.png</file>
+        <file>images/向左(1).png</file>
+        <file>images/向左.png</file>
+        <file>images/循环播放_32(1).png</file>
+        <file>images/循环播放_32.png</file>
+        <file>images/音乐(1).png</file>
+        <file>images/音乐.png</file>
+        <file>images/收起(1).png</file>
+        <file>images/收起.png</file>
+        <file>images/下拉(1).png</file>
+        <file>images/下拉.png</file>
+        <file>images/新建(1).png</file>
+        <file>images/新建.png</file>
+        <file>images/下一首(1).png</file>
+        <file>images/下一首.png</file>
+        <file>images/暂停(1).png</file>
+        <file>images/暂停.png</file>
+        <file>images/列表顺序(1).png</file>
+        <file>images/列表顺序.png</file>
+        <file>images/音乐列表(1).png</file>
+        <file>images/音乐列表(2).png</file>
+        <file>images/音乐列表(3).png</file>
+        <file>images/音乐列表.png</file>
+        <file>images/词 (1).png</file>
+        <file>images/词 (2).png</file>
+        <file>images/词 (3).png</file>
+        <file>images/词 (4).png</file>
+        <file>images/圆形.png</file>
+        <file>images/喜欢(1).png</file>
+        <file>images/喜欢.png</file>
+        <file>images/分享(1).png</file>
+        <file>images/分享(2).png</file>
+        <file>images/分享.png</file>
+        <file>images/收藏夹(1).png</file>
+        <file>images/收藏夹(2).png</file>
+        <file>images/收藏夹.png</file>
+        <file>images/缩小(3).png</file>
+        <file>images/缩小(4).png</file>
+        <file>images/缩小(5).png</file>
+        <file>images/缩小(6).png</file>
+        <file>images/缩小(7).png</file>
     </qresource>
 </RCC>

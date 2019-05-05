@@ -19,16 +19,47 @@ void MusicPlayerModel::init()
     _pfView = _pfc->playFuncView();
     _pfModel = _pfc->playFuncModel();
 
+    MusicPlayerController::single_playfuncCtrl = _pfc;
+    qDebug()<<"初始化播放控制完毕";
+
     //本地文件控制器与界面
     _localMusicCtrl  =  new LocalMusicController(_pfc);
     _localMusicModel = _localMusicCtrl->localMusicModel();
     _localMusicView = _localMusicCtrl->localMusicView();
+
+    qDebug()<<"初始化本地控制完毕";
+
 
     //下载文件控制器与界面
     _downloadCtrl = new DownLoadController(_pfc);
     _downloadModel = _downloadCtrl->downLoadModel();
     _downloadView = _downloadCtrl->downLoadView();
 
+    //歌曲列表详细界面
+    _musicSheetDetialCtrl = MusicSheetDetialController::newInstance();
+    _musicSheetDetialModel = _musicSheetDetialCtrl->msdModel();
+    _musicSheetDetialView = _musicSheetDetialCtrl->msdView();
+
+}
+
+MusicSheetDetialController *MusicPlayerModel::musicSheetDetialCtrl() const
+{
+    return _musicSheetDetialCtrl;
+}
+
+void MusicPlayerModel::setMusicSheetDetialCtrl(MusicSheetDetialController *musicSheetDetialCtrl)
+{
+    _musicSheetDetialCtrl = musicSheetDetialCtrl;
+}
+
+MusicSheetDetialView *MusicPlayerModel::musicSheetDetialView() const
+{
+    return _musicSheetDetialView;
+}
+
+void MusicPlayerModel::setMusicSheetDetialView(MusicSheetDetialView *musicSheetDetialView)
+{
+    _musicSheetDetialView = musicSheetDetialView;
 }
 
 MainWindow *MusicPlayerModel::mainWindow() const

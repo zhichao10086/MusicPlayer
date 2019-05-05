@@ -12,8 +12,18 @@ MusicSheet MusicSheet::fromJsonObj2MusicSheet(QJsonObject &obj)
     MusicSheet ms;
     if(obj.empty())
         return ms;
-    ms.setCreateTime(obj.value("createTime").toString());
-    ms.setSheetName(obj.value("sheetName").toString());
+    if(obj.contains("createTime"))
+        ms.setCreateTime(obj.value("createTime").toString());
+    if(obj.contains("sheetName"))
+        ms.setSheetName(obj.value("sheetName").toString());
+    if(obj.contains("playCount"))
+        ms.setPlayCount(obj.value("playCount").toInt());
+    if(obj.contains("collectCount"))
+        ms.setCollectCount(obj.value("collectCount").toInt());
+    if(obj.contains("localImageUrl"))
+        ms.setLocalSheetImageUrl(obj.value("localImageUrl").toString());
+    if(obj.contains("netSheetImageUrl"))
+        ms.setNetSheetImageUrl(obj.value("netSheetImageUrl").toString());
 
     QList<Music> musicList;
 
@@ -37,6 +47,11 @@ QJsonObject MusicSheet::toJsonObj() const
     QJsonObject obj;
     obj.insert("sheetName",this->sheetName());
     obj.insert("createTime",this->createTime());
+    obj.insert("playCount",this->playCount());
+    obj.insert("collectCount",this->collectCount());
+    obj.insert("localImageUrl",this->localSheetImageUrl());
+    obj.insert("netSheetImageUrl",this->netSheetImageUrl());
+
     QJsonArray array;
 
     QList<Music> musics = this->musics();
@@ -48,6 +63,23 @@ QJsonObject MusicSheet::toJsonObj() const
     obj.insert("musics",array);
     return obj;
 }
+
+bool MusicSheet::operator ==(MusicSheet a)
+{
+    if(this->sheetName() == a.sheetName()){
+        return true;
+    }
+    return false;
+}
+
+//bool MusicSheet::operator==(MusicSheet &a, MusicSheet &b)
+//{
+//    if(a.sheetName() == b.sheetName()){
+//        return true;
+//    }
+//    return false;
+//}
+
 
 int MusicSheet::addMusic(const Music& music)
 {
@@ -79,6 +111,86 @@ void MusicSheet::insertMusic(int index, Music music)
     }
     this->_musics.insert(index,music);
 
+}
+
+QString MusicSheet::userHeadImageUrl() const
+{
+    return _userHeadImageUrl;
+}
+
+void MusicSheet::setUserHeadImageUrl(const QString &userHeadImageUrl)
+{
+    _userHeadImageUrl = userHeadImageUrl;
+}
+
+QString MusicSheet::introducement() const
+{
+    return _introducement;
+}
+
+void MusicSheet::setIntroducement(const QString &introducement)
+{
+    _introducement = introducement;
+}
+
+QString MusicSheet::userName() const
+{
+    return _userName;
+}
+
+void MusicSheet::setUserName(const QString &userName)
+{
+    _userName = userName;
+}
+
+QString MusicSheet::userID() const
+{
+    return _userID;
+}
+
+void MusicSheet::setUserID(const QString &userID)
+{
+    _userID = userID;
+}
+
+QString MusicSheet::netSheetImageUrl() const
+{
+    return _netSheetImageUrl;
+}
+
+void MusicSheet::setNetSheetImageUrl(const QString &netSheetImageUrl)
+{
+    _netSheetImageUrl = netSheetImageUrl;
+}
+
+QString MusicSheet::localSheetImageUrl() const
+{
+    return _localSheetImageUrl;
+}
+
+void MusicSheet::setLocalSheetImageUrl(const QString &localSheetImageUrl)
+{
+    _localSheetImageUrl = localSheetImageUrl;
+}
+
+int MusicSheet::collectCount() const
+{
+    return _collectCount;
+}
+
+void MusicSheet::setCollectCount(int collectCount)
+{
+    _collectCount = collectCount;
+}
+
+int MusicSheet::playCount() const
+{
+    return _playCount;
+}
+
+void MusicSheet::setPlayCount(int playCount)
+{
+    _playCount = playCount;
 }
 
 

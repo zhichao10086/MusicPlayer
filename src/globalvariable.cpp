@@ -37,3 +37,4 @@ QJsonObject GlobalVariable::settingObj = QJsonObject();
 User GlobalVariable::global_User = User();
 bool GlobalVariable::global_Islogin = false;
 QString GlobalVariable::global_user_absolute_file = "";
+QString GlobalVariable::global_local_file_path = "";

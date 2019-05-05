@@ -1,5 +1,8 @@
 #include "musicplayercontroller.h"
 
+PlayFuncController* MusicPlayerController::single_playfuncCtrl = nullptr;
+
+
 MusicPlayerController::MusicPlayerController()
 {
     this->init();
@@ -15,6 +18,16 @@ MusicPlayerController::MusicPlayerController(MainWindowController *mwc)
     this->_musicPlayerModel->setMainWindow(mwc->getMainWindow());
 }
 
+PlayFuncController *MusicPlayerController::getSinglePlayFuncCtrl()
+{
+    return MusicPlayerController::single_playfuncCtrl;
+}
+
+MusicSheetDetialView *MusicPlayerController::getMusicSheetDetialView()
+{
+    return this->_musicPlayerModel->musicSheetDetialView();
+}
+
 
 MusicPlayerView *MusicPlayerController::musicPlayerView() const
 {
@@ -24,6 +37,17 @@ MusicPlayerView *MusicPlayerController::musicPlayerView() const
 void MusicPlayerController::setMusicPlayerView(MusicPlayerView *musicPlayerView)
 {
     _musicPlayerView = musicPlayerView;
+}
+
+QList<MusicSheet> MusicPlayerController::getCollectSheet()
+{
+    return GlobalVariable::get_global_User().collectedMusicSheets();
+
+}
+
+QList<MusicSheet> MusicPlayerController::getCreatedSheet()
+{
+    return GlobalVariable::get_global_User().createdMusicSheets();
 }
 
 MusicPlayerView *MusicPlayerController::getMusicPlayerView() const
@@ -45,8 +69,10 @@ void MusicPlayerController::init()
      */
 
     _musicPlayerModel = new MusicPlayerModel(this);
+    qDebug()<<"musicplayermodel 完毕";
     _musicPlayerView = new MusicPlayerView(this);
     this->init_view();
+    qDebug()<<"初始化完毕";
 
 }
 
@@ -62,6 +88,9 @@ void MusicPlayerController::initEnv()
     if(!localDir.exists()){
         curDir.mkdir(CONST_GLOBAL_STRING_LOCAL_DIR);
     }
+
+    GlobalVariable::global_local_file_path = localDir.absolutePath();
+
     QDir downloadDir(appPath +"/" + CONST_GLOBAL_STRING_DOWNLOAD_DIR);
     if(!downloadDir.exists()){
         curDir.mkdir(CONST_GLOBAL_STRING_DOWNLOAD_DIR);
@@ -165,6 +194,13 @@ void MusicPlayerController::show()
 void MusicPlayerController::showMusicDetialView(PlayMusicDetialView *pmdv)
 {
     this->_musicPlayerView->setMainWindowWidget(pmdv);
+}
+
+void MusicPlayerController::showMusicSheetDetialView(MusicSheet &musicSheet)
+{
+    MusicSheetDetialView* msd =  this->_musicPlayerModel->musicSheetDetialView();
+    msd->updateView(musicSheet);
+    this->_musicPlayerView->setMainWindowWidget(msd);
 }
 
 void MusicPlayerController::setMainWindowWidget(int mode)

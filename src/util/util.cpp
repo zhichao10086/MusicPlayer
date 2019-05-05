@@ -55,6 +55,36 @@ QString Util::qint642QStringMinSec(qint64 playtime)
     return QString("%1:%2").arg(m).arg(s);
 }
 
+QString Util::GetCorrectUnicode(const QByteArray &ba)
+{
+
+    QTextCodec::ConverterState state;
+    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
+    QString text = codec->toUnicode(ba.constData(), ba.size(), &state);
+    if (state.invalidChars > 0)
+    {
+        text = QTextCodec::codecForName("GBK")->toUnicode(ba);
+    }
+    else
+    {
+        text = ba;
+    }
+    return text;
+
+}
+
+bool Util::time2double(QString time, double &ret)
+{
+    QStringList list = time.split(".");
+    if(list.size()<2)
+        return false;
+    bool* ok;
+    double second = list[0].toDouble(ok);
+    if(!(*ok))
+        return false;
+    //double msec = list[1].to
+}
+
 QString Util::qint642QString(qint64 playtime)
 {
     int h,m,s;

@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1125</width>
-    <height>739</height>
+    <width>1440</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -23,11 +23,10 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-font: 9pt &quot;楷体&quot;;
+   <string notr="true">font: 9pt &quot;楷体&quot;;
 </string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -40,7 +39,7 @@ font: 9pt &quot;楷体&quot;;
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="0">
+   <item>
     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,18,1">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,8">
@@ -62,7 +61,7 @@ font: 9pt &quot;楷体&quot;;
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
           <string>在听</string>
@@ -95,7 +94,9 @@ font: 9pt &quot;楷体&quot;;
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:10px ;
+</string>
            </property>
           </widget>
          </item>
@@ -127,7 +128,15 @@ font: 9pt &quot;楷体&quot;;
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">QPushButton#btnSetting{
+	border-image: url(:/images/icon/images/设置(4).png);
+
+}
+
+QPushButton#btnSetting:hover{
+	border-image: url(:/images/icon/images/设置(3).png);
+}
+</string>
                </property>
                <property name="text">
                 <string/>
@@ -145,10 +154,10 @@ font: 9pt &quot;楷体&quot;;
               <number>0</number>
              </property>
              <property name="topMargin">
-              <number>20</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>20</number>
+              <number>0</number>
              </property>
              <item>
               <widget class="QPushButton" name="btnMinWindow">
@@ -165,7 +174,17 @@ font: 9pt &quot;楷体&quot;;
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">QPushButton{
+
+
+	border-image: url(:/images/icon/images/缩小(2).png);
+}
+QPushButton:hover{
+
+	border-image: url(:/images/icon/images/缩小(1).png);
+
+}
+</string>
                </property>
                <property name="text">
                 <string/>
@@ -187,7 +206,15 @@ font: 9pt &quot;楷体&quot;;
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">QPushButton{
+	border-image: url(:/images/icon/images/放大(1).png);
+
+}
+QPushButton:hover{
+	
+	border-image: url(:/images/icon/images/放大(2).png);
+}
+</string>
                </property>
                <property name="text">
                 <string/>
@@ -203,7 +230,16 @@ font: 9pt &quot;楷体&quot;;
                 </sizepolicy>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">QPushButton#btnClose{
+	border-image: url(:/images/icon/images/关闭(4).png);
+	
+}
+
+
+QPushButton#btnClose:hover{
+	border-image: url(:/images/icon/images/关闭(5).png);
+}
+</string>
                </property>
                <property name="text">
                 <string/>
@@ -226,7 +262,7 @@ font: 9pt &quot;楷体&quot;;
           <number>7</number>
          </property>
          <property name="leftMargin">
-          <number>20</number>
+          <number>0</number>
          </property>
          <item>
           <widget class="QScrollArea" name="scrollAreaNavigation">
@@ -240,7 +276,17 @@ font: 9pt &quot;楷体&quot;;
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">background-color: rgb(255, 255, 255,40);
+QScrollArea::vertical{
+	border: 1px solid #999999;
+ height: 5px;
+position: absolute;
+border-radius :3px;
+background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1#c4c4c4); 
+margin: 1px 0;
+left: 3px; right: 3px;
+
+}</string>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -250,8 +296,8 @@ font: 9pt &quot;楷体&quot;;
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>179</width>
-              <height>594</height>
+              <width>282</width>
+              <height>778</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -260,8 +306,40 @@ font: 9pt &quot;楷体&quot;;
             <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,1,1,1">
              <item>
               <widget class="QGroupBox" name="groupBox_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>100</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>150</height>
+                </size>
+               </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+}
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgba(119,119, 119,50);
+
+}</string>
                </property>
                <property name="title">
                 <string>推荐</string>
@@ -269,6 +347,18 @@ font: 9pt &quot;楷体&quot;;
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <item>
                  <widget class="QPushButton" name="btnFindMusic">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true"/>
                   </property>
@@ -278,16 +368,15 @@ font: 9pt &quot;楷体&quot;;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btnPersonalRadio">
-                  <property name="text">
-                   <string>私人电台</string>
+                 <widget class="QPushButton" name="btnMusicCut">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
                   </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btnDaily">
                   <property name="text">
-                   <string>PushButton</string>
+                   <string>音乐剪辑</string>
                   </property>
                  </widget>
                 </item>
@@ -303,8 +392,40 @@ font: 9pt &quot;楷体&quot;;
                    <property name="enabled">
                     <bool>true</bool>
                    </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>200</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true">QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239);
+}
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgba(119,119, 119,50);
+
+}</string>
                    </property>
                    <property name="title">
                     <string>我的音乐</string>
@@ -318,9 +439,15 @@ font: 9pt &quot;楷体&quot;;
                    <property name="checkable">
                     <bool>false</bool>
                    </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0,0">
+                   <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0">
                     <item>
                      <widget class="QPushButton" name="btnLocalFile">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>25</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>本地音乐</string>
                       </property>
@@ -328,20 +455,25 @@ font: 9pt &quot;楷体&quot;;
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnDownload">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>25</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>下载音乐</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_5">
-                      <property name="text">
-                       <string>云音乐</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QPushButton" name="pushButton">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>25</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>收藏音乐</string>
                       </property>
@@ -362,6 +494,15 @@ font: 9pt &quot;楷体&quot;;
                   <widget class="QLabel" name="label">
                    <property name="enabled">
                     <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+
+}</string>
                    </property>
                    <property name="text">
                     <string>我的歌单</string>
@@ -385,15 +526,19 @@ font: 9pt &quot;楷体&quot;;
                   <widget class="QPushButton" name="btnNewMusicSheet">
                    <property name="maximumSize">
                     <size>
-                     <width>20</width>
-                     <height>20</height>
+                     <width>25</width>
+                     <height>25</height>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true">QPushButton#btnNewMusicSheet{
+	border-image: url(:/images/icon/images/新建.png);
+
+}
+</string>
                    </property>
                    <property name="text">
-                    <string>新建</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -401,12 +546,19 @@ font: 9pt &quot;楷体&quot;;
                   <widget class="QPushButton" name="btnPullMySheet">
                    <property name="maximumSize">
                     <size>
-                     <width>20</width>
-                     <height>20</height>
+                     <width>25</width>
+                     <height>25</height>
                     </size>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton#btnPullMySheet{
+	border-image: url(:/images/icon/images/下拉.png);
+
+}
+</string>
+                   </property>
                    <property name="text">
-                    <string>下拉</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -414,15 +566,39 @@ font: 9pt &quot;楷体&quot;;
                </item>
                <item>
                 <widget class="QListWidget" name="listWdgSongSheet">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>200</height>
+                  </size>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QListWidget{
-background-color: rgba(255, 255, 255, 0);
+background-color: rgba(253, 255, 248, 100);
 
-}</string>
+}
+QListWidget::Item{
+	padding-top:5px; padding-bottom:4px; 
+}
+QListWidget::Item:hover{
+background:rgba(119,119,119,50); color:black; 
+}
+
+</string>
                  </property>
                  <property name="batchSize">
                   <number>100</number>
                  </property>
+                 <item>
+                  <property name="text">
+                   <string>jjjjj</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>qqq</string>
+                  </property>
+                 </item>
                 </widget>
                </item>
               </layout>
@@ -435,6 +611,15 @@ background-color: rgba(255, 255, 255, 0);
                   <widget class="QLabel" name="label_2">
                    <property name="enabled">
                     <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+
+}</string>
                    </property>
                    <property name="text">
                     <string>收藏歌单</string>
@@ -455,18 +640,22 @@ background-color: rgba(255, 255, 255, 0);
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_8">
+                  <widget class="QPushButton" name="btnCollectSheetPull">
                    <property name="maximumSize">
                     <size>
-                     <width>20</width>
-                     <height>20</height>
+                     <width>25</width>
+                     <height>25</height>
                     </size>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true">QPushButton#btnCollectSheetPull{
+	border-image: url(:/images/icon/images/下拉.png);
+
+}
+</string>
                    </property>
                    <property name="text">
-                    <string>下拉</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -475,9 +664,15 @@ background-color: rgba(255, 255, 255, 0);
                <item>
                 <widget class="QListWidget" name="listWidgetCollect">
                  <property name="styleSheet">
-                  <string notr="true">QListWidget#listWidgetCollect{
-	
-	color: rgba(255, 255, 255, 0);
+                  <string notr="true">QListWidget{
+background-color: rgba(253, 255, 248, 100);
+
+}
+QListWidget::Item{
+	padding-top:5px; padding-bottom:4px; 
+}
+QListWidget::Item:hover{
+background:rgba(119,119,119,50); color:black; 
 }</string>
                  </property>
                 </widget>
@@ -491,7 +686,17 @@ background-color: rgba(255, 255, 255, 0);
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="vLayoutMainWindow"/>
+        <layout class="QVBoxLayout" name="vLayoutMainWindow">
+         <item>
+          <widget class="QStackedWidget" name="stackedWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="page"/>
+           <widget class="QWidget" name="page_2"/>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>

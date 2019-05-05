@@ -40,7 +40,16 @@ void MainWindowController::maxApp()
 //    this->_mainWindow->move(0,0);
 //    this->_mainWindow->resize(rect.width(),rect.height());
     //this->_mainWindow->centralWidget()->hide();
-    this->_mainWindow->setWindowState(Qt::WindowMaximized);
+    if(this->_mainWindow->isFullScreen()){
+        qDebug()<<"max";
+        this->_mainWindow->resize(1400,900);
+        this->_mainWindow->setWindowState(Qt::WindowActive);
+    }else{
+        qDebug()<<"min";
+        this->_mainWindow->setWindowState(Qt::WindowFullScreen);
+    }
+
+
     //this->_mainWindow->centralWidget()->show();
 }
 

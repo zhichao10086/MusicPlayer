@@ -35,7 +35,8 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 9pt &quot;楷体&quot;;</string>
+   <string notr="true">font: 9pt &quot;楷体&quot;;
+	background-color: rgb(249, 255, 239,20);</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="spacing">
@@ -103,8 +104,12 @@
            <height>0</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">
+border-image: url(:/images/icon/images/喜欢(1).png);</string>
+         </property>
          <property name="text">
-          <string>喜欢</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -122,8 +127,12 @@
            <height>0</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">border-image: url(:/images/icon/images/下载(1).png);
+</string>
+         </property>
          <property name="text">
-          <string>下载</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -131,6 +140,9 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="hLayoutMusicName">
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
        <item>
         <widget class="QLabel" name="labMusicName">
          <property name="sizePolicy">
@@ -217,6 +229,9 @@
          <property name="text">
           <string>00:00</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -240,6 +255,9 @@
          <property name="text">
           <string>0MB</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -259,6 +277,25 @@
            <width>100</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QProgressBar {
+   border: 2px solid grey;
+   border-radius: 5px;
+   background-color: #FFFFFF;
+}
+ 
+QProgressBar::chunk {
+   
+	background-color: rgb(213, 255, 180);
+   width: 20px;
+}
+ 
+QProgressBar {
+   border: 2px solid grey;
+   border-radius: 5px;
+   text-align: center;
+}</string>
          </property>
          <property name="value">
           <number>24</number>

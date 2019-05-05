@@ -11,6 +11,9 @@
 #include <QObject>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QUrl>
+#include <QImage>
+#include <lyrics.h>
 
 class Music
 {
@@ -21,7 +24,6 @@ public:
 
     Music(QString path);
 
-    Music(QString name,QString singer,QString time);
 
 
     static Music fromJsonObj2Music(QJsonObject& obj);
@@ -36,16 +38,21 @@ public:
     bool operator==(const Music& a);
 
 
+    QString _title;
 
-    //歌名
-    QString _musicName;
-    //歌手
-    QString _singer;
+    QString _album;
+
+    QString _artist;
+
+    QString _publishDate;
+
+    int _disc;
+    int _track;
+
+    QString _encoder;
+
     //时间
     QString _time;
-
-    //专辑
-    QString _album;
 
     //歌本地路径
     QString _musicPath;
@@ -59,18 +66,22 @@ public:
 
     QString _musicLyrics;
 
+    QList<QImage> _images;
 
-    QString musicName() const;
-    void setMusicName(const QString &musicName);
+    QString _imageUrl;
+
+    QString _comment;
+
+    QString _lyricsPath;
+
+    Lyrics _lyrics;
+
 
     QString musicPath() const;
     void setMusicPath(const QString &musicPath);
     QString time() const;
     void setTime(const QString &time);
-    QString singer() const;
-    void setSinger(const QString &singer);
-    QString album() const;
-    void setAlbum(const QString &album);
+
     double musicHot() const;
     void setMusicHot(double musicHot);
     int fileSize() const;
@@ -81,6 +92,31 @@ public:
     void setMusicNetPath(const QString &musicNetPath);
     QString musicLyrics() const;
     void setMusicLyrics(const QString &musicLyrics);
+    QString title() const;
+    void setTitle(const QString &title);
+    QString artist() const;
+    void setArtist(const QString &artist);
+    QString publishDate() const;
+    void setPublishDate(const QString &publishDate);
+    int disc() const;
+    void setDisc(int disc);
+    int track() const;
+    void setTrack(int track);
+    QString album() const;
+    void setAlbum(const QString &album);
+    QString imageUrl() const;
+    void setImageUrl(const QString &imageUrl);
+    QString encoder() const;
+    void setEncoder(const QString &encoder);
+    QString comment() const;
+    void setComment(const QString &comment);
+
+    QList<QImage> images() const;
+    void setImages(const QList<QImage> &images);
+    Lyrics lyrics() const;
+    void setLyrics(const Lyrics &lyrics);
+    QString lyricsPath() const;
+    void setLyricsPath(const QString &lyricsPath);
 };
 
 Q_DECLARE_METATYPE(Music)

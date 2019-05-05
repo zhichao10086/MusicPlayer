@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT += multimedia
+QT += network
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -63,7 +64,19 @@ SOURCES += \
     src/controller/filefunccontroller.cpp \
     src/view/newmusicsheetdialog.cpp \
     src/view/qmenubutton.cpp \
-    src/view/musiclistwidget.cpp
+    src/view/musiclistwidget.cpp \
+    src/view/musicsheetdetialview.cpp \
+    src/model/musicsheetdetialmodel.cpp \
+    src/controller/musicsheetdetialcontroller.cpp \
+    src/view/lyricsdisplayview.cpp \
+    src/model/lyrics.cpp \
+    src/view/lyricsitemview.cpp \
+    src/view/searchmusicview.cpp \
+    src/view/recomenttableitemview.cpp \
+    src/view/musiccutview.cpp \
+    src/model/multimusicfunc.cpp \
+    src/model/musiccutthread.cpp \
+    src/model/ffmpegplayer.cpp
 
 
 HEADERS += \
@@ -103,7 +116,19 @@ HEADERS += \
     src/controller/filefunccontroller.h \
     src/view/newmusicsheetdialog.h \
     src/view/qmenubutton.h \
-    src/view/musiclistwidget.h
+    src/view/musiclistwidget.h \
+    src/view/musicsheetdetialview.h \
+    src/model/musicsheetdetialmodel.h \
+    src/controller/musicsheetdetialcontroller.h \
+    src/view/lyricsdisplayview.h \
+    src/model/lyrics.h \
+    src/view/lyricsitemview.h \
+    src/view/searchmusicview.h \
+    src/view/recomenttableitemview.h \
+    src/view/musiccutview.h \
+    src/model/multimusicfunc.h \
+    src/model/musiccutthread.h \
+    src/model/ffmpegplayer.h
 
 FORMS += \
     src/view/playfuncview.ui \
@@ -119,7 +144,13 @@ FORMS += \
     src/view/playsheetmusiclistitemview.ui \
     src/view/newmusicsheetdialog.ui \
     src/view/qmenubutton.ui \
-    src/view/musiclistwidget.ui
+    src/view/musiclistwidget.ui \
+    src/view/musicsheetdetialview.ui \
+    src/view/lyricsdisplayview.ui \
+    src/view/lyricsitemview.ui \
+    src/view/searchmusicview.ui \
+    src/view/recomenttableitemview.ui \
+    src/view/musiccutview.ui
 
 DISTFILES += \
     src/document
@@ -133,17 +164,19 @@ INCLUDEPATH += $$PWD/src/model/
 INCLUDEPATH += $$PWD/src/view/
 INCLUDEPATH += $$PWD/src/util/
 INCLUDEPATH += D:/ffmpeg-4.1.1-win32-dev/include
-INCLUDEPATH += -I D:/Anaconda3/include/
+INCLUDEPATH += D:/SDL2-2.0.9/i686-w64-mingw32/include
 
-LIBS += -LD:/Anaconda3/libs -lpython37
-LIBS  += -LD:/ffmpeg-4.1.1-win32-dev/lib/ -llibavcodec\
-            -llibavdevice \
-            -llibavfilter \
-            -llibavformat \
-            -llibavutil   \
-            -llibpostproc \
-            -llibswresample\
-            -llibswscale
+
+LIBS  += -LD:/ffmpeg-4.1.1-win32-dev/lib/ -llibavcodec.dll\
+            -llibavdevice.dll \
+            -llibavfilter.dll \
+            -llibavformat.dll \
+            -llibavutil.dll   \
+            -llibpostproc.dll \
+            -llibswresample.dll\
+            -llibswscale.dll
+
+LIBS += -LD:/SDL2-2.0.9/i686-w64-mingw32/lib/ -llibSDL2.dll
 
 
 

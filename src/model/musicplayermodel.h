@@ -8,6 +8,10 @@
 #include "downloadview.h"
 #include "mainwindowcontroller.h"
 #include "mainwindow.h"
+#include "musicsheetdetialcontroller.h"
+#include "musicsheetdetialmodel.h"
+#include "musicsheetdetialview.h"
+#include <QDebug>
 
 
 class DownLoadController;
@@ -20,6 +24,9 @@ class PlayFuncModel;
 class LocalMusicController;
 class LocalMusicModel;
 class LocalMusicView;
+class MusicSheetDetialController;
+class MusicSheetDetialModel;
+class MusicSheetDetialView;
 
 
 
@@ -58,7 +65,9 @@ public:
     DownLoadView* _downloadView;
 
 
-
+    MusicSheetDetialController* _musicSheetDetialCtrl;
+    MusicSheetDetialModel* _musicSheetDetialModel;
+    MusicSheetDetialView* _musicSheetDetialView;
 
 
 
@@ -86,6 +95,10 @@ public:
 
     MainWindow *mainWindow() const;
     void setMainWindow(MainWindow *mainWindow);
+    MusicSheetDetialView *musicSheetDetialView() const;
+    void setMusicSheetDetialView(MusicSheetDetialView *musicSheetDetialView);
+    MusicSheetDetialController *musicSheetDetialCtrl() const;
+    void setMusicSheetDetialCtrl(MusicSheetDetialController *musicSheetDetialCtrl);
 };
 
 #endif // MUSICPLAYERMODEL_H
