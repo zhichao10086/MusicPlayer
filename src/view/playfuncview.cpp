@@ -211,9 +211,6 @@ void PlayFuncView::on_btnPlaySheet_clicked()
         psv->hide();
     }
 
-
-
-
     //psv->setIsFilter(false);
 
 

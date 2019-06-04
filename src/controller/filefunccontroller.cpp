@@ -5,6 +5,22 @@ FileFuncController::FileFuncController(QObject *parent) : QObject(parent)
 
 }
 
+QJsonObject FileFuncController::getJsonObjFromByteArray(QByteArray &a)
+{
+    QJsonParseError json_error;
+    QString json(a);
+    //qDebug()<<json;
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(json.toUtf8(),&json_error);
+
+    if(json_error.error != QJsonParseError::NoError){
+        //qDebug()<<"格式错误："<<file.fileName();
+        return QJsonObject();
+    }
+    QJsonObject obj = jsonDoc.object();
+    return obj;
+}
+
 QJsonObject FileFuncController::getJsonObjFromFile(QFile &file)
 {
     if(!file.open(QIODevice::ReadOnly)){
@@ -124,13 +140,37 @@ QList<Music> FileFuncController::fromFilesGetMusicTags(QStringList fileNames)
             music.setLyricsPath(lyricsFileName);
             music.setLyrics(lyrics);
         }
+        if(music.title().isEmpty()){
+            QString filename = fileNames.value(i);
+            QString title = filename.split("/").last();
 
+            music.setTitle(title);
+        }
         musics.append(music);
         avformat_close_input(&avformatContext);
     }
 
     return musics;
 
+}
+
+QList<Music> FileFuncController::searchMusics(QStringList dirs)
+{
+
+
+    QStringList files;
+    QStringList filenames;
+    //QList<Music> musics;
+    for(int i=0;i<dirs.size();i++){
+
+        files.append(Util::getAbsoluteFileNames(dirs.at(i)));
+        filenames.append(Util::getFileNames(dirs.at(i)));
+
+    }
+
+    QList<Music> musics =  FileFuncController::fromFilesGetMusicTags(files);
+
+    return musics;
 }
 
 

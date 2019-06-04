@@ -26,6 +26,13 @@ Lyrics::Lyrics(QString filename)
     file.close();
 }
 
+void Lyrics::operator =(const Lyrics &lyrics)
+{
+    this->__lyricsBeginIndex = lyrics.lyricsBeginIndex();
+    this->__lyricsStr = lyrics.lyricsStr();
+    this->__vecLyrics = lyrics.vecLyrics();
+}
+
 TagType Lyrics::tagType(QString& tag)
 {
     //如果能够匹配正则表达式 则为时间标签
@@ -119,7 +126,7 @@ void Lyrics::__init()
             //时间转换成position
             //QString timestr = ldata.tagStr.mid(1,ldata.tagStr.size()-2);
             //timestr.append('0');
-            timestr = ldata.tagStr.mid(1,timestr.size()-2);
+            timestr = ldata.tagStr.mid(1,ldata.tagStr.size()-2);
             //QString timestrsub = timestr.mid(1,timestr.size()-2);
             //*timestrsub = timestr.mid(1,timestr.size()-1);
             //timestr.insert(timestr.size()-1,'0');

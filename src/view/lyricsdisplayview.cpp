@@ -84,7 +84,7 @@ void LyricsDisplayView::updateLyricsView(qint64 position)
             }
         }
     }
-
+    qDebug()<<position<<"  "<<nextLine.position;
     if(next == this->__curLyricsIndex)
         return;
     qDebug()<<"displayview"<<position;

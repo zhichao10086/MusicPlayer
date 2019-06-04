@@ -78,9 +78,6 @@ QList<Music> LocalMusicController::searchMusics(QStringList dirs)
 
     musics =  FileFuncController::fromFilesGetMusicTags(files);
 
-
-
-
     qDebug()<<"搜索结束";
     return musics;
 //    for(int i =0;i<files.size();i++){

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <string>
 #include <QDebug>
+#include <QStringList>
 
 #ifdef __cplusplus
 extern "C"
@@ -17,6 +18,7 @@ extern "C"
 #include <libavutil/mathematics.h>
 #include <libavutil/samplefmt.h>
 #include <libavdevice/avdevice.h>
+#include <libavfilter/avfilter.h>
 #include <stdio.h>
 #include <stdlib.h>
 #ifdef __cplusplus
@@ -24,6 +26,16 @@ extern "C"
 #endif
 
 using namespace std;
+
+
+typedef struct FilteringContext
+{
+    AVFilterContext *buffersink_ctx;
+    AVFilterContext *buffersrc_ctx;
+    AVFilterGraph *filter_graph;
+} FilteringContext;
+
+
 
 class MultiMusicFunc : public QObject
 {
@@ -35,7 +47,25 @@ public:
         finish = 0,
     };
 
+    //音乐剪辑
     static int musicCut(double start,double end,string inFilename,string outFileName);
+
+
+    static int initRecordFilterGraph(AVFilterGraph **graph, AVFilterContext **src,
+                         AVFilterContext **sink,AVCodecContext * pCodecCtx);
+
+
+    static int initSWRFilterGraph(AVFilterGraph **graph, AVFilterContext **src,
+                                  AVFilterContext **sink,AVCodecContext * pCodecCtx);
+
+    static int swr();
+
+    //录音
+    static int audioRecord(QString outFilename,QString deviceName);
+
+    //寻找录音设备
+    static QStringList findAudioRecordDevice();
+
 signals:
 
 public slots:

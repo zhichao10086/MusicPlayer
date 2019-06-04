@@ -180,6 +180,7 @@ void MusicPlayerController::maxApp()
 
 void MusicPlayerController::createMusicSheet(MusicSheet ms)
 {
+    qDebug()<<ms.sheetName();
     User& user = GlobalVariable::get_global_User();
     user.addCreatedMusicSheet(ms);
     this->updateCreatedMusicSheetView(user.createdMusicSheets());

@@ -14,7 +14,31 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
+   <string notr="true">QDialog#ChooseDirsDialog{
+background-color: rgb(249, 255, 239,0);
+}
+
+
+QListWidget{
+background-color: rgb(249, 255, 239,50);
+}
+
+
+
+QLabel{
+	font: 9pt &quot;楷体&quot;;
+}
+
+QLineEdit{
+
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,100);
+
+}
+
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -45,6 +69,31 @@
       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,8,2">
        <item>
         <widget class="QPushButton" name="btnSelectAll">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border:1px solid #242424;
+	border-radius:5px;
+
+	background-color: rgb(189, 255, 219,50);
+
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+}
+</string>
+         </property>
          <property name="text">
           <string>选择全部</string>
          </property>
@@ -52,6 +101,31 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnRemoveSelected">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border:1px solid #242424;
+	border-radius:5px;
+
+	background-color: rgb(189, 255, 219,50);
+
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+}
+</string>
+         </property>
          <property name="text">
           <string>删除选中</string>
          </property>
@@ -77,6 +151,25 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border:1px solid #242424;
+	border-radius:10px;
+
+	background-color: rgb(189, 255, 219,50);
+
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+}
+</string>
          </property>
          <property name="text">
           <string>选择文件夹</string>
@@ -104,6 +197,28 @@
      </item>
      <item>
       <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	font: 9pt &quot;楷体&quot;;
+
+
+	background-color: rgb(189, 255, 219,50);
+
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+
+	background-color: rgb(191,191,191,50);
+}
+</string>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>

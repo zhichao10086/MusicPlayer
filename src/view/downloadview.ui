@@ -15,8 +15,16 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#DownLoadView{
-background-color: rgb(249, 255, 239,50);
+background-color: rgb(249, 255, 239,20);
 }
+QWidget#downloadedWidget{
+background-color: rgb(249, 255, 239,10);
+}
+QWidget#downloadingWidget{
+background-color: rgb(249, 255, 239,10);
+}
+
+
 QListWidget{
 background-color: rgb(249, 255, 239,50);
 }
@@ -27,7 +35,7 @@ font: 9pt &quot;楷体&quot;;
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239);
+	background-color: rgb(249, 255, 239,50);
 	min-width:80px;
 	min-height:20px;
 	margin-right:10px;
@@ -44,10 +52,6 @@ font: 9pt &quot;楷体&quot;;
 	margin-right:10px;
 }
 
-
-QListWidget{
-	background-color: rgb(252, 255, 251,100);
-}
 
 
 QLabel{
@@ -68,7 +72,7 @@ QPushButton{
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239);
+	background-color: rgb(249, 255, 239,50);
 }
 
 QPushButton:hover{
@@ -92,15 +96,17 @@ font: 9pt &quot;楷体&quot;;
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239);
+	background-color: rgb(249, 255, 239,50);
 
 }
+ QTabBar::tab:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }
+ QTabBar::tab:selected {
+     border-color: #9B9B9B;
+     border-bottom-color: #C2C7CB; /* same as pane color */
+ }
 
-QTabWidget{
-
-	background-color: rgb(249, 255, 239,0);
-
-}
 
 </string>
   </property>
@@ -126,9 +132,15 @@ QTabWidget{
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="downloadedWidget">
+      <property name="styleSheet">
+       <string notr="true">QListWidget{
+background-color: rgb(249, 255, 239,50);
+}
+</string>
+      </property>
       <attribute name="title">
        <string>已下载</string>
       </attribute>
@@ -266,6 +278,12 @@ QTabWidget{
       </layout>
      </widget>
      <widget class="QWidget" name="downloadingWdiget">
+      <property name="styleSheet">
+       <string notr="true">QListWidget{
+background-color: rgb(249, 255, 239,50);
+}
+</string>
+      </property>
       <attribute name="title">
        <string>正在下载</string>
       </attribute>
@@ -314,7 +332,7 @@ QTabWidget{
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
-            <widget class="QListWidget" name="listWidget_2"/>
+            <widget class="QListWidget" name="lwDownloading"/>
            </item>
           </layout>
          </item>

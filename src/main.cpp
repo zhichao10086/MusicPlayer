@@ -4,23 +4,10 @@
 #include <iostream>
 
 
-extern "C"
-{
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libavutil/avutil.h>
-#include <libswscale/swscale.h>
-#include <libavutil/imgutils.h>
-#include <libavutil/opt.h>
-#include <libavutil/mathematics.h>
-#include <libavutil/samplefmt.h>
-#include <libavdevice/avdevice.h>
-}
-
 
 using namespace std;
 
-
+#undef main
 int main(int argc, char *argv[])
 {
     /*

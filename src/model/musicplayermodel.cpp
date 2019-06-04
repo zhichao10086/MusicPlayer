@@ -19,6 +19,8 @@ void MusicPlayerModel::init()
     _pfView = _pfc->playFuncView();
     _pfModel = _pfc->playFuncModel();
 
+    PlayFuncController::global_PlayFuncCtrl = _pfc;
+
     MusicPlayerController::single_playfuncCtrl = _pfc;
     qDebug()<<"初始化播放控制完毕";
 
@@ -31,7 +33,7 @@ void MusicPlayerModel::init()
 
 
     //下载文件控制器与界面
-    _downloadCtrl = new DownLoadController(_pfc);
+    _downloadCtrl = DownLoadController::newInstance();
     _downloadModel = _downloadCtrl->downLoadModel();
     _downloadView = _downloadCtrl->downLoadView();
 

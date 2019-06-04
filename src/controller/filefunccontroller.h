@@ -39,6 +39,7 @@ class FileFuncController : public QObject
 public:
     explicit FileFuncController(QObject *parent = nullptr);
 
+    static QJsonObject getJsonObjFromByteArray(QByteArray& a);
 
     static QJsonObject getJsonObjFromFile(QFile& file);
 
@@ -48,6 +49,8 @@ public:
     static Music fromFileGetMusicTags(QString fileName);
 
     static QList<Music> fromFilesGetMusicTags(QStringList fileNames);
+
+    static QList<Music> searchMusics(QStringList files);
 signals:
 
 public slots:

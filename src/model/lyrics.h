@@ -34,7 +34,7 @@ public:
         position = 0;
         cout<<"lldata goujian";
     }
-
+    /*
     LyricsLineData(const LyricsLineData& data){
         this->index = data.index;
         QString* a = new QString;
@@ -47,7 +47,7 @@ public:
         tagtype = data.tagtype;
         cout<<"shenkaobeiwancheng";
     }
-
+    */
 //    static qint64 tagStrToPosition(){
 
 //    }
@@ -73,6 +73,7 @@ public:
         qDebug()<<"xigou lyrics";
     }
 
+    void operator =(const Lyrics& lyrics);
 
     static TagType tagType(QString& tag);
 

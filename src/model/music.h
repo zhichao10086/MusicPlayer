@@ -14,6 +14,10 @@
 #include <QUrl>
 #include <QImage>
 #include <lyrics.h>
+#include <QList>
+#include "globalconstant.h"
+#include <QUuid>
+#include <QStringList>
 
 class Music
 {
@@ -24,9 +28,11 @@ public:
 
     Music(QString path);
 
-
+    static QStringList memberKeys;
 
     static Music fromJsonObj2Music(QJsonObject& obj);
+    static QList<Music> fromJsonObj2Musics(QJsonArray& array);
+
     QJsonObject toJsonObj() const;
 
     void init();
@@ -37,6 +43,7 @@ public:
     //相等
     bool operator==(const Music& a);
 
+    QString _musicID;
 
     QString _title;
 
@@ -117,7 +124,11 @@ public:
     void setLyrics(const Lyrics &lyrics);
     QString lyricsPath() const;
     void setLyricsPath(const QString &lyricsPath);
+    QString musicID() const;
+    void setMusicID(const QString &musicID);
 };
+
+
 
 Q_DECLARE_METATYPE(Music)
 #endif // MUSIC_H

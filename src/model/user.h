@@ -8,6 +8,7 @@
 #include <QList>
 #include "musicsheet.h"
 #include <QDateTime>
+#include <QUuid>
 
 
 
@@ -45,6 +46,9 @@ public:
     void addCreatedMusicSheet(MusicSheet musicSheet);
 
 
+    void addMusicToCreatedMusicSheet(const Music&,int,MusicSheet);
+
+
     QList<MusicSheet> createdMusicSheets() const;
     void setCreatedMusicSheets(const QList<MusicSheet> createdMusicSheets);
 
@@ -62,7 +66,7 @@ private:
     QString __name;
     int __age;
 
-    QString userID;
+    QString __userID;
 
     //创建的歌单
     QList<MusicSheet> __createdMusicSheets;

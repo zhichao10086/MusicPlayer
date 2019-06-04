@@ -21,6 +21,10 @@
 #include <QPalette>
 #include <QBrush>
 #include "musiccutview.h"
+#include "searchview.h"
+#include "searchmusicview.h"
+#include "filterview.h"
+#include "audiorecordview.h"
 
 
 namespace Ui {
@@ -73,9 +77,7 @@ public:
     void setMainWindowWidget(QWidget* w);
 
 
-    void showMusicDetialView(PlayMusicDetialView* pmdv);
-
-    /*
+     /*
      * 获取当前主界面的指针
      */
     QWidget* getCurMainWindowWidget();
@@ -122,6 +124,16 @@ private slots:
     void on_btnCollectSheetPull_clicked();
 
     void on_btnMusicCut_clicked();
+
+    void on_leSearch_returnPressed();
+
+    void on_leSearch_textChanged(const QString &arg1);
+
+    void on_btnFindMusic_clicked();
+
+    void on_btnMusicSovle_clicked();
+
+    void on_btnRecord_clicked();
 
 private:
     Ui::MusicPlayerView *ui;

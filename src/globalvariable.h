@@ -35,6 +35,16 @@ public:
     static QString global_user_absolute_file;
 
 
+    //下载文件夹路径
+    static QString global_download_file_path;
+
+    //服务器地址
+    static QString global_server_ip;
+
+    static QString global_server_search_url;
+
+    static QString global_server_download_url;
+
 
     //判断是否登陆
     static bool IsLogin();

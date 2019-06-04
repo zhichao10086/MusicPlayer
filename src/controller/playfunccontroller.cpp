@@ -15,7 +15,13 @@ PlayFuncController::PlayFuncController(MusicPlayerController *mpc)
 
 PlayFuncController *PlayFuncController::newInstance()
 {
-    return PlayFuncController:: global_PlayFuncCtrl;
+
+    if(global_PlayFuncCtrl!= nullptr){
+        return global_PlayFuncCtrl;
+    }
+
+    global_PlayFuncCtrl = new PlayFuncController();
+    return global_PlayFuncCtrl;
 }
 
 
@@ -261,7 +267,7 @@ bool PlayFuncController::setCurrentMusicSheet(MusicSheet musicSheet)
     //更新播放列表
     PlaySheetController* psc =  this->playFuncModel()->playSheetCtrl();
     //psc->updatePlaySheet(this->playFuncModel()->getCurMusicSheet());
-    qDebug()<<"updateplaysheetView"<<endl;
+    qDebug()<<"updateplaysheetView";
     psc->updatePlaySheetView(this->playFuncModel()->getCurMusicSheet());
     return true;
 

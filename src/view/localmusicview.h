@@ -5,8 +5,9 @@
 #include "localmusiccontroller.h"
 #include "choosedirsdialog.h"
 #include <iostream>
-#include "musiclistitemview.h"
+//#include "musiclistitemview.h"
 #include <QMessageBox>
+#include "musiclistwidget.h"
 
 using namespace std;
 

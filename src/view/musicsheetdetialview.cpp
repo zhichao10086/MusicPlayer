@@ -125,8 +125,9 @@ void MusicSheetDetialView::headImageFinished(QNetworkReply *reply)
 
 void MusicSheetDetialView::updateMusicListView(QList<Music> musics)
 {
+    this->ui->lwMusicSheet->clear();
     for(int i=0;i<musics.size();i++){
-        MusicListItemView* view =  new MusicListItemView(i,musics.at(i),MusicListItemView::MusicSheetListItem);
+        MusicListItemView* view =  new MusicListItemView(i,musics.at(i),MusicItemViewMode::MusicSheetListItem);
         QListWidgetItem* item = new QListWidgetItem;
         //QLabel *label  = new QLabel(musics.at(i).musicName());
         QSize size = item->sizeHint();

@@ -8,15 +8,21 @@ MusicListItemView::MusicListItemView(QWidget *parent) :
     ui->setupUi(this);
 }
 
-MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidget *parent):
+MusicListItemView::MusicListItemView(int index,Music music,MusicItemViewMode mode, QWidget *parent):
     QWidget(parent),
     ui(new Ui::MusicListItemView)
 {
     ui->setupUi(this);
+    qDebug()<<music.musicID();
+    this->__index = index;
+    this->__music = music;
+    this->_menu = new MusicListItemMenu(this->__music);
 
     /*
      * 初始化action
      */
+
+    /*
     this->_menu = new QMenu;
     this->_actionPlay = new QAction("播放");
     this->_actionDownload = new QAction("下载");
@@ -37,13 +43,12 @@ MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidge
         this->_collectActions.append(action);
     }
     this->_menu->addMenu(this->_collectMenu);
-
+    */
 
     QObject::connect(this,&MusicListItemView::customContextMenuRequested,
                      this,&MusicListItemView::popupContextMenu);
 
-    this->__index = index;
-    this->__music = music;
+
 
 
 
@@ -60,15 +65,15 @@ MusicListItemView::MusicListItemView(int index,Music music,ViewMode mode, QWidge
     if(!music.artist().isEmpty())
         this->setTextElide(ui->labSinger,music.artist());
 
-    if(mode == ViewMode::LocalMusicListItem){
+    if(mode == MusicItemViewMode::LocalMusicListItem){
         this->localMusicListItemShow();
-    }else if(mode == ViewMode::SearchMusicListItem){
+    }else if(mode == MusicItemViewMode::SearchMusicListItem){
         this->searchMusicListItemShow();
-    }else if(mode == ViewMode::PlaySheetListItem){
+    }else if(mode == MusicItemViewMode::PlaySheetListItem){
         this->playSheetListItemShow();
-    }else if(mode == ViewMode::RecentSheetListItem){
+    }else if(mode == MusicItemViewMode::RecentSheetListItem){
         this->recentSheetListItemShow();
-    }else if(mode == ViewMode::MusicSheetListItem){
+    }else if(mode == MusicItemViewMode::MusicSheetListItem){
         this->MusicSheetListItemShow();
     }
 

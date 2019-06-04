@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QListWidget{
-background-color: rgba(253, 255, 248, 100);
+background-color: rgba(253, 255, 248, 20);
 
 }
 QListWidget::Item{

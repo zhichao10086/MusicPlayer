@@ -27,15 +27,11 @@ void LyricsItemView::setMode(LyricsItemView::ViewMode mode)
 
         this->ui->label->setStyleSheet("QLabel{color: rgb(31, 255, 7);\
                                        font-size:10pt;\
-                                       padding-top:2px;\
-                                        pading-bottom:2px;\
                                        min-height:35p;}");
 
     }else if(mode ==ViewMode::NoPlaying){
 
         this->ui->label->setStyleSheet("QLabel{color: rgb(0, 0, 0)\
-                                       padding-top:2px;\
-                                        pading-bottom:2px};\
                                         min-height:35p;}");
     }
 }

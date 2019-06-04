@@ -331,6 +331,7 @@ left: 3px; right: 3px;
 	border-width:2px;
 	border-radius:3px;
 	background-color: rgb(249, 255, 239);
+	min-height:25;
 }
 QPushButton:hover{
 	font: 9pt &quot;楷体&quot;;
@@ -338,14 +339,14 @@ QPushButton:hover{
 	border-width:2px;
 	border-radius:3px;
 	background-color: rgba(119,119, 119,50);
-
+	min-height:25;
 }</string>
                </property>
                <property name="title">
                 <string>推荐</string>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_4">
-                <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
                  <widget class="QPushButton" name="btnFindMusic">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -367,7 +368,7 @@ QPushButton:hover{
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="1" column="0">
                  <widget class="QPushButton" name="btnMusicCut">
                   <property name="minimumSize">
                    <size>
@@ -377,6 +378,26 @@ QPushButton:hover{
                   </property>
                   <property name="text">
                    <string>音乐剪辑</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="btnMusicSovle">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>多功能均衡器</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QPushButton" name="btnRecord">
+                  <property name="text">
+                   <string>录音</string>
                   </property>
                  </widget>
                 </item>

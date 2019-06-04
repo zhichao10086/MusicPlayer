@@ -14,37 +14,16 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#PlaySheetView{
-background-color: rgb(249, 255, 239,50);
+   <string notr="true">QListWidget{
+	background-color: rgb(249, 255, 239,50);
 }
-
-QListWidget{
-background-color: rgba(253, 255, 248, 100);
-
-}
-QListWidget::Item{
-	padding-top:5px; padding-bottom:4px; 
-}
-QListWidget::Item:selected{
-	padding-top:5px; padding-bottom:4px; 
-	background:rgba(249, 255, 239,100);
-	min-height:35;
-}
-
-QListWidget::Item:hover{
-background:rgba(119,119,119,50); color:black; 
-}
-
-
-
-
 
 QTabBar::tab{
 font: 9pt &quot;楷体&quot;;
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239);
+	background-color: rgb(249, 255, 239,50);
 	min-width:80px;
 	min-height:20px;
 	margin-right:10px;
@@ -63,12 +42,34 @@ font: 9pt &quot;楷体&quot;;
 
 
 
-
-
 QLabel{
 	font: 9pt &quot;楷体&quot;;
 }
 
+QLineEdit{
+
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,100);
+
+}
+QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,50);
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+}
 
 
 QTabWidget::tab-bar {  		/*整个最上面的tab栏*/
@@ -83,15 +84,16 @@ font: 9pt &quot;楷体&quot;;
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239);
+	background-color: rgb(249, 255, 239,50);
 
 }
-
-QTabWidget{
-
-	background-color: rgb(249, 255, 239,0);
-
-}
+ QTabBar::tab:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }
+ QTabBar::tab:selected {
+     border-color: #9B9B9B;
+     border-bottom-color: #C2C7CB; /* same as pane color */
+ }
 
 </string>
   </property>
@@ -106,6 +108,9 @@ QTabWidget{
     <number>0</number>
    </property>
    <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
     <number>0</number>
    </property>
    <item row="0" column="0">

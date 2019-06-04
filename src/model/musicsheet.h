@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QMap>
 #include <QStringList>
+#include <QUuid>
 
 class MusicSheet
 {
@@ -26,10 +27,14 @@ public:
 
     //bool operator ==(MusicSheet& a);
 
-    bool operator ==(MusicSheet a);
+    bool operator ==(const MusicSheet& a);
 
     //bool operator==(MusicSheet& a,MusicSheet& b);
 
+    void operator=(const MusicSheet& ms);
+
+    //拷贝构造函数
+    //MusicSheet(const MusicSheet& ms);
 
     int addMusic(const Music& music);
 
@@ -37,6 +42,9 @@ public:
     void removeMusic(int index);
 
     void insertMusic(int index,Music music);
+
+    //sheetID
+    QString _musicSheetID;
 
     //名称
     QString _sheetName;
@@ -105,6 +113,8 @@ public:
     void setIntroducement(const QString &introducement);
     QString userHeadImageUrl() const;
     void setUserHeadImageUrl(const QString &userHeadImageUrl);
+    QString musicSheetID() const;
+    void setMusicSheetID(const QString &musicSheetID);
 };
 
 Q_DECLARE_METATYPE(MusicSheet)

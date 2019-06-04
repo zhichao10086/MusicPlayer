@@ -4,7 +4,11 @@
 
 MusicSheet::MusicSheet()
 {
-
+    this->_musicSheetID = QUuid::createUuid().toString();
+    this->_collectCount = 0;
+    this->_playCount = 0;
+    this->_userID = "0";
+    this->_userName = "本地用户";
 }
 
 MusicSheet MusicSheet::fromJsonObj2MusicSheet(QJsonObject &obj)
@@ -12,8 +16,12 @@ MusicSheet MusicSheet::fromJsonObj2MusicSheet(QJsonObject &obj)
     MusicSheet ms;
     if(obj.empty())
         return ms;
+
+    if(obj.contains("musicSheetID"))
+        ms.setMusicSheetID(obj.value("musicSheetID").toString());
     if(obj.contains("createTime"))
         ms.setCreateTime(obj.value("createTime").toString());
+
     if(obj.contains("sheetName"))
         ms.setSheetName(obj.value("sheetName").toString());
     if(obj.contains("playCount"))
@@ -45,6 +53,7 @@ MusicSheet MusicSheet::fromJsonObj2MusicSheet(QJsonObject &obj)
 QJsonObject MusicSheet::toJsonObj() const
 {
     QJsonObject obj;
+    obj.insert("musicSheetID",this->musicSheetID());
     obj.insert("sheetName",this->sheetName());
     obj.insert("createTime",this->createTime());
     obj.insert("playCount",this->playCount());
@@ -64,13 +73,31 @@ QJsonObject MusicSheet::toJsonObj() const
     return obj;
 }
 
-bool MusicSheet::operator ==(MusicSheet a)
+bool MusicSheet::operator ==(const MusicSheet& a)
 {
     if(this->sheetName() == a.sheetName()){
         return true;
     }
     return false;
 }
+
+void MusicSheet::operator=(const MusicSheet &ms)
+{
+    this->_collectCount = ms._collectCount;
+    this->_createTime = ms._createTime;
+    this->_introducement= ms._introducement;
+    this->_localSheetImageUrl = ms._localSheetImageUrl;
+    this->_musics = ms._musics;
+    this->_musicSheetID = ms._musicSheetID;
+    this->_playCount = ms._playCount;
+    this->_tags  = ms._tags;
+    this->_netSheetImageUrl = ms._netSheetImageUrl;
+    this->_userHeadImageUrl = ms._userHeadImageUrl;
+    this->_userID = ms._userID;
+    this->_userName = ms._userName;
+    this->_sheetName  =ms._sheetName;
+}
+
 
 //bool MusicSheet::operator==(MusicSheet &a, MusicSheet &b)
 //{
@@ -89,8 +116,9 @@ int MusicSheet::addMusic(const Music& music)
             return i;
         }
     }
-    this->_musics.insert(0,music);
-    return -1;
+    qDebug()<<"添加音乐成功";
+    this->_musics.append(music);
+    return 0;
 }
 
 void MusicSheet::removeMusic(int index)
@@ -111,6 +139,16 @@ void MusicSheet::insertMusic(int index, Music music)
     }
     this->_musics.insert(index,music);
 
+}
+
+QString MusicSheet::musicSheetID() const
+{
+    return _musicSheetID;
+}
+
+void MusicSheet::setMusicSheetID(const QString &musicSheetID)
+{
+    _musicSheetID = musicSheetID;
 }
 
 QString MusicSheet::userHeadImageUrl() const

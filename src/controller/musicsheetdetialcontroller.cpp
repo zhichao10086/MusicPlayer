@@ -7,7 +7,7 @@ MusicSheetDetialController::MusicSheetDetialController(QObject *parent) : QObjec
     this->init();
 }
 
-MusicSheetDetialController::MusicSheetDetialController(PlayFuncController *pfc, QObject *parent)
+MusicSheetDetialController::MusicSheetDetialController(PlayFuncController *pfc, QObject *parent):QObject(parent)
 {
     this->__playFuncCtrl = pfc;
     this->init();

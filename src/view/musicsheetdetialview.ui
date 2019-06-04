@@ -34,7 +34,7 @@ QLineEdit#leSearch{
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239,200);
+	background-color: rgb(249, 255, 239,50);
 
 }
 QPushButton{
@@ -42,7 +42,7 @@ QPushButton{
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239);
+	background-color: rgb(249, 255, 239,50);
 }
 
 QPushButton:hover{
@@ -66,7 +66,7 @@ font: 9pt &quot;楷体&quot;;
 	border-color:rgb(61, 181, 255);
 	border-width:2px;
 	border-radius:3px;
-	background-color: rgb(249, 255, 239);
+	background-color: rgb(249, 255, 239,50);
 
 }
 </string>
@@ -495,7 +495,7 @@ font: 9pt &quot;楷体&quot;;
                   </size>
                  </property>
                  <property name="text">
-                  <string>01</string>
+                  <string/>
                  </property>
                 </widget>
                </item>
@@ -504,40 +504,21 @@ font: 9pt &quot;楷体&quot;;
              <item>
               <layout class="QHBoxLayout" name="hLayoutOp">
                <item>
-                <widget class="QPushButton" name="btnLike">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
+                <widget class="QLabel" name="label_3">
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
-                   <height>0</height>
+                   <width>100</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="text">
-                  <string>喜欢</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="btnDownload">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>30</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>下载</string>
+                  <string>操作</string>
                  </property>
                 </widget>
                </item>
@@ -661,21 +642,9 @@ font: 9pt &quot;楷体&quot;;
              <item>
               <layout class="QHBoxLayout" name="hLayoutHot">
                <item>
-                <widget class="QProgressBar" name="progBarHot">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>100</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="value">
-                  <number>24</number>
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>热度</string>
                  </property>
                 </widget>
                </item>

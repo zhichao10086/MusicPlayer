@@ -38,3 +38,7 @@ User GlobalVariable::global_User = User();
 bool GlobalVariable::global_Islogin = false;
 QString GlobalVariable::global_user_absolute_file = "";
 QString GlobalVariable::global_local_file_path = "";
+QString GlobalVariable::global_server_ip = "127.0.0.1";
+QString GlobalVariable::global_server_search_url = "127.0.0.1:8000/search/music";
+QString GlobalVariable::global_server_download_url = "http://127.0.0.1:8000/download/music";
+QString GlobalVariable::global_download_file_path = "./download";

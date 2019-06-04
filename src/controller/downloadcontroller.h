@@ -6,6 +6,7 @@
 #include "downloadmodel.h"
 #include "downloadview.h"
 #include "playfunccontroller.h"
+#include <QDebug>
 
 
 class DownLoadModel;
@@ -14,15 +15,33 @@ class MusicPlayerController;
 
 
 
-class DownLoadController
+class DownLoadController:public QObject
 {
 public:
-    DownLoadController();
+    explicit DownLoadController(QObject *parent = nullptr);
+
 
     DownLoadController(PlayFuncController* pfc);
 
+    static DownLoadController* single_downLoadCtrl;
+    static DownLoadController* newInstance();
+
+
+    enum retCode{
+        DownLoading,
+        DownLoaded,
+        NotDownLoad
+    };
 
     void init();
+
+
+
+    /*
+     * 添加下载任务
+     */
+    retCode addDownLoadTask(Music& music);
+
 
 
     PlayFuncController* _pfc;
@@ -37,6 +56,15 @@ public:
 
     DownLoadView *downLoadView() const;
     void setDownLoadView(DownLoadView *downLoadView);
+
+signals:
+
+public slots:
+
+
+
+private:
+
 };
 
 #endif // DOWNLOADCONTROLLER_H

@@ -2,7 +2,9 @@
 
 User::User()
 {
-
+    this->__userID = QUuid::createUuid().toString();
+    this->__age = 0;
+    this->__name = "本地用户";
 }
 
 User User::jsonObj2User(const QJsonObject &obj)
@@ -12,6 +14,8 @@ User User::jsonObj2User(const QJsonObject &obj)
 
     if(obj.isEmpty())
         return user;
+    if(obj.contains("userID"))
+        user.setUserID(obj.value("userID").toString());
 
     user.setName(obj.value("name").toString());
     user.setAge(obj.value("age").toInt(18));
@@ -57,6 +61,7 @@ QJsonObject User::toJsonObj()
 {
     QJsonObject obj;
     //obj.insert()
+
     obj.insert("name",this->name());
     obj.insert("age",this->age());
     obj.insert("userID",this->getUserID());
@@ -130,6 +135,19 @@ void User::addCreatedMusicSheet(MusicSheet musicSheet)
     this->__createdMusicSheets.append(musicSheet);
 }
 
+void User::addMusicToCreatedMusicSheet(const Music& music,int index, MusicSheet ms)
+{
+    if(this->__createdMusicSheets.value(index) == ms){
+        qDebug()<<"准备添加音乐到歌单"<<ms.sheetName()<<this->__createdMusicSheets.at(index).musics().size();
+        MusicSheet musicSheet = this->__createdMusicSheets.value(index);
+        musicSheet.addMusic(music);
+        this->__createdMusicSheets[index] = musicSheet;
+        //this->__createdMusicSheets.removeAt(index);
+        //this->__createdMusicSheets.insert(index,musicSheet);
+        qDebug()<<this->__createdMusicSheets.at(index).musics().size();
+    }
+}
+
 
 
 QList<MusicSheet> User::createdMusicSheets() const
@@ -164,11 +182,11 @@ void User::setPlayedMusicSheet(const MusicSheet playedMusicSheet)
 
 QString User::getUserID() const
 {
-    return userID;
+    return __userID;
 }
 
 void User::setUserID(const QString &value)
 {
-    userID = value;
+    __userID = value;
 }
 

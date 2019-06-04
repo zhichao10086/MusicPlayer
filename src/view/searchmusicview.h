@@ -15,6 +15,10 @@ public:
     explicit SearchMusicView(QWidget *parent = 0);
     ~SearchMusicView();
 
+    static SearchMusicView* single_searchMusicView;
+
+    static SearchMusicView* newInstance();
+
 private:
     Ui::SearchMusicView *ui;
 };

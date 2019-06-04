@@ -13,23 +13,129 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#SearchView{
+background-color: rgb(249, 255, 239,50);
+}
+QListWidget{
+background-color: rgb(249, 255, 239,50);
+}
+
+
+QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,50);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+QTabBar::tab:hover{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+
+QListWidget{
+	background-color: rgb(252, 255, 251,100);
+}
+
+
+QLabel{
+	font: 9pt &quot;楷体&quot;;
+}
+
+QLineEdit{
+
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,100);
+
+}
+QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,50);
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+}
+
+
+QTabWidget::tab-bar {  		/*整个最上面的tab栏*/
+    alignment: center;  
+	left:20px;
+
+	
+} 
+
+QTabWidget::QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,50);
+
+}
+
+QTabWidget{
+
+	background-color: rgb(249, 255, 239,0);
+
+}
+
+</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
-     <widget class="QWidget" name="tab">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabSingle">
       <attribute name="title">
-       <string>Tab 1</string>
+       <string>单曲</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="MusicListWidget" name="lwMusics"/>
+       </item>
+      </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="tabSinger">
       <attribute name="title">
-       <string>Tab 2</string>
+       <string>歌手</string>
       </attribute>
      </widget>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MusicListWidget</class>
+   <extends>QListWidget</extends>
+   <header location="global">musiclistwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

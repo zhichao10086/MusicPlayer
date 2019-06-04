@@ -91,7 +91,7 @@ void PlaySheetView::updateListWidgetPlaySheet(const MusicSheet &musicSheet)
     for(int i =0;i<musics.size();i++){
         QListWidgetItem* item = new QListWidgetItem;
         //QLabel *label  = new QLabel(musics.at(i).musicName());
-        MusicListItemView* itemView = new MusicListItemView(i,musics.at(i),MusicListItemView::ViewMode::PlaySheetListItem);
+        MusicListItemView* itemView = new MusicListItemView(i,musics.at(i),MusicItemViewMode::PlaySheetListItem);
         QSize size = item->sizeHint();
         qDebug()<<i;
         item->setSizeHint(QSize(this->ui->lwplaySheet->sizeHint().width(),28));
@@ -110,8 +110,8 @@ void PlaySheetView::updateListWidgetRecentPlaySheet(const MusicSheet &musicSheet
     for(int i =0;i<musics.size();i++){
         QListWidgetItem* item = new QListWidgetItem;
         //QLabel *label  = new QLabel(musics.at(i).musicName());
-        MusicListItemView* itemView = new MusicListItemView(i,musics.at(i),MusicListItemView::ViewMode::RecentSheetListItem);
-        QSize size = item->sizeHint();
+        MusicListItemView* itemView = new MusicListItemView(i,musics.at(i),MusicItemViewMode::RecentSheetListItem);
+        //QSize size = item->sizeHint();
         item->setSizeHint(QSize(this->ui->lwRecentPlaySheet->sizeHint().width(),28));
         this->ui->lwRecentPlaySheet->addItem(item);
         this->ui->lwRecentPlaySheet->setItemWidget(item,itemView);
@@ -131,16 +131,7 @@ void PlaySheetView::setPfCtrl(PlaySheetController *pfCtrl)
     __pfCtrl = pfCtrl;
 }
 
-void PlaySheetView::on_lwplaySheet_itemDoubleClicked(QListWidgetItem *item)
-{
-    /*
-     * 播放事件
-     */
 
-    //QWidget* w = this->ui->lwplaySheet->itemWidget(item);
-    //QModelIndex* index = this->ui->lwplaySheet->indexFromItem()
-    //this->__pfCtrl->playMusic();
-}
 
 void PlaySheetView::on_lwplaySheet_doubleClicked(const QModelIndex &index)
 {

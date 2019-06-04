@@ -13,11 +13,114 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#DownLoadView{
+background-color: rgb(249, 255, 239,50);
+}
+QWidget#downloadedWidget{
+background-color: rgb(249, 255, 239,30);
+}
+QWidget#downloadingWidget{
+background-color: rgb(249, 255, 239,30);
+}
+
+
+QListWidget{
+background-color: rgb(249, 255, 239,50);
+}
+
+
+QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,50);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+QTabBar::tab:hover{
+font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+	min-width:80px;
+	min-height:20px;
+	margin-right:10px;
+}
+
+
+QListWidget{
+	background-color: rgb(252, 255, 251,100);
+}
+
+
+QLabel{
+	font: 9pt &quot;楷体&quot;;
+}
+
+QLineEdit{
+
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,100);
+
+}
+QPushButton{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(249, 255, 239,50);
+}
+
+QPushButton:hover{
+	font: 9pt &quot;楷体&quot;;
+	border-color:rgb(61, 181, 255);
+	border-width:2px;
+	border-radius:3px;
+	background-color: rgb(191,191,191,50);
+}
+
+
+QTabWidget::tab-bar {  		/*整个最上面的tab栏*/
+    alignment: center;  
+
+	background-color: rgb(189, 255, 219);
+
+	
+} 
+ QTabBar::tab:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }
+
+
+
+</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QTabWidget" name="tabWidget">
+       <property name="styleSheet">
+        <string notr="true">QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	/*border-color:rgb(61, 181, 255);*/
+	border-width:1px;
+	background-color: rgb(189, 255, 219,50);
+	border-radius:2px;
+	/*background-color: rgb(249, 255, 239,50);*/
+	min-width:50px;
+	min-height:30px;
+	margin-right:20px;
+}</string>
+       </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
@@ -37,7 +140,7 @@
               <x>0</x>
               <y>0</y>
               <width>976</width>
-              <height>516</height>
+              <height>507</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -48,14 +151,33 @@
                </property>
                <item>
                 <widget class="QTabWidget" name="twViewPager">
+                 <property name="styleSheet">
+                  <string notr="true">QTabBar::tab{
+font: 9pt &quot;楷体&quot;;
+	/*border-color:rgb(61, 181, 255);*/
+	border-width:1px;
+	background-color: rgb(189, 255, 219,50);
+	border-radius:2px;
+	/*background-color: rgb(249, 255, 239,50);*/
+	min-width:50px;
+	min-height:30px;
+	margin-right:20px;
+	left:10; 
+	
+}
+</string>
+                 </property>
+                 <property name="currentIndex">
+                  <number>1</number>
+                 </property>
                  <widget class="QWidget" name="tab_2">
                   <attribute name="title">
-                   <string>Tab 1</string>
+                   <string/>
                   </attribute>
                  </widget>
                  <widget class="QWidget" name="tab_3">
                   <attribute name="title">
-                   <string>Tab 2</string>
+                   <string/>
                   </attribute>
                  </widget>
                 </widget>

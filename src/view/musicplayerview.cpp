@@ -199,10 +199,7 @@ void MusicPlayerView::setMainWindowWidget(QWidget *w)
 
 }
 
-void MusicPlayerView::showMusicDetialView(PlayMusicDetialView *pmdv)
-{
 
-}
 
 QWidget* MusicPlayerView::getCurMainWindowWidget()
 {
@@ -389,4 +386,41 @@ void MusicPlayerView::on_btnMusicCut_clicked()
 {
     MusicCutView* mcView = new MusicCutView;
     mcView->show();
+}
+
+void MusicPlayerView::on_leSearch_returnPressed()
+{
+    QString text= this->ui->leSearch->text();
+    //用来搜索
+    if(text.isEmpty()){
+        return;
+    }
+
+    SearchView* s = SearchView::newInstance();
+    this->setMainWindowWidget(s);
+    s->updateView(text);
+
+}
+
+void MusicPlayerView::on_leSearch_textChanged(const QString &arg1)
+{
+
+}
+
+void MusicPlayerView::on_btnFindMusic_clicked()
+{
+    SearchMusicView* searchView = SearchMusicView::newInstance();
+    this->setMainWindowWidget(searchView);
+}
+
+void MusicPlayerView::on_btnMusicSovle_clicked()
+{
+    FilterView* filterview = FilterView::newInstance();
+    filterview->show();
+}
+
+void MusicPlayerView::on_btnRecord_clicked()
+{
+    AudioRecordView* audioRecordView = AudioRecordView::newInstance();
+    this->setMainWindowWidget(audioRecordView);
 }

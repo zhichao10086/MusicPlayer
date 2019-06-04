@@ -52,7 +52,7 @@ public:
     void setIsFilter(bool value);
 
 private slots:
-    void on_lwplaySheet_itemDoubleClicked(QListWidgetItem *item);
+    //void on_lwplaySheet_itemDoubleClicked(QListWidgetItem *item);
 
     void on_lwplaySheet_doubleClicked(const QModelIndex &index);
 

@@ -11,34 +11,44 @@
 #include <QAction>
 #include <QMenu>
 #include "globalvariable.h"
+#include "musiclistitemmenu.h"
 
 using namespace std;
+
+enum class MusicItemViewMode{
+    LocalMusicListItem,
+    SearchMusicListItem,
+    PlaySheetListItem,
+    RecentSheetListItem,
+    MusicSheetListItem,
+};
+
 
 namespace Ui {
 class MusicListItemView;
 }
+
+class MusicListItemMenu;
+
 
 class MusicListItemView : public QWidget
 {
     Q_OBJECT
 
 
-
 public:
-    enum ViewMode{
-        LocalMusicListItem,
-        SearchMusicListItem,
-        PlaySheetListItem,
-        RecentSheetListItem,
-        MusicSheetListItem
-    };
+
+
 
 
     explicit MusicListItemView(QWidget *parent = 0);
 
-    MusicListItemView(int index, Music music,ViewMode mode,QWidget *parent = 0);
+    MusicListItemView(int index, Music music,MusicItemViewMode mode,QWidget *parent = 0);
     ~MusicListItemView();
 
+    MusicListItemMenu* _menu;
+
+    /*
     QMenu* _menu;
 
     QMenu* _collectMenu;
@@ -47,7 +57,7 @@ public:
     QAction* _actionNextPlay;
     QAction* _actionDownload;
     QList<QAction*> _collectActions;
-
+    */
 
 
 
@@ -85,5 +95,6 @@ private:
     Music __music;
     int __index;
 };
+
 
 #endif // MUSICLISTITEMVIEW_H

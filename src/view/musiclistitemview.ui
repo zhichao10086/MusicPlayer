@@ -105,8 +105,15 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">
-border-image: url(:/images/icon/images/喜欢(1).png);</string>
+          <string notr="true">QPushButton{
+	border-image: url(:/images/icon/images/喜欢(1).png);
+}
+
+QPushButton:hover{
+	border-image: url(:/images/icon/images/收藏(2).png);
+}
+
+</string>
          </property>
          <property name="text">
           <string/>
@@ -128,7 +135,17 @@ border-image: url(:/images/icon/images/喜欢(1).png);</string>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border-image: url(:/images/icon/images/下载(1).png);
+          <string notr="true">QPushButton{
+	border-image: url(:/images/icon/images/下载(1).png);
+}
+
+QPushButton:hover{
+	border-image: url(:/images/icon/images/下载.png);
+}
+
+
+
+
 </string>
          </property>
          <property name="text">

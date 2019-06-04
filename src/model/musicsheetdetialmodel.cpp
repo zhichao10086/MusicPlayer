@@ -5,7 +5,8 @@ MusicSheetDetialModel::MusicSheetDetialModel(QObject *parent) : QObject(parent)
 
 }
 
-MusicSheetDetialModel::MusicSheetDetialModel(MusicSheetDetialController *msdCtrl, QObject *parent)
+MusicSheetDetialModel::MusicSheetDetialModel(MusicSheetDetialController *msdCtrl, QObject *parent):
+    QObject(parent)
 {
     this->__msdCtrl = msdCtrl;
 }

@@ -7,7 +7,7 @@
 QT       += core gui
 QT += multimedia
 QT += network
-
+QT +=charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,6 +26,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
+CONFIG += c++11
+
+
 SOURCES += \
     src/controller/localmusiccontroller.cpp \
     src/controller/lyricscontroller.cpp \
@@ -42,7 +45,6 @@ SOURCES += \
     src/view/localmusicview.cpp \
     src/view/mainwindow.cpp \
     src/view/playfuncview.cpp \
-    src/main.cpp \
     src/util/util.cpp \
     src/controller/musicplayercontroller.cpp \
     src/controller/downloadcontroller.cpp \
@@ -76,7 +78,20 @@ SOURCES += \
     src/view/musiccutview.cpp \
     src/model/multimusicfunc.cpp \
     src/model/musiccutthread.cpp \
-    src/model/ffmpegplayer.cpp
+    src/model/playthread.cpp \
+    src/model/ffmpegplayer.cpp \
+    src/view/musiclistheaderview.cpp \
+    src/view/musiclistitemmenu.cpp \
+    src/view/downloadmusiclistitemview.cpp \
+    src/view/choosemusicsheetdialog.cpp \
+    src/view/selectmusicsheetdialog.cpp \
+    src/model/recordthread.cpp \
+    src/view/filterview.cpp\
+    src/main.cpp \
+    src/model/filterconstant.cpp \
+    src/model/audiorecordthread.cpp \
+    src/model/audiorecord.cpp \
+    src/view/audiorecordview.cpp
 
 
 HEADERS += \
@@ -128,7 +143,19 @@ HEADERS += \
     src/view/musiccutview.h \
     src/model/multimusicfunc.h \
     src/model/musiccutthread.h \
-    src/model/ffmpegplayer.h
+    src/model/playthread.h \
+    src/model/ffmpegplayer.h \
+    src/view/musiclistheaderview.h \
+    src/view/musiclistitemmenu.h \
+    src/view/downloadmusiclistitemview.h \
+    src/view/choosemusicsheetdialog.h \
+    src/view/selectmusicsheetdialog.h \
+    src/model/recordthread.h \
+    src/view/filterview.h \
+    src/model/filterconstant.h \
+    src/model/audiorecordthread.h \
+    src/model/audiorecord.h \
+    src/view/audiorecordview.h
 
 FORMS += \
     src/view/playfuncview.ui \
@@ -150,7 +177,14 @@ FORMS += \
     src/view/lyricsitemview.ui \
     src/view/searchmusicview.ui \
     src/view/recomenttableitemview.ui \
-    src/view/musiccutview.ui
+    src/view/musiccutview.ui \
+    src/view/musiclistheaderview.ui \
+    src/view/musiclistitemmenu.ui \
+    src/view/downloadmusiclistitemview.ui \
+    src/view/choosemusicsheetdialog.ui \
+    src/view/selectmusicsheetdialog.ui \
+    src/view/filterview.ui \
+    src/view/audiorecordview.ui
 
 DISTFILES += \
     src/document
